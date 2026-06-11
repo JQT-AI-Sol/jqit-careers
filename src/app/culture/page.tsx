@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { CultureBlock } from "@/components/sections/CultureBlock";
+import { CareerPath } from "@/components/sections/CareerPath";
 import { CTA } from "@/components/sections/CTA";
 import { qualifications } from "@/lib/content";
 
@@ -58,8 +59,11 @@ export default function CulturePage() {
         </Container>
       </section>
 
+      {/* キャリアパス（成長ステップ） */}
+      <CareerPath />
+
       {/* 資格取得支援 詳細 */}
-      <section className="py-20 md:py-[120px]">
+      <section className="bg-cream py-20 md:py-[120px]">
         <Container>
           <SectionHead
             kicker="Certification Support"

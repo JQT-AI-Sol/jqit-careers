@@ -3,6 +3,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHead, Kicker } from "@/components/ui/SectionHead";
 import { StrengthGrid } from "@/components/sections/StrengthGrid";
+import { Messages } from "@/components/sections/Messages";
 import { Button } from "@/components/ui/Button";
 import { CTA } from "@/components/sections/CTA";
 import { company } from "@/lib/content";
@@ -48,6 +49,9 @@ export default function AboutPage() {
           </div>
         </Container>
       </section>
+
+      {/* Message（代表＋部門リーダー） */}
+      <Messages />
 
       {/* Business */}
       <section className="bg-cream py-20 md:py-[120px]">

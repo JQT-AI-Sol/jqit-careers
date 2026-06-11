@@ -26,6 +26,10 @@ export type Interview = {
   title: string;
   excerpt: string;
   note?: string;
+  reason?: string; // 入社のきっかけ
+  work?: string; // いまの仕事
+  growth?: string; // 成長と変化（Before→After）
+  message?: string; // 挑戦するあなたへ
 };
 
 export type Faq = { q: string; a: string };
