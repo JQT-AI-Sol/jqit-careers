@@ -31,6 +31,15 @@ export function CareerPath() {
                   →
                 </span>
               )}
+              {/* 進む感を出す赤い矢印（モバイル、縦向き・最終ステップ以外） */}
+              {i < data.steps.length - 1 && (
+                <span
+                  aria-hidden
+                  className="absolute -bottom-[10px] left-0 z-10 font-mono text-[16px] leading-none text-brand md:hidden"
+                >
+                  ↓
+                </span>
+              )}
               <div className="font-mono text-[13px] font-semibold tracking-[0.1em] text-brand">
                 {s.no}
               </div>
@@ -72,7 +81,7 @@ export function CareerPath() {
                 className="bg-paper p-7"
                 style={{ transitionDelay: `${i * 80}ms` } as React.CSSProperties}
               >
-                <div className="flex items-center gap-3 font-mono text-[13px] font-medium tracking-[0.04em] text-ink">
+                <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[13px] font-medium tracking-[0.04em] text-ink">
                   <span className="inline-flex items-center rounded-card border border-line px-3 py-1.5 leading-none">
                     {c.from}
                   </span>

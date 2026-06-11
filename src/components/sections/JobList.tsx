@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { jobs, jobSlugToValue } from "@/lib/content";
+import { jobs } from "@/lib/content";
 import { FadeIn } from "@/components/ui/FadeIn";
 
 export function JobList() {
@@ -11,7 +11,7 @@ export function JobList() {
           style={{ transitionDelay: `${i * 90}ms` } as React.CSSProperties}
         >
           <Link
-            href={`/entry?position=${jobSlugToValue[job.slug]}`}
+            href={`/jobs#${job.slug}`}
             className="group grid grid-cols-[40px_1fr] items-start gap-6 border-b border-line py-9 transition-all hover:bg-cream md:grid-cols-[64px_1fr_auto] md:items-center md:gap-8 md:hover:pl-5"
           >
             <div className="font-mono text-[13px] text-muted">

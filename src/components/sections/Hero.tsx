@@ -15,7 +15,7 @@ export function Hero() {
           Careers at JQIT
         </span>
 
-        <h1 className="mt-7 font-serif text-[34px] font-medium leading-[1.6] tracking-[0.04em] text-ink md:text-[62px] md:leading-[1.55]">
+        <h1 className="mt-7 font-serif text-[38px] font-medium leading-[1.6] tracking-[0.04em] text-ink md:text-[62px] md:leading-[1.55]">
           <span className="hero-mask">
             <span style={{ animationDelay: "0.18s" }}>挑戦と革新で、</span>
           </span>
@@ -53,7 +53,7 @@ export function Hero() {
 
       <Container className="mt-16 md:mt-[76px]">
         <div
-          className="relative h-[280px] w-full overflow-hidden rounded-card hero-zoom md:h-[520px]"
+          className="relative h-[380px] w-full overflow-hidden rounded-card hero-zoom md:h-[600px]"
           style={{ animationDelay: "0.4s" }}
         >
           <Image
@@ -70,6 +70,13 @@ export function Hero() {
           <span className="absolute bottom-0 left-0 h-[120px] w-1.5 bg-brand" />
           <span className="absolute bottom-10 left-10 font-mono text-[11px] tracking-[0.2em] text-white/90 uppercase">
             技術で、本質的な課題を解く。
+          </span>
+          <span
+            className="absolute right-10 bottom-10 hidden items-center gap-2 font-mono text-[10px] tracking-[0.3em] text-white/70 uppercase hero-rise md:flex"
+            style={{ animationDelay: "0.9s" }}
+          >
+            Scroll
+            <span className="block h-7 w-px bg-gradient-to-b from-white/60 to-transparent animate-pulse" />
           </span>
         </div>
       </Container>

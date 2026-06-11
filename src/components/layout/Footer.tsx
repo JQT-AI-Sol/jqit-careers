@@ -42,7 +42,8 @@ function FooterLink({
   label: string;
   external?: boolean;
 }) {
-  const cls = "block py-1.5 text-[13.5px] text-[#b7b7b1] transition-colors hover:text-white";
+  const cls =
+    "block py-1 text-[13px] leading-[2.2] text-[#b7b7b1] transition-colors hover:text-white";
   if (external) {
     return (
       <a href={href} target="_blank" rel="noopener noreferrer" className={cls}>

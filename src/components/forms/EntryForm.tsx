@@ -1,6 +1,6 @@
 "use client";
 
-import { useRef, useState } from "react";
+import { useId, useRef, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -125,15 +125,19 @@ export function EntryForm() {
       />
 
       <Field label="お名前" required error={errors.name?.message}>
-        <input className={inputCls} {...register("name")} />
+        {(id) => <input id={id} className={inputCls} {...register("name")} />}
       </Field>
 
       <Field label="メールアドレス" required error={errors.email?.message}>
-        <input type="email" className={inputCls} {...register("email")} />
+        {(id) => (
+          <input id={id} type="email" className={inputCls} {...register("email")} />
+        )}
       </Field>
 
       <Field label="電話番号" required error={errors.phone?.message}>
-        <input type="tel" className={inputCls} {...register("phone")} />
+        {(id) => (
+          <input id={id} type="tel" className={inputCls} {...register("phone")} />
+        )}
       </Field>
 
       <Field
@@ -182,32 +186,51 @@ export function EntryForm() {
       </Field>
 
       <Field label="自己PR・メッセージ" required error={errors.message?.message}>
-        <textarea
-          rows={6}
-          className={inputCls}
-          {...register("message")}
-        />
+        {(id) => (
+          <textarea
+            id={id}
+            rows={6}
+            className={inputCls}
+            {...register("message")}
+          />
+        )}
       </Field>
 
       <Field
         label="ポートフォリオ / GitHub 等 URL（任意）"
         error={errors.portfolioUrl?.message}
       >
-        <input
-          type="url"
-          placeholder="https://"
-          className={inputCls}
-          {...register("portfolioUrl")}
-        />
+        {(id) => (
+          <input
+            id={id}
+            type="url"
+            placeholder="https://"
+            className={inputCls}
+            {...register("portfolioUrl")}
+          />
+        )}
       </Field>
 
       <Field label="履歴書 / 職務経歴書（任意・PDF等 10MBまで）">
-        <input
-          type="file"
-          accept=".pdf,.doc,.docx"
-          onChange={(e) => setResume(e.target.files?.[0] ?? null)}
-          className="font-sans text-[14px] text-body file:mr-4 file:rounded-card file:border file:border-line file:bg-cream file:px-4 file:py-2 file:font-sans file:text-[13px]"
-        />
+        <div className="flex flex-wrap items-center gap-3">
+          {/* OS標準UIを視覚的に隠しつつ機能は維持。labelのhtmlForで紐付け */}
+          <input
+            id="resume-input"
+            type="file"
+            accept=".pdf,.doc,.docx"
+            onChange={(e) => setResume(e.target.files?.[0] ?? null)}
+            className="sr-only"
+          />
+          <label
+            htmlFor="resume-input"
+            className="inline-flex cursor-pointer items-center rounded-card border border-line bg-cream px-4 py-2 font-sans text-[13px] text-body transition-colors hover:border-brand"
+          >
+            ファイルを選択
+          </label>
+          <span className="font-sans text-[13px] text-body">
+            {resume ? resume.name : "未選択"}
+          </span>
+        </div>
       </Field>
 
       <div>
@@ -239,7 +262,7 @@ export function EntryForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="mt-2 rounded-card bg-brand px-9 py-4 font-sans text-[15px] font-bold text-white transition-colors hover:bg-brand-dark disabled:opacity-60"
+        className="mt-2 w-full rounded-card bg-brand px-9 py-4 font-sans text-[15px] font-bold text-white transition-colors hover:bg-brand-dark disabled:opacity-60 md:w-auto"
       >
         {status === "submitting" ? "送信中…" : "エントリーを送信する"}
       </button>
@@ -256,15 +279,23 @@ function Field({
   label: string;
   required?: boolean;
   error?: string;
-  children: React.ReactNode;
+  /**
+   * 単一入力フィールドは render-prop で受け取った id を input に渡し、
+   * label と htmlFor/id で紐付ける（スクリーンリーダー対応）。
+   * ラジオ/チェックボックス群など複数入力のフィールドは ReactNode を渡し、
+   * label はグループ見出しとして機能する。
+   */
+  children: React.ReactNode | ((id: string) => React.ReactNode);
 }) {
+  const id = useId();
+  const isRenderProp = typeof children === "function";
   return (
     <div>
-      <label className={labelCls}>
+      <label className={labelCls} htmlFor={isRenderProp ? id : undefined}>
         {label}
         {required && <span className={reqCls}>*</span>}
       </label>
-      {children}
+      {isRenderProp ? children(id) : children}
       {error && <p className={errCls}>{error}</p>}
     </div>
   );

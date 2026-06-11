@@ -40,6 +40,7 @@ export function Header() {
           type="button"
           aria-label={open ? "メニューを閉じる" : "メニューを開く"}
           aria-expanded={open}
+          aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
           className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
         >
@@ -62,29 +63,38 @@ export function Header() {
       </div>
 
       {/* mobile menu */}
-      {open && (
-        <div className="fixed inset-0 top-[78px] z-40 bg-paper md:hidden">
-          <nav className="flex flex-col px-6 py-6">
-            {nav.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="border-b border-line py-5 font-serif text-xl text-ink"
-              >
-                {item.label}
-              </Link>
-            ))}
+      <div
+        id="mobile-menu"
+        aria-hidden={!open}
+        className={cn(
+          "fixed inset-0 top-[78px] z-40 bg-paper transition-[opacity,transform] duration-[250ms] ease-[cubic-bezier(0.16,0.84,0.44,1)] md:hidden",
+          open
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-2 opacity-0",
+        )}
+      >
+        <nav className="flex flex-col px-6 py-6">
+          {nav.map((item) => (
             <Link
-              href="/entry"
+              key={item.href}
+              href={item.href}
+              tabIndex={open ? undefined : -1}
               onClick={() => setOpen(false)}
-              className="mt-8 rounded-card bg-brand px-6 py-4 text-center font-sans font-bold text-white"
+              className="border-b border-line py-5 font-serif text-xl text-ink"
             >
-              エントリー
+              {item.label}
             </Link>
-          </nav>
-        </div>
-      )}
+          ))}
+          <Link
+            href="/entry"
+            tabIndex={open ? undefined : -1}
+            onClick={() => setOpen(false)}
+            className="mt-8 rounded-card bg-brand px-6 py-4 text-center font-sans font-bold text-white"
+          >
+            エントリー
+          </Link>
+        </nav>
+      </div>
     </header>
   );
 }

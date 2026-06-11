@@ -200,7 +200,7 @@ export default async function InterviewDetailPage({
           <div className="flex justify-center">
             <Kicker>Join Us</Kicker>
           </div>
-          <h2 className="mt-6 font-serif text-[26px] font-medium leading-[1.6] tracking-[0.03em] text-ink md:text-[38px]">
+          <h2 className="mt-6 font-serif text-[28px] font-medium leading-[1.6] tracking-[0.03em] text-ink md:text-[44px]">
             次は、あなたの
             <span className="text-brand">成長ストーリー</span>を。
           </h2>

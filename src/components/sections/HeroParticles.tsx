@@ -42,7 +42,7 @@ export function HeroParticles() {
         y: Math.random() * height,
         vx: (Math.random() - 0.5) * 0.22,
         vy: (Math.random() - 0.5) * 0.22,
-        r: Math.random() * 1.5 + 0.7,
+        r: Math.random() * 1.6 + 0.85,
         red: i % 9 === 0,
       }));
     };
@@ -72,7 +72,7 @@ export function HeroParticles() {
           const dy = a.y - b.y;
           const d = Math.hypot(dx, dy);
           if (d < LINK) {
-            const o = (1 - d / LINK) * 0.2;
+            const o = (1 - d / LINK) * 0.26;
             ctx.strokeStyle =
               a.red || b.red ? `rgba(230,0,18,${o})` : `rgba(255,255,255,${o})`;
             ctx.lineWidth = 0.6;
@@ -101,7 +101,7 @@ export function HeroParticles() {
       for (const p of particles) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = p.red ? "rgba(230,0,18,0.9)" : "rgba(255,255,255,0.72)";
+        ctx.fillStyle = p.red ? "rgba(230,0,18,0.95)" : "rgba(255,255,255,0.82)";
         ctx.fill();
       }
 
