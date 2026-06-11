@@ -2,6 +2,7 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { asset } from "@/lib/asset";
+import { HeroParticles } from "@/components/sections/HeroParticles";
 
 export function Hero() {
   return (
@@ -63,6 +64,8 @@ export function Hero() {
             sizes="(max-width: 768px) 100vw, 1160px"
             className="object-cover"
           />
+          <div className="absolute inset-0 bg-ink/25" />
+          <HeroParticles />
           <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/55 to-transparent" />
           <span className="absolute bottom-0 left-0 h-[120px] w-1.5 bg-brand" />
           <span className="absolute bottom-10 left-10 font-mono text-[11px] tracking-[0.2em] text-white/90 uppercase">
