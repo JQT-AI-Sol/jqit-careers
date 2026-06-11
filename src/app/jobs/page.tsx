@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
@@ -58,6 +59,15 @@ export default function JobsPage() {
                 id={job.slug}
                 className="scroll-mt-24 bg-paper p-8 md:p-12"
               >
+                <div className="relative mb-8 h-44 w-full overflow-hidden rounded-card md:h-56">
+                  <Image
+                    src={`/images/jobs/${jobSlugToValue[job.slug]}.jpg`}
+                    alt={`${job.title}のイメージ`}
+                    fill
+                    sizes="(max-width: 768px) 100vw, 1080px"
+                    className="object-cover"
+                  />
+                </div>
                 <div className="font-mono text-[11px] tracking-[0.16em] text-brand uppercase">
                   {job.category}
                 </div>

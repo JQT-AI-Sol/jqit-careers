@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHead, Kicker } from "@/components/ui/SectionHead";
 import { StrengthGrid } from "@/components/sections/StrengthGrid";
@@ -34,6 +35,15 @@ export default function AboutPage() {
                 {v}
               </span>
             ))}
+          </div>
+          <div className="relative mt-14 h-[280px] w-full overflow-hidden rounded-card md:h-[420px]">
+            <Image
+              src="/images/about/team.jpg"
+              alt="モダンなオフィスで協働するメンバー"
+              fill
+              sizes="(max-width: 768px) 100vw, 1096px"
+              className="object-cover"
+            />
           </div>
         </Container>
       </section>
@@ -72,17 +82,30 @@ export default function AboutPage() {
       {/* Product NOVA */}
       <section className="bg-ink py-20 text-white md:py-[120px]">
         <Container>
-          <Kicker>Our Product</Kicker>
-          <h2 className="mt-6 font-serif text-[30px] font-medium text-white md:text-[40px]">
-            {company.product.name}
-          </h2>
-          <p className="mt-5 max-w-[560px] font-sans text-[15px] leading-[2] text-[#c9c9c4]">
-            {company.product.body}
-          </p>
-          <div className="mt-9">
-            <Button href={"https://jqit.co.jp"} variant="primary">
-              製品サイトを見る
-            </Button>
+          <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-16">
+            <div>
+              <Kicker>Our Product</Kicker>
+              <h2 className="mt-6 font-serif text-[30px] font-medium text-white md:text-[40px]">
+                {company.product.name}
+              </h2>
+              <p className="mt-5 max-w-[560px] font-sans text-[15px] leading-[2] text-[#c9c9c4]">
+                {company.product.body}
+              </p>
+              <div className="mt-9">
+                <Button href={"https://jqit.co.jp"} variant="primary">
+                  製品サイトを見る
+                </Button>
+              </div>
+            </div>
+            <div className="relative h-[260px] w-full overflow-hidden rounded-card border border-white/10 md:h-[340px]">
+              <Image
+                src="/images/ai-face.jpg"
+                alt="AIのイメージ"
+                fill
+                sizes="(max-width: 768px) 100vw, 540px"
+                className="object-cover"
+              />
+            </div>
           </div>
         </Container>
       </section>
