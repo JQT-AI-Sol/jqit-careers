@@ -13,8 +13,8 @@
 | 2 | 設計 | completed | 2026-06-11 | 画面/DB/API/画面遷移 作成・承認 |
 | 3 | 整合性レビュー | completed | 2026-06-11 | PASS（C1 FAILは偽陽性と判定・所見記録） |
 | 4 | UI/UX設計 | completed | 2026-06-11 | v2(明朝エディトリアル)承認・design-system更新 |
-| 5 | 実装 | in_progress | 2026-06-11 | Next.js + Vercel + Supabase |
-| 6 | テスト+レビュー | pending | - | |
+| 5 | 実装 | completed | 2026-06-11 | 全ページ+フォーム+API+SEO、build成功 |
+| 6 | テスト+レビュー | pending | - | 次に実行 |
 | 7 | デモ動画 | skipped | 2026-06-11 | 自社サイト本番公開のため不要 |
 | 8 | マニュアル | skipped | 2026-06-11 | 同上 |
 | 9 | 提案書 | skipped | 2026-06-11 | 同上 |
@@ -49,3 +49,4 @@
 | 2026-06-11 | 2 | completed | 画面/DB/API/画面遷移 4点作成、ユーザー承認 |
 | 2026-06-11 | 3 | completed | consistency-check 実行。req→design 100%、C1 FAILは見出し/URL断片による偽陽性と判定しPASS |
 | 2026-06-11 | 4 | completed | top-mockup作成。v1(力強い系)→ユーザー指摘→v2(明朝エディトリアル)で承認。design-system.md をv2基準に更新。ブランド赤 #E60012 |
+| 2026-06-11 | 5 | completed | Next.js16+Tailwind4 で全ページ+エントリーフォーム/API+SEO実装。本番ビルド18ルート成功、API正常/異常/honeypot検証済み |
