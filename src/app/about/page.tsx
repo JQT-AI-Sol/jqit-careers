@@ -88,7 +88,7 @@ export default function AboutPage() {
               <h2 className="mt-6 font-serif text-[30px] font-medium text-white md:text-[40px]">
                 {company.product.name}
               </h2>
-              <p className="mt-5 max-w-[560px] font-sans text-[15px] leading-[2] text-[#c9c9c4]">
+              <p className="mt-5 max-w-[560px] text-pretty font-sans text-[15px] leading-[2] text-[#c9c9c4] [word-break:auto-phrase]">
                 {company.product.body}
               </p>
               <div className="mt-9">

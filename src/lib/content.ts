@@ -74,7 +74,7 @@ export const company = {
   ],
   product: {
     name: "NOVA",
-    body: "AIマッチング×一元管理で、SES営業の生産性を劇的に向上させる自社プロダクト。",
+    body: "AIマッチングと一元管理を強みとする自社プロダクト。SES営業の生産性を、劇的に向上させます。",
   },
 };
 
