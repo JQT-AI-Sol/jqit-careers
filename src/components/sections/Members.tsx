@@ -10,16 +10,26 @@ export function Members({ limit }: { limit?: number }) {
           key={m.slug}
           style={{ transitionDelay: `${(i % 3) * 90}ms` } as React.CSSProperties}
         >
-          <div className="relative h-[300px] rounded-card bg-gradient-to-br from-[#cfcdc7] to-[#6f6d68] grayscale">
-            <span className="absolute bottom-0 left-0 h-1 w-12 bg-brand" />
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card bg-cream border border-line">
+            <span
+              aria-hidden
+              className="absolute top-4 left-5 font-serif text-6xl leading-none text-brand/30"
+            >
+              &ldquo;
+            </span>
+            <span className="absolute inset-0 flex items-center justify-center font-serif text-[44px] tracking-[0.08em] text-ink">
+              {m.name}
+            </span>
+            {m.dept && (
+              <span className="absolute bottom-3 right-4 font-mono text-[10px] tracking-[0.12em] text-muted uppercase">
+                {m.dept}
+              </span>
+            )}
           </div>
-          <div className="mt-6 flex items-center gap-3">
+          <div className="mt-6">
             <span className="font-mono text-[11px] tracking-[0.16em] text-brand uppercase">
               {m.role}
             </span>
-            {m.name && (
-              <span className="font-sans text-[12px] text-muted">{m.name}</span>
-            )}
           </div>
           <h3 className="mt-3 font-serif text-[19px] font-medium leading-[1.6] text-ink">
             {m.title}
