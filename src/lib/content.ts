@@ -12,6 +12,7 @@ export type Job = {
   description: string;
   idealProfile: string[];
   welcomeSkills: string[];
+  cases?: string[];
   acceptInexperienced: boolean;
   acceptExperienced: boolean;
 };
@@ -20,6 +21,8 @@ export type Interview = {
   slug: string;
   role: string;
   name: string;
+  dept?: string;
+  career?: string;
   title: string;
   excerpt: string;
   note?: string;
@@ -82,6 +85,38 @@ export const strengths = [
   { no: "03", title: "QA", body: "テスト設計・自動化で品質を担保。日本品質を技術で支える要。" },
   { no: "04", title: "AI", body: "LLM・生成AI・AIエージェント。新規事業に挑むAIトランスフォーメーション。" },
 ];
+
+// 資格取得支援制度（Canva「JQITのいろいろな数字」より）
+export const qualifications = {
+  intro:
+    "推奨資格に合格した場合、受験費用を会社が負担。さらに一時報奨金と資格手当（月々）を支給します（金額は資格により異なる）。",
+  byDomain: [
+    {
+      domain: "開発",
+      items: [
+        "ORACLE MASTER DBA（Bronze / Silver）",
+        "Oracle Certified Java Programmer Silver SE 11",
+        "ITパスポート / 基本情報技術者 / 応用情報技術者",
+      ],
+    },
+    {
+      domain: "インフラ",
+      items: [
+        "LinuC（レベル1〜3）",
+        "CCNA",
+        "AWS認定ソリューションアーキテクト / 専門知識",
+      ],
+    },
+    {
+      domain: "QA",
+      items: [
+        "IVEC（レベル1〜5）",
+        "JSTQB Foundation Level",
+        "JSTQB Advanced Level（テストアナリスト / テストマネージャー）",
+      ],
+    },
+  ],
+};
 
 // 働く3つの理由
 export const appeals = [

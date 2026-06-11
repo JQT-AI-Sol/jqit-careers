@@ -116,6 +116,24 @@ export default function JobsPage() {
                   </div>
                 </div>
 
+                {job.cases && job.cases.length > 0 && (
+                  <div className="mt-8">
+                    <h3 className="font-serif text-[16px] font-medium text-ink">
+                      プロジェクト事例
+                    </h3>
+                    <ul className="mt-3 grid grid-cols-1 gap-2 md:grid-cols-2">
+                      {job.cases.map((c) => (
+                        <li
+                          key={c}
+                          className="font-sans text-[13px] leading-[1.8] text-muted before:mr-2 before:text-brand before:content-['▪']"
+                        >
+                          {c}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+
                 <div className="mt-9">
                   <Button
                     href={`/entry?position=${jobSlugToValue[job.slug]}`}

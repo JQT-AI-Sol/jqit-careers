@@ -1,5 +1,6 @@
 import { Container } from "@/components/ui/Container";
 import { SectionHead } from "@/components/ui/SectionHead";
+import { Button } from "@/components/ui/Button";
 import { Hero } from "@/components/sections/Hero";
 import { StrengthGrid } from "@/components/sections/StrengthGrid";
 import { Appeal } from "@/components/sections/Appeal";
@@ -53,9 +54,14 @@ export default function Home() {
           <SectionHead
             kicker="Members"
             title="社員の声"
-            lead="実際に働くメンバーのリアルな声。※写真・内容は後日支給データに差し替え。"
+            lead="未経験から、経験者まで。実際に働くメンバーのリアルな声をお届けします。"
           />
-          <Members />
+          <Members limit={3} />
+          <div className="mt-12">
+            <Button href="/interviews" variant="arrow">
+              社員の声をもっと見る →
+            </Button>
+          </div>
         </Container>
       </section>
 

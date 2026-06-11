@@ -18,7 +18,7 @@ export default function InterviewsPage() {
           <SectionHead
             kicker="Members"
             title="社員の声"
-            lead="実際に働くメンバーのリアルな声をお届けします。※写真・内容は後日支給データに差し替え予定です。"
+            lead="開発・インフラ・QA。未経験から、経験者まで。実際に働くメンバーのリアルな声をお届けします。"
           />
           <Members />
         </Container>

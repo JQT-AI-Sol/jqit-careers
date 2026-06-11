@@ -15,6 +15,12 @@
       "Webアプリケーション開発の経験",
       "クラウド（AWS等）の利用経験"
     ],
+    "cases": [
+      "某コーヒーブランドWebサイトのフロント開発（Node.js / JavaScript / jQuery）",
+      "某クレジットカードWebシステムの新規開発（Java / SQL / JSP）",
+      "状況共有サービスのバックエンド・APIサーバー開発（Java / Spring Boot・アジャイル）",
+      "大手キャリア向けスマホアプリ開発（要件検討〜仕様調整）"
+    ],
     "acceptInexperienced": true,
     "acceptExperienced": true
   },
@@ -34,6 +40,12 @@
       "AWS/GCP/Azure いずれかの実務経験",
       "IaC（Terraform等）・CI/CDの経験"
     ],
+    "cases": [
+      "企業基幹システムのネットワーク設計・構築（機器更改）",
+      "オンプレ仮想環境からクラウドIaaSへの移行（Apache / Java EE / PostgreSQL）",
+      "某クレジット会社の基盤構築（AWS構築・Linux設計・ミドルウェア設計）",
+      "パブリッククラウド接続ネットワーク提供サービスの方式設計"
+    ],
     "acceptInexperienced": true,
     "acceptExperienced": true
   },
@@ -42,7 +54,7 @@
     "category": "Quality Assurance",
     "title": "QAエンジニア",
     "summary": "テスト設計・自動化・品質プロセス構築。プロダクト品質を技術で支える。",
-    "description": "テスト設計・実行・自動化、品質プロセスの構築までを担当します。「使う人」を想う日本品質を、技術で体現する重要なポジションです。",
+    "description": "テスト設計・実行・自動化、品質プロセスの構築までを担当します。「使う人」を想う日本品質を、技術で体現する重要なポジションです。社内のエンジニアの約半数がQAという、品質に強みを持つ会社です。",
     "idealProfile": [
       "品質にこだわり、細部に目を配れる方",
       "プロダクトを良くする提案を楽しめる方",
@@ -51,7 +63,13 @@
     "welcomeSkills": [
       "テスト設計・実行の経験",
       "テスト自動化（Playwright/Selenium等）の経験",
-      "CI/CDへのテスト組み込み経験"
+      "JSTQB / IVEC 等の資格・知識"
+    ],
+    "cases": [
+      "スマートフォン向けゲームアプリの品質検証",
+      "宅配サービスWebシステムのシステムテスト・テストケース作成",
+      "決済アプリの品質検証（テスト設計〜実施）",
+      "ECサイトパッケージの品質管理（品質保証計画の立案・標準化）"
     ],
     "acceptInexperienced": true,
     "acceptExperienced": true
@@ -71,6 +89,11 @@
       "Python等での開発経験",
       "LLM/生成AIを用いた開発・PoCの経験",
       "機械学習・データ処理の知識"
+    ],
+    "cases": [
+      "大手通信キャリアの社内向けLLMアプリ開発",
+      "生成AIを活用したシステムの品質・精度検証",
+      "AIエージェント・生成AIのビジネス活用支援（PoC〜導入）"
     ],
     "acceptInexperienced": true,
     "acceptExperienced": true
