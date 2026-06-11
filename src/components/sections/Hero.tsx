@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 
@@ -50,11 +51,20 @@ export function Hero() {
 
       <Container className="mt-16 md:mt-[76px]">
         <div
-          className="relative h-[280px] w-full overflow-hidden rounded-card bg-gradient-to-br from-[#d8d6d0] via-[#9c9a94] to-[#3a3a36] grayscale hero-zoom md:h-[520px]"
+          className="relative h-[280px] w-full overflow-hidden rounded-card hero-zoom md:h-[520px]"
           style={{ animationDelay: "0.4s" }}
         >
+          <Image
+            src="/images/hero/hero.jpg"
+            alt="ガラスの大空間で未来を見据える"
+            fill
+            priority
+            sizes="(max-width: 768px) 100vw, 1160px"
+            className="object-cover"
+          />
+          <div className="absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-black/55 to-transparent" />
           <span className="absolute bottom-0 left-0 h-[120px] w-1.5 bg-brand" />
-          <span className="absolute bottom-10 left-10 font-mono text-[11px] tracking-[0.2em] text-white/85 uppercase">
+          <span className="absolute bottom-10 left-10 font-mono text-[11px] tracking-[0.2em] text-white/90 uppercase">
             技術で、本質的な課題を解く。
           </span>
         </div>

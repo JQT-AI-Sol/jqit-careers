@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { stats } from "@/lib/content";
 import { FadeIn } from "@/components/ui/FadeIn";
 
@@ -20,10 +21,34 @@ export function CultureBlock() {
           </FadeIn>
         ))}
       </div>
-      <div className="grid grid-cols-2 grid-rows-2 gap-3 [grid-auto-rows:170px]">
-        <div className="row-span-2 rounded-card bg-gradient-to-br from-[#bdbbb5] to-[#4a4844] grayscale" />
-        <div className="rounded-card bg-gradient-to-br from-[#cbc9c3] to-[#6b6964] grayscale" />
-        <div className="rounded-card bg-gradient-to-br from-[#cbc9c3] to-[#6b6964] grayscale" />
+      <div className="grid grid-cols-2 gap-3 [grid-template-rows:176px_176px]">
+        <div className="relative row-span-2 overflow-hidden rounded-card">
+          <Image
+            src="/images/culture/office.jpg"
+            alt="ミニマルなオフィスで協働する様子"
+            fill
+            sizes="(max-width: 768px) 50vw, 280px"
+            className="object-cover"
+          />
+        </div>
+        <div className="relative overflow-hidden rounded-card">
+          <Image
+            src="/images/culture/data.jpg"
+            alt="データとAIのイメージ"
+            fill
+            sizes="(max-width: 768px) 50vw, 280px"
+            className="object-cover"
+          />
+        </div>
+        <div className="relative overflow-hidden rounded-card">
+          <Image
+            src="/images/culture/light.jpg"
+            alt="技術と革新を象徴する光"
+            fill
+            sizes="(max-width: 768px) 50vw, 280px"
+            className="object-cover"
+          />
+        </div>
       </div>
     </div>
   );
