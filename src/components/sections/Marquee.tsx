@@ -20,7 +20,7 @@ export function Marquee({
     <div className="flex shrink-0 items-center">
       {words.map((w, i) => (
         <span key={i} className="flex items-center">
-          <span className="px-7 font-mono text-[26px] font-semibold tracking-[0.04em] text-ink/15 uppercase md:px-10 md:text-[44px]">
+          <span className="px-7 font-mono text-[26px] font-semibold tracking-[0.04em] text-ink/30 uppercase md:px-10 md:text-[44px]">
             {w}
           </span>
           <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand md:h-2 md:w-2" />

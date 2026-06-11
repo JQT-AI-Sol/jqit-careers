@@ -10,7 +10,8 @@ export function Header() {
   const [open, setOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 border-b border-line bg-paper/85 backdrop-blur-md">
+    <header className="sticky top-0 z-50 border-b border-line">
+      <div className="absolute inset-0 -z-10 bg-paper/85 backdrop-blur-md" aria-hidden />
       <div className="mx-auto flex h-[78px] w-full max-w-[1160px] items-center justify-between px-5 md:px-8">
         <Link href="/" aria-label={`${site.name} 採用サイト トップ`}>
           <Logo />
@@ -62,12 +63,12 @@ export function Header() {
         </button>
       </div>
 
-      {/* mobile menu */}
+      {/* mobile menu: 完全不透明な全面オーバーレイ（ヘッダー下〜画面下を覆う） */}
       <div
         id="mobile-menu"
         aria-hidden={!open}
         className={cn(
-          "fixed inset-0 top-[78px] z-40 bg-paper transition-[opacity,transform] duration-[250ms] ease-[cubic-bezier(0.16,0.84,0.44,1)] md:hidden",
+          "fixed inset-x-0 top-[78px] bottom-0 z-40 overflow-y-auto bg-paper transition-[opacity,transform] duration-[250ms] ease-[cubic-bezier(0.16,0.84,0.44,1)] md:hidden",
           open
             ? "translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-2 opacity-0",

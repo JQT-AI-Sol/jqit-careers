@@ -78,12 +78,12 @@
     "slug": "ai",
     "category": "Artificial Intelligence",
     "title": "AIエンジニア",
-    "summary": "生成AI・LLM活用、AIエージェント開発。新規事業の最前線。",
-    "description": "大規模言語モデルを中心とした最先端技術で、AIトランスフォーメーションを推進します。AIエージェントの開発や生成AIのビジネス活用など、新規事業の最前線に挑みます。",
+    "summary": "生成AI・LLM活用、AIエージェント開発。新規事業の最前線で、経験者を募集。",
+    "description": "大規模言語モデルを中心とした最先端技術で、AIトランスフォーメーションを推進します。AIエージェントの開発や生成AIのビジネス活用など、新規事業の最前線に挑む、経験者向けのポジションです。",
     "idealProfile": [
       "最新のAI技術に強い関心と探究心がある方",
-      "試行錯誤しながら新しい価値を生み出したい方",
-      "未経験でも、AIの活用に挑戦したい方"
+      "機械学習・生成AIの実装/PoC経験がある方",
+      "自走して新しい技術を検証し、価値を生み出せる方"
     ],
     "welcomeSkills": [
       "Python等での開発経験",
@@ -95,7 +95,7 @@
       "生成AIを活用したシステムの品質・精度検証",
       "AIエージェント・生成AIのビジネス活用支援（PoC〜導入）"
     ],
-    "acceptInexperienced": true,
+    "acceptInexperienced": false,
     "acceptExperienced": true
   }
 ]

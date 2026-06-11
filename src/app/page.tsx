@@ -6,9 +6,9 @@ import { StrengthGrid } from "@/components/sections/StrengthGrid";
 import { Appeal } from "@/components/sections/Appeal";
 import { JobList } from "@/components/sections/JobList";
 import { Members } from "@/components/sections/Members";
-import { CultureBlock } from "@/components/sections/CultureBlock";
 import { CTA } from "@/components/sections/CTA";
 import { Marquee } from "@/components/sections/Marquee";
+import { PhotoMarquee } from "@/components/sections/PhotoMarquee";
 
 export default function Home() {
   return (
@@ -81,8 +81,39 @@ export default function Home() {
 
       <section id="culture" className="py-20 md:py-[140px]">
         <Container>
-          <SectionHead kicker="Culture & Data" title="数字とカルチャーで知るJQIT" />
-          <CultureBlock />
+          <SectionHead
+            kicker="Our People"
+            title="ここには、挑戦する人がいる。"
+            lead="未経験から、経験者まで。多様なバックグラウンドの仲間が、技術で未来を切り拓いています。"
+          />
+        </Container>
+        <div className="flex flex-col gap-3 md:gap-4">
+          <PhotoMarquee
+            images={[
+              "/images/people/p1.jpg",
+              "/images/people/p2.jpg",
+              "/images/people/p8.jpg",
+              "/images/people/p3.jpg",
+              "/images/people/p5.jpg",
+            ]}
+            direction="left"
+          />
+          <PhotoMarquee
+            images={[
+              "/images/people/p6.jpg",
+              "/images/people/p9.jpg",
+              "/images/people/p4.jpg",
+              "/images/people/p7.jpg",
+              "/images/people/p10.jpg",
+            ]}
+            direction="right"
+            durationSec={66}
+          />
+        </div>
+        <Container className="mt-12 md:mt-16">
+          <Button href="/culture" variant="arrow">
+            数字とカルチャーを見る →
+          </Button>
         </Container>
       </section>
 

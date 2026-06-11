@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { stats } from "@/lib/content";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { CountUp } from "@/components/ui/CountUp";
 import { asset } from "@/lib/asset";
 
 export function CultureBlock() {
@@ -13,7 +14,7 @@ export function CultureBlock() {
             style={{ transitionDelay: `${i * 110}ms` } as React.CSSProperties}
           >
             <div className="font-serif text-[44px] leading-none text-ink md:text-[54px]">
-              {s.value}
+              <CountUp value={s.value} />
               <span className="ml-1 text-2xl text-brand">{s.unit}</span>
             </div>
             <div className="mt-3.5 font-sans text-[12.5px] tracking-wide text-muted">

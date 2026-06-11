@@ -3,6 +3,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { CultureBlock } from "@/components/sections/CultureBlock";
 import { CareerPath } from "@/components/sections/CareerPath";
+import { PhotoMarquee } from "@/components/sections/PhotoMarquee";
 import { CTA } from "@/components/sections/CTA";
 import { qualifications } from "@/lib/content";
 
@@ -30,15 +31,27 @@ const benefits = [
 export default function CulturePage() {
   return (
     <>
-      <section className="py-20 md:py-[120px]">
+      <section className="pt-20 md:pt-[120px]">
         <Container>
           <SectionHead
             kicker="Culture & Data"
-            title="数字とカルチャーで知るJQIT"
-            lead="数字と日常の風景から、JQITで働くイメージをお伝えします。"
+            title="数字が語る、JQITの“いま”。"
+            lead="エンジニア115名、平均29.8歳の若い組織。QAに強く、資格取得は受験費用を全額支援。数字から、私たちの輪郭が見えてきます。"
           />
           <CultureBlock />
         </Container>
+        <div className="mt-16 flex flex-col gap-3 md:mt-24 md:gap-4">
+          <PhotoMarquee
+            images={[
+              "/images/people/p4.jpg",
+              "/images/people/p2.jpg",
+              "/images/people/p6.jpg",
+              "/images/people/p8.jpg",
+              "/images/people/p9.jpg",
+            ]}
+            direction="left"
+          />
+        </div>
       </section>
 
       <section className="bg-cream py-20 md:py-[120px]">
