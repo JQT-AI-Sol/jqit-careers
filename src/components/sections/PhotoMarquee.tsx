@@ -34,7 +34,7 @@ export function PhotoMarquee({
         <div
           key={i}
           className={cn(
-            "relative mx-1.5 shrink-0 overflow-hidden rounded-card bg-ink md:mx-2.5",
+            "relative mx-1.5 shrink-0 overflow-hidden rounded-2xl bg-ink md:mx-2.5",
             shapes[i % shapes.length],
           )}
         >

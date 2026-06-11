@@ -14,7 +14,7 @@ export function Messages() {
         <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-[0.85fr_1.15fr] md:gap-[72px]">
           {/* 写真プレースホルダ（後日差し替え） */}
           <FadeIn>
-            <div className="relative flex aspect-[4/5] w-full items-end overflow-hidden rounded-card border border-line bg-paper">
+            <div className="relative flex aspect-[4/5] w-full items-end overflow-hidden rounded-2xl border border-line bg-paper">
               <span
                 aria-hidden
                 className="absolute top-6 left-7 font-serif text-[88px] leading-none text-line"

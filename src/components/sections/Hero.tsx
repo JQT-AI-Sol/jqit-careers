@@ -53,7 +53,7 @@ export function Hero() {
 
       <Container className="mt-16 md:mt-[76px]">
         <div
-          className="relative h-[380px] w-full overflow-hidden rounded-card hero-zoom md:h-[600px]"
+          className="relative h-[380px] w-full overflow-hidden rounded-2xl hero-zoom md:h-[600px]"
           style={{ animationDelay: "0.4s" }}
         >
           <Image

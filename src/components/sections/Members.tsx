@@ -27,7 +27,7 @@ export function Members({ limit }: { limit?: number }) {
             href={`/interviews/${m.slug}`}
             className="group block focus-visible:outline-none"
           >
-            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card bg-ink">
+            <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-ink">
               <Image
                 src={asset(memberImages[i % memberImages.length])}
                 alt=""

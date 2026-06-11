@@ -24,7 +24,7 @@ export function CultureBlock() {
         ))}
       </div>
       <div className="grid grid-cols-2 gap-3 [grid-template-rows:176px_176px]">
-        <div className="relative row-span-2 overflow-hidden rounded-card">
+        <div className="relative row-span-2 overflow-hidden rounded-2xl">
           <Image
             src={asset("/images/culture/office.jpg")}
             alt="ミニマルなオフィスで協働する様子"
@@ -33,7 +33,7 @@ export function CultureBlock() {
             className="object-cover"
           />
         </div>
-        <div className="relative overflow-hidden rounded-card">
+        <div className="relative overflow-hidden rounded-2xl">
           <Image
             src={asset("/images/culture/data.jpg")}
             alt="データとAIのイメージ"
@@ -42,7 +42,7 @@ export function CultureBlock() {
             className="object-cover"
           />
         </div>
-        <div className="relative overflow-hidden rounded-card">
+        <div className="relative overflow-hidden rounded-2xl">
           <Image
             src={asset("/images/culture/light.jpg")}
             alt="技術と革新を象徴する光"

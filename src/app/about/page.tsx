@@ -38,7 +38,7 @@ export default function AboutPage() {
               </span>
             ))}
           </div>
-          <div className="relative mt-14 h-[280px] w-full overflow-hidden rounded-card md:h-[420px]">
+          <div className="relative mt-14 h-[280px] w-full overflow-hidden rounded-2xl md:h-[420px]">
             <Image
               src={asset("/images/about/team.jpg")}
               alt="モダンなオフィスで協働するメンバー"
@@ -102,7 +102,7 @@ export default function AboutPage() {
                 </Button>
               </div>
             </div>
-            <div className="relative h-[260px] w-full overflow-hidden rounded-card border border-white/10 md:h-[340px]">
+            <div className="relative h-[260px] w-full overflow-hidden rounded-2xl border border-white/10 md:h-[340px]">
               <Image
                 src={asset("/images/ai-face.jpg")}
                 alt="AIのイメージ"

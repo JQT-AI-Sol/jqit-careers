@@ -60,7 +60,7 @@ export default function JobsPage() {
                 id={job.slug}
                 className="scroll-mt-24 bg-paper p-8 md:p-12"
               >
-                <div className="relative mb-8 h-44 w-full overflow-hidden rounded-card md:h-56">
+                <div className="relative mb-8 h-44 w-full overflow-hidden rounded-2xl md:h-56">
                   <Image
                     src={asset(`/images/jobs/${jobSlugToValue[job.slug]}.jpg`)}
                     alt={`${job.title}のイメージ`}
