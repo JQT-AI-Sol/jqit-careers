@@ -150,3 +150,34 @@
     transform: none;
   }
 }
+
+/* ===== マーキー帯（幾何/英字が流れる演出） ===== */
+@keyframes marqueeL {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes marqueeR {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeL linear infinite;
+}
+.marquee-track.is-rtl {
+  animation-name: marqueeR;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}

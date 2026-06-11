@@ -8,11 +8,25 @@ import { JobList } from "@/components/sections/JobList";
 import { Members } from "@/components/sections/Members";
 import { CultureBlock } from "@/components/sections/CultureBlock";
 import { CTA } from "@/components/sections/CTA";
+import { Marquee } from "@/components/sections/Marquee";
 
 export default function Home() {
   return (
     <>
       <Hero />
+
+      <div className="mt-16 md:mt-24">
+        <Marquee
+          words={[
+            "Challenge",
+            "Innovation",
+            "Development",
+            "Infrastructure",
+            "Quality Assurance",
+            "Artificial Intelligence",
+          ]}
+        />
+      </div>
 
       <section id="about" className="py-20 md:py-[140px]">
         <Container>
