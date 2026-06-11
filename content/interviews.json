@@ -1,0 +1,26 @@
+[
+  {
+    "slug": "ai-member",
+    "role": "AI Engineer",
+    "name": "T.S",
+    "title": "未経験から、AIの最前線へ。",
+    "excerpt": "入社1年で生成AI案件のメイン担当に。学べる環境と挑戦の連続です。",
+    "note": "※写真・内容は後日支給データに差し替え"
+  },
+  {
+    "slug": "infra-member",
+    "role": "Infra Engineer",
+    "name": "K.M",
+    "title": "裁量を持って、基盤を設計する。",
+    "excerpt": "クラウド設計を任され、技術選定から関われるのが面白い。",
+    "note": "※写真・内容は後日支給データに差し替え"
+  },
+  {
+    "slug": "qa-member",
+    "role": "QA Engineer",
+    "name": "Y.N",
+    "title": "品質で価値を支える誇り。",
+    "excerpt": "テスト自動化を推進。日本品質を技術で体現しています。",
+    "note": "※写真・内容は後日支給データに差し替え"
+  }
+]

@@ -1,0 +1,78 @@
+[
+  {
+    "slug": "engineer",
+    "category": "Engineering",
+    "title": "開発エンジニア",
+    "summary": "Webアプリ・業務システムの設計・実装。上流から関わり、技術選定にも参画。",
+    "description": "要件定義から設計・実装・運用まで、上流工程を含めて一気通貫で担当します。モダンな技術スタックを用い、受託開発から自社サービスまで幅広いプロダクトづくりに携わります。",
+    "idealProfile": [
+      "ものづくりが好きで、技術を学び続けられる方",
+      "チームで価値を届けることに喜びを感じる方",
+      "未経験でも、論理的に考え、手を動かせる方"
+    ],
+    "welcomeSkills": [
+      "何らかの言語でのプログラミング経験",
+      "Webアプリケーション開発の経験",
+      "クラウド（AWS等）の利用経験"
+    ],
+    "acceptInexperienced": true,
+    "acceptExperienced": true
+  },
+  {
+    "slug": "infra",
+    "category": "Infrastructure",
+    "title": "インフラエンジニア",
+    "summary": "クラウド基盤の設計・構築・運用自動化。IaC・監視・セキュリティ。",
+    "description": "クラウドを中心としたインフラの設計・構築・運用を担います。IaCによる自動化、監視・セキュリティ設計まで、安定とスケールを支える基盤づくりに取り組みます。",
+    "idealProfile": [
+      "縁の下で仕組みを支えることにやりがいを感じる方",
+      "自動化・効率化を追求できる方",
+      "未経験でも、インフラやネットワークに興味がある方"
+    ],
+    "welcomeSkills": [
+      "Linux/ネットワークの基礎知識",
+      "AWS/GCP/Azure いずれかの実務経験",
+      "IaC（Terraform等）・CI/CDの経験"
+    ],
+    "acceptInexperienced": true,
+    "acceptExperienced": true
+  },
+  {
+    "slug": "qa",
+    "category": "Quality Assurance",
+    "title": "QAエンジニア",
+    "summary": "テスト設計・自動化・品質プロセス構築。プロダクト品質を技術で支える。",
+    "description": "テスト設計・実行・自動化、品質プロセスの構築までを担当します。「使う人」を想う日本品質を、技術で体現する重要なポジションです。",
+    "idealProfile": [
+      "品質にこだわり、細部に目を配れる方",
+      "プロダクトを良くする提案を楽しめる方",
+      "未経験でも、検証や改善に関心がある方"
+    ],
+    "welcomeSkills": [
+      "テスト設計・実行の経験",
+      "テスト自動化（Playwright/Selenium等）の経験",
+      "CI/CDへのテスト組み込み経験"
+    ],
+    "acceptInexperienced": true,
+    "acceptExperienced": true
+  },
+  {
+    "slug": "ai",
+    "category": "Artificial Intelligence",
+    "title": "AIエンジニア",
+    "summary": "生成AI・LLM活用、AIエージェント開発。新規事業の最前線。",
+    "description": "大規模言語モデルを中心とした最先端技術で、AIトランスフォーメーションを推進します。AIエージェントの開発や生成AIのビジネス活用など、新規事業の最前線に挑みます。",
+    "idealProfile": [
+      "最新のAI技術に強い関心と探究心がある方",
+      "試行錯誤しながら新しい価値を生み出したい方",
+      "未経験でも、AIの活用に挑戦したい方"
+    ],
+    "welcomeSkills": [
+      "Python等での開発経験",
+      "LLM/生成AIを用いた開発・PoCの経験",
+      "機械学習・データ処理の知識"
+    ],
+    "acceptInexperienced": true,
+    "acceptExperienced": true
+  }
+]

@@ -1,0 +1,36 @@
+export const site = {
+  name: "JQIT",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://careers.jqit.co.jp",
+  description:
+    "JQITの採用サイト。開発・インフラ・QA、そしてAI。最新技術に挑むITのプロフェッショナル集団で、未経験から経験者まで、挑戦したい人を歓迎します。",
+  corporateUrl: "https://jqit.co.jp",
+  tagline: "挑戦と革新で、未来を切り拓く。",
+} as const;
+
+export const nav = [
+  { href: "/about", label: "私たちについて" },
+  { href: "/jobs", label: "職種紹介" },
+  { href: "/interviews", label: "社員の声" },
+  { href: "/culture", label: "カルチャー" },
+  { href: "/recruit", label: "採用フロー" },
+] as const;
+
+export const footerNav = {
+  Recruit: [
+    { href: "/about", label: "私たちについて" },
+    { href: "/jobs", label: "職種紹介" },
+    { href: "/interviews", label: "社員の声" },
+    { href: "/recruit", label: "採用フロー" },
+  ],
+  Company: [
+    { href: "https://jqit.co.jp", label: "会社概要", external: true },
+    { href: "https://jqit.co.jp", label: "事業一覧", external: true },
+    { href: "https://jqit.co.jp", label: "製品 NOVA", external: true },
+    { href: "https://jqit.co.jp", label: "コーポレートサイト", external: true },
+  ],
+  Contact: [
+    { href: "/entry", label: "エントリー" },
+    { href: "/entry", label: "お問い合わせ" },
+    { href: "/privacy", label: "プライバシーポリシー" },
+  ],
+} as const;

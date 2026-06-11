@@ -1,0 +1,80 @@
+@import "tailwindcss";
+
+/* ===== JQIT 採用サイト デザイントークン（design/design-system.md v2 準拠） ===== */
+@theme {
+  --color-brand: #e60012;
+  --color-brand-dark: #b3000e;
+  --color-ink: #14140f;
+  --color-body: #2a2a28;
+  --color-muted: #8a8a85;
+  --color-line: #e7e5e0;
+  --color-paper: #ffffff;
+  --color-cream: #faf9f7;
+
+  --font-serif: var(--font-noto-serif), "Noto Serif JP", serif;
+  --font-sans: var(--font-noto-sans), "Noto Sans JP", system-ui, sans-serif;
+  --font-mono: var(--font-archivo), "Archivo", sans-serif;
+
+  --radius-card: 2px;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #2a2a28;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-body);
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-brand);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+}
+
+/* KICKER（赤の極細線 + 英大文字ラベル） */
+.kicker {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.kicker::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--color-brand);
+  display: inline-block;
+}
+
+/* スクロールインのフェードアップ */
+@media (prefers-reduced-motion: no-preference) {
+  .fade-in {
+    opacity: 0;
+    transform: translateY(16px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+}
