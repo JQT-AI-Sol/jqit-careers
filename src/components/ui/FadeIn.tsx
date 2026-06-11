@@ -8,11 +8,13 @@ export function FadeIn({
   className,
   style,
   as: Tag = "div",
+  ...rest
 }: {
   children: React.ReactNode;
   className?: string;
   style?: React.CSSProperties;
   as?: React.ElementType;
+  [key: string]: unknown;
 }) {
   const ref = useRef<HTMLElement | null>(null);
   const [visible, setVisible] = useState(false);
@@ -38,6 +40,7 @@ export function FadeIn({
       ref={ref}
       style={style}
       className={cn("fade-in", visible && "is-visible", className)}
+      {...rest}
     >
       {children}
     </Tag>

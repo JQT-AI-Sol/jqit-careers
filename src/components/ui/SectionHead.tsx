@@ -1,4 +1,5 @@
 import { cn } from "@/lib/cn";
+import { FadeIn } from "@/components/ui/FadeIn";
 
 export function Kicker({ children }: { children: React.ReactNode }) {
   return <span className="kicker">{children}</span>;
@@ -18,7 +19,7 @@ export function SectionHead({
   center?: boolean;
 }) {
   return (
-    <div
+    <FadeIn
       className={cn(
         "mb-12 max-w-[720px] md:mb-[72px]",
         center && "mx-auto text-center",
@@ -32,6 +33,6 @@ export function SectionHead({
       {lead && (
         <p className="mt-6 font-sans text-base leading-[2] text-body">{lead}</p>
       )}
-    </div>
+    </FadeIn>
   );
 }

@@ -66,15 +66,87 @@
   display: inline-block;
 }
 
-/* スクロールインのフェードアップ */
+/* ===== モーション（BizReach風の上品なリビール） ===== */
 @media (prefers-reduced-motion: no-preference) {
+  /* スクロールイン: フェードアップ */
   .fade-in {
     opacity: 0;
-    transform: translateY(16px);
-    transition: opacity 0.6s ease, transform 0.6s ease;
+    transform: translateY(20px);
+    transition:
+      opacity 0.8s cubic-bezier(0.16, 0.84, 0.44, 1),
+      transform 0.8s cubic-bezier(0.16, 0.84, 0.44, 1);
   }
   .fade-in.is-visible {
     opacity: 1;
+    transform: none;
+  }
+
+  /* スクロールイン: マスク立ち上げ（見出し向け。行を下から迫り上げる） */
+  .reveal-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+  }
+  .reveal-mask > span {
+    display: inline-block;
+    transform: translateY(110%);
+    transition: transform 0.9s cubic-bezier(0.16, 0.84, 0.44, 1);
+  }
+  .reveal-mask.is-visible > span {
+    transform: none;
+  }
+
+  /* ヒーロー登場（ロード時に自動再生） */
+  @keyframes heroRise {
+    from {
+      opacity: 0;
+      transform: translateY(26px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes heroMask {
+    from {
+      transform: translateY(110%);
+    }
+    to {
+      transform: none;
+    }
+  }
+  @keyframes heroZoom {
+    from {
+      opacity: 0;
+      transform: scale(1.08);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .hero-rise {
+    opacity: 0;
+    animation: heroRise 0.9s cubic-bezier(0.16, 0.84, 0.44, 1) both;
+  }
+  .hero-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+  }
+  .hero-mask > span {
+    display: inline-block;
+    animation: heroMask 1s cubic-bezier(0.16, 0.84, 0.44, 1) both;
+  }
+  .hero-zoom {
+    animation: heroZoom 1.4s cubic-bezier(0.16, 0.84, 0.44, 1) both;
+  }
+}
+
+/* reduced-motion 環境では即表示（マスクで隠れないように） */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-mask > span,
+  .hero-mask > span {
     transform: none;
   }
 }
