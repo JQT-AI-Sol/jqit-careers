@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { stats } from "@/lib/content";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { asset } from "@/lib/asset";
 
 export function CultureBlock() {
   return (
@@ -24,7 +25,7 @@ export function CultureBlock() {
       <div className="grid grid-cols-2 gap-3 [grid-template-rows:176px_176px]">
         <div className="relative row-span-2 overflow-hidden rounded-card">
           <Image
-            src="/images/culture/office.jpg"
+            src={asset("/images/culture/office.jpg")}
             alt="ミニマルなオフィスで協働する様子"
             fill
             sizes="(max-width: 768px) 50vw, 280px"
@@ -33,7 +34,7 @@ export function CultureBlock() {
         </div>
         <div className="relative overflow-hidden rounded-card">
           <Image
-            src="/images/culture/data.jpg"
+            src={asset("/images/culture/data.jpg")}
             alt="データとAIのイメージ"
             fill
             sizes="(max-width: 768px) 50vw, 280px"
@@ -42,7 +43,7 @@ export function CultureBlock() {
         </div>
         <div className="relative overflow-hidden rounded-card">
           <Image
-            src="/images/culture/light.jpg"
+            src={asset("/images/culture/light.jpg")}
             alt="技術と革新を象徴する光"
             fill
             sizes="(max-width: 768px) 50vw, 280px"

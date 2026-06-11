@@ -6,6 +6,7 @@ import { StrengthGrid } from "@/components/sections/StrengthGrid";
 import { Button } from "@/components/ui/Button";
 import { CTA } from "@/components/sections/CTA";
 import { company } from "@/lib/content";
+import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = {
   title: "私たちについて",
@@ -38,7 +39,7 @@ export default function AboutPage() {
           </div>
           <div className="relative mt-14 h-[280px] w-full overflow-hidden rounded-card md:h-[420px]">
             <Image
-              src="/images/about/team.jpg"
+              src={asset("/images/about/team.jpg")}
               alt="モダンなオフィスで協働するメンバー"
               fill
               sizes="(max-width: 768px) 100vw, 1096px"
@@ -99,7 +100,7 @@ export default function AboutPage() {
             </div>
             <div className="relative h-[260px] w-full overflow-hidden rounded-card border border-white/10 md:h-[340px]">
               <Image
-                src="/images/ai-face.jpg"
+                src={asset("/images/ai-face.jpg")}
                 alt="AIのイメージ"
                 fill
                 sizes="(max-width: 768px) 100vw, 540px"

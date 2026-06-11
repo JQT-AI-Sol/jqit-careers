@@ -6,6 +6,7 @@ import { Button } from "@/components/ui/Button";
 import { CTA } from "@/components/sections/CTA";
 import { jobs, jobSlugToValue } from "@/lib/content";
 import { site } from "@/lib/site";
+import { asset } from "@/lib/asset";
 
 export const metadata: Metadata = {
   title: "職種紹介・募集要項",
@@ -61,7 +62,7 @@ export default function JobsPage() {
               >
                 <div className="relative mb-8 h-44 w-full overflow-hidden rounded-card md:h-56">
                   <Image
-                    src={`/images/jobs/${jobSlugToValue[job.slug]}.jpg`}
+                    src={asset(`/images/jobs/${jobSlugToValue[job.slug]}.jpg`)}
                     alt={`${job.title}のイメージ`}
                     fill
                     sizes="(max-width: 768px) 100vw, 1080px"

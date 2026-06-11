@@ -1,5 +1,17 @@
+import Image from "next/image";
 import { interviews } from "@/lib/content";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { asset } from "@/lib/asset";
+
+// 顔の写らない抽象的な「働く人/職場」モノクロ画像（匿名化に整合）
+const memberImages = [
+  "/images/members/m1.jpg",
+  "/images/members/m3.jpg",
+  "/images/members/m5.jpg",
+  "/images/members/m2.jpg",
+  "/images/members/m4.jpg",
+  "/images/members/m6.jpg",
+];
 
 export function Members({ limit }: { limit?: number }) {
   const items = limit ? interviews.slice(0, limit) : interviews;
@@ -10,21 +22,31 @@ export function Members({ limit }: { limit?: number }) {
           key={m.slug}
           style={{ transitionDelay: `${(i % 3) * 90}ms` } as React.CSSProperties}
         >
-          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card bg-cream border border-line">
+          <div className="relative aspect-[4/3] w-full overflow-hidden rounded-card bg-ink">
+            <Image
+              src={asset(memberImages[i % memberImages.length])}
+              alt=""
+              fill
+              sizes="(max-width: 768px) 100vw, 360px"
+              className="object-cover grayscale"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-black/10" />
             <span
               aria-hidden
-              className="absolute top-4 left-5 font-serif text-6xl leading-none text-brand/30"
+              className="absolute top-3 left-5 font-serif text-5xl leading-none text-white/45"
             >
               &ldquo;
             </span>
-            <span className="absolute inset-0 flex items-center justify-center font-serif text-[44px] tracking-[0.08em] text-ink">
-              {m.name}
-            </span>
-            {m.dept && (
-              <span className="absolute bottom-3 right-4 font-mono text-[10px] tracking-[0.12em] text-muted uppercase">
-                {m.dept}
+            <div className="absolute bottom-3 left-4 flex items-baseline gap-2.5">
+              <span className="font-serif text-2xl tracking-[0.08em] text-white">
+                {m.name}
               </span>
-            )}
+              {m.dept && (
+                <span className="font-mono text-[10px] tracking-[0.12em] text-white/70 uppercase">
+                  {m.dept}
+                </span>
+              )}
+            </div>
           </div>
           <div className="mt-6">
             <span className="font-mono text-[11px] tracking-[0.16em] text-brand uppercase">

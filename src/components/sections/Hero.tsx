@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
+import { asset } from "@/lib/asset";
 
 export function Hero() {
   return (
@@ -55,7 +56,7 @@ export function Hero() {
           style={{ animationDelay: "0.4s" }}
         >
           <Image
-            src="/images/hero/hero.jpg"
+            src={asset("/images/hero/hero.jpg")}
             alt="ガラスの大空間で未来を見据える"
             fill
             priority
