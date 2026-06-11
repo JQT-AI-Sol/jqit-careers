@@ -58,6 +58,13 @@ export function EntryForm() {
     setStatus("submitting");
     setServerError(null);
 
+    // 静的書き出し（GitHub Pages 等のテスト環境）ではサーバーAPIが無いため、
+    // 送信は行わずサンクス画面へ遷移する（本番=Vercelでは通常どおりAPIへ送信）。
+    if (process.env.NEXT_PUBLIC_STATIC_EXPORT === "true") {
+      router.push("/entry/thanks");
+      return;
+    }
+
     const fd = new FormData();
     fd.set("name", values.name);
     fd.set("email", values.email);

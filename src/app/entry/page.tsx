@@ -19,6 +19,11 @@ export default function EntryPage() {
           title="エントリー"
           lead="本応募・カジュアル面談、どちらも歓迎します。下記フォームよりお気軽にお申し込みください。"
         />
+        {process.env.NEXT_PUBLIC_STATIC_EXPORT === "true" && (
+          <p className="mb-8 rounded-card border border-line bg-cream px-4 py-3 font-sans text-[13px] text-muted">
+            ※ こちらはプレビュー環境です。フォームの送信機能は無効化されています。
+          </p>
+        )}
         <Suspense fallback={<div className="font-sans text-muted">読み込み中…</div>}>
           <EntryForm />
         </Suspense>
