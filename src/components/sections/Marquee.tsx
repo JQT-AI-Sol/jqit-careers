@@ -1,14 +1,44 @@
 import { cn } from "@/lib/cn";
 
 /**
- * マーキー帯：英字キーワードが横に流れる上品な演出。
- * モノクロ＋赤の差し色。軽量CSSアニメ（依存なし）、prefers-reduced-motion対応。
- * 端はマスクでフェードさせてエディトリアルに。
+ * マーキー帯：横長ディスプレイ書体（Archivo Expanded）の特大キーワードが、
+ * 極薄(ink 8%)の“背景タイポ”として静かに流れる。枠・地色を持たず本体に溶け込ませ、
+ * 語間には赤い細線の幾何学マーク（十字・菱形・円・アステリスク・三角）を巡回配置。
+ * 極薄の文字に対し赤マークだけがリズムを刻む構成。軽量CSSアニメ／reduced-motion対応。
  */
+
+// 語間の幾何学マーク。fill なし・細線のアウトラインで上品に。brand 色で差す。
+const marks = [
+  <path key="plus" d="M12 2.5v19M2.5 12h19" />, // 十字
+  <path key="diamond" d="M12 2.5 21.5 12 12 21.5 2.5 12Z" />, // 菱形
+  <circle key="ring" cx="12" cy="12" r="8.5" />, // 円
+  <path key="asterisk" d="M12 2v20M3.3 7 20.7 17M20.7 7 3.3 17" />, // 六条星
+  <path key="triangle" d="M12 3 21 20H3Z" />, // 三角
+];
+
+function Mark({ index }: { index: number }) {
+  return (
+    <svg
+      width="20"
+      height="20"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="1.3"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      aria-hidden
+      className="shrink-0 text-brand md:h-9 md:w-9"
+    >
+      {marks[index % marks.length]}
+    </svg>
+  );
+}
+
 export function Marquee({
   words,
   direction = "left",
-  durationSec = 38,
+  durationSec = 48,
   className,
 }: {
   words: string[];
@@ -20,10 +50,10 @@ export function Marquee({
     <div className="flex shrink-0 items-center">
       {words.map((w, i) => (
         <span key={i} className="flex items-center">
-          <span className="px-7 font-mono text-[26px] font-semibold tracking-[0.04em] text-ink/30 uppercase md:px-10 md:text-[44px]">
+          <span className="px-5 font-display text-[44px] leading-none tracking-[0.05em] text-ink/[0.09] uppercase md:px-12 md:text-[116px]">
             {w}
           </span>
-          <span className="inline-block h-1.5 w-1.5 rounded-full bg-brand md:h-2 md:w-2" />
+          <Mark index={i} />
         </span>
       ))}
     </div>
@@ -32,14 +62,14 @@ export function Marquee({
   return (
     <div
       className={cn(
-        "relative overflow-hidden border-y border-line bg-cream py-5 md:py-7",
-        "[mask-image:linear-gradient(to_right,transparent,black_8%,black_92%,transparent)]",
+        "relative overflow-hidden py-6 md:py-10",
+        "[mask-image:linear-gradient(to_right,transparent,black_10%,black_90%,transparent)]",
         className,
       )}
       aria-hidden
     >
       <div
-        className={cn("marquee-track", direction === "right" && "is-rtl")}
+        className={cn("marquee-track items-center", direction === "right" && "is-rtl")}
         style={{ animationDuration: `${durationSec}s` }}
       >
         {group}

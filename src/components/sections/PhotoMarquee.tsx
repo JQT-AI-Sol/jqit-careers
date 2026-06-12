@@ -34,7 +34,7 @@ export function PhotoMarquee({
         <div
           key={i}
           className={cn(
-            "relative mx-1.5 shrink-0 overflow-hidden rounded-2xl bg-ink md:mx-2.5",
+            "relative mx-1.5 shrink-0 overflow-hidden rounded-2xl bg-line md:mx-2.5",
             shapes[i % shapes.length],
           )}
         >
@@ -42,8 +42,10 @@ export function PhotoMarquee({
             src={asset(src)}
             alt=""
             fill
-            sizes="(max-width: 768px) 250px, 330px"
-            className="object-cover grayscale"
+            sizes="(max-width: 768px) 230px, 300px"
+            loading="eager"
+            unoptimized
+            className="object-cover"
           />
         </div>
       ))}
@@ -53,7 +55,7 @@ export function PhotoMarquee({
   return (
     <div
       className={cn(
-        "relative h-[360px] overflow-hidden md:h-[480px]",
+        "relative h-[300px] overflow-hidden md:h-[480px]",
         "[mask-image:linear-gradient(to_right,transparent,black_4%,black_96%,transparent)]",
         className,
       )}

@@ -74,7 +74,7 @@ export function HeroParticles() {
           if (d < LINK) {
             const o = (1 - d / LINK) * 0.26;
             ctx.strokeStyle =
-              a.red || b.red ? `rgba(230,0,18,${o})` : `rgba(255,255,255,${o})`;
+              a.red || b.red ? `rgba(230,0,18,${o})` : `rgba(20,20,15,${o})`;
             ctx.lineWidth = 0.6;
             ctx.beginPath();
             ctx.moveTo(a.x, a.y);
@@ -89,7 +89,7 @@ export function HeroParticles() {
           const o = (1 - md / MOUSE_LINK) * 0.32;
           ctx.strokeStyle = a.red
             ? `rgba(230,0,18,${o})`
-            : `rgba(255,255,255,${o})`;
+            : `rgba(20,20,15,${o})`;
           ctx.lineWidth = 0.6;
           ctx.beginPath();
           ctx.moveTo(a.x, a.y);
@@ -101,7 +101,7 @@ export function HeroParticles() {
       for (const p of particles) {
         ctx.beginPath();
         ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-        ctx.fillStyle = p.red ? "rgba(230,0,18,0.95)" : "rgba(255,255,255,0.82)";
+        ctx.fillStyle = p.red ? "rgba(230,0,18,0.9)" : "rgba(20,20,15,0.42)";
         ctx.fill();
       }
 

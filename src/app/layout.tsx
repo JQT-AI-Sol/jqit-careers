@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Noto_Serif_JP, Noto_Sans_JP, Archivo } from "next/font/google";
+import { Noto_Serif_JP, Noto_Sans_JP, Archivo, Anton } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
@@ -28,6 +28,15 @@ const archivo = Archivo({
   display: "swap",
 });
 
+// ディスプレイ用：極太グロテスク。極薄の背景タイポ（Marquee）に存在感を与える。
+const anton = Anton({
+  subsets: ["latin"],
+  weight: ["400"],
+  variable: "--font-anton",
+  display: "swap",
+  preload: false,
+});
+
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: {
@@ -52,7 +61,7 @@ export default function RootLayout({
   return (
     <html
       lang="ja"
-      className={`${notoSerif.variable} ${notoSans.variable} ${archivo.variable} antialiased`}
+      className={`${notoSerif.variable} ${notoSans.variable} ${archivo.variable} ${anton.variable} antialiased`}
     >
       <body className="flex min-h-screen flex-col">
         <Header />

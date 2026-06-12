@@ -9,27 +9,43 @@ import { Members } from "@/components/sections/Members";
 import { CTA } from "@/components/sections/CTA";
 import { Marquee } from "@/components/sections/Marquee";
 import { PhotoMarquee } from "@/components/sections/PhotoMarquee";
+import { GeoBackdrop } from "@/components/ui/GeoBackdrop";
 
 export default function Home() {
   return (
     <>
+      <div className="pt-5 md:pt-8">
+        <PhotoMarquee
+          images={[
+            "/images/people/r6.jpg",
+            "/images/people/r1.jpg",
+            "/images/people/r2.jpg",
+            "/images/people/r7.jpg",
+          ]}
+          direction="left"
+        />
+      </div>
+
       <Hero />
 
       <div className="mt-16 md:mt-24">
         <Marquee
           words={[
+            "Customer First",
             "Challenge",
             "Innovation",
-            "Development",
-            "Infrastructure",
-            "Quality Assurance",
-            "Artificial Intelligence",
+            "Ownership",
+            "Lifelong Learning",
+            "Altruism",
+            "Thinking Engineers",
+            "Growing People",
           ]}
         />
       </div>
 
-      <section id="about" className="py-20 md:py-[140px]">
-        <Container>
+      <section id="about" className="relative overflow-hidden py-20 md:py-[140px]">
+        <GeoBackdrop flip />
+        <Container className="relative">
           <SectionHead
             kicker="Our Strength"
             title={
@@ -45,15 +61,17 @@ export default function Home() {
         </Container>
       </section>
 
-      <section className="bg-cream py-20 md:py-[140px]">
-        <Container>
+      <section className="relative overflow-hidden bg-cream py-20 md:py-[140px]">
+        <GeoBackdrop />
+        <Container className="relative">
           <SectionHead kicker="Why JQIT" title="JQITで働く、3つの理由。" />
           <Appeal />
         </Container>
       </section>
 
-      <section id="jobs" className="py-20 md:py-[140px]">
-        <Container>
+      <section id="jobs" className="relative overflow-hidden py-20 md:py-[140px]">
+        <GeoBackdrop flip />
+        <Container className="relative">
           <SectionHead
             kicker="Jobs"
             title="募集職種"
@@ -90,21 +108,9 @@ export default function Home() {
         <div className="flex flex-col gap-3 md:gap-4">
           <PhotoMarquee
             images={[
-              "/images/people/p1.jpg",
-              "/images/people/p2.jpg",
-              "/images/people/p8.jpg",
-              "/images/people/p3.jpg",
-              "/images/people/p5.jpg",
-            ]}
-            direction="left"
-          />
-          <PhotoMarquee
-            images={[
-              "/images/people/p6.jpg",
-              "/images/people/p9.jpg",
-              "/images/people/p4.jpg",
-              "/images/people/p7.jpg",
-              "/images/people/p10.jpg",
+              "/images/people/r4.jpg",
+              "/images/people/r3.jpg",
+              "/images/people/r8.jpg",
             ]}
             direction="right"
             durationSec={66}

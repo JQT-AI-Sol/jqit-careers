@@ -6,7 +6,7 @@
   --color-brand-dark: #b3000e;
   --color-ink: #14140f;
   --color-body: #2a2a28;
-  --color-muted: #767672;
+  --color-muted: #6b6b67;
   --color-line: #e7e5e0;
   --color-paper: #ffffff;
   --color-cream: #faf9f7;
@@ -14,6 +14,7 @@
   --font-serif: var(--font-noto-serif), "Noto Serif JP", serif;
   --font-sans: var(--font-noto-sans), "Noto Sans JP", system-ui, sans-serif;
   --font-mono: var(--font-archivo), "Archivo", sans-serif;
+  --font-display: var(--font-anton), "Archivo", system-ui, sans-serif;
 
   --radius-card: 2px;
 }
@@ -179,5 +180,32 @@
 @media (prefers-reduced-motion: reduce) {
   .marquee-track {
     animation: none;
+  }
+}
+
+/* ===== 背景幾何装飾（GeoBackdrop）のゆるやかな浮遊・微回転 ===== */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes geoFloat {
+    0% {
+      transform: translateY(-8px);
+    }
+    100% {
+      transform: translateY(10px);
+    }
+  }
+  @keyframes geoSpin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .geo-float {
+    animation: geoFloat 9s ease-in-out infinite alternate;
+  }
+  .geo-spin {
+    animation: geoSpin 64s linear infinite;
+    will-change: transform;
   }
 }

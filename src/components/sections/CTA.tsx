@@ -1,11 +1,13 @@
 import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { Kicker } from "@/components/ui/SectionHead";
+import { GeoBackdrop } from "@/components/ui/GeoBackdrop";
 
 export function CTA() {
   return (
-    <section className="bg-cream py-[100px] text-center md:py-[150px]">
-      <Container>
+    <section className="relative overflow-hidden bg-cream py-[100px] text-center md:py-[150px]">
+      <GeoBackdrop />
+      <Container className="relative">
         <div className="flex justify-center">
           <Kicker>Join Us</Kicker>
         </div>

@@ -25,7 +25,7 @@ export function Members({ limit }: { limit?: number }) {
         >
           <Link
             href={`/interviews/${m.slug}`}
-            className="group block focus-visible:outline-none"
+            className="group flex h-full flex-col focus-visible:outline-none"
           >
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-ink">
               <Image
@@ -69,7 +69,7 @@ export function Members({ limit }: { limit?: number }) {
                 {m.career}
               </p>
             )}
-            <span className="mt-4 inline-flex items-center gap-1.5 font-mono text-[11px] tracking-[0.12em] text-ink uppercase transition-all group-hover:gap-2.5 group-hover:text-brand">
+            <span className="mt-auto inline-flex items-center gap-1.5 pt-4 font-mono text-[11px] tracking-[0.12em] text-ink uppercase transition-all group-hover:gap-2.5 group-hover:text-brand">
               Read More <span aria-hidden>→</span>
             </span>
           </Link>

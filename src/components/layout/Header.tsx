@@ -13,7 +13,11 @@ export function Header() {
     <header className="sticky top-0 z-50 border-b border-line">
       <div className="absolute inset-0 -z-10 bg-paper/85 backdrop-blur-md" aria-hidden />
       <div className="mx-auto flex h-[78px] w-full max-w-[1160px] items-center justify-between px-5 md:px-8">
-        <Link href="/" aria-label={`${site.name} 採用サイト トップ`}>
+        <Link
+          href="/"
+          aria-label={`${site.name} 採用サイト トップ`}
+          className="flex h-full items-center"
+        >
           <Logo />
         </Link>
 
@@ -43,7 +47,7 @@ export function Header() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
-          className="relative z-50 flex h-10 w-10 flex-col items-center justify-center gap-1.5 md:hidden"
+          className="relative z-50 -mr-1 flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
         >
           <span
             className={cn(

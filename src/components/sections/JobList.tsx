@@ -1,6 +1,7 @@
 import Link from "next/link";
 import { jobs } from "@/lib/content";
 import { FadeIn } from "@/components/ui/FadeIn";
+import { GeoMark } from "@/components/ui/GeoMark";
 
 export function JobList() {
   return (
@@ -12,13 +13,18 @@ export function JobList() {
         >
           <Link
             href={`/jobs#${job.slug}`}
-            className="group grid grid-cols-[40px_1fr] items-start gap-6 border-b border-line py-9 transition-all hover:bg-cream md:grid-cols-[64px_1fr_auto] md:items-center md:gap-8 md:hover:pl-5"
+            className="group relative grid grid-cols-1 items-start gap-2 overflow-hidden border-b border-line py-9 transition-all hover:bg-cream md:grid-cols-[1fr_auto] md:items-center md:gap-8 md:hover:pl-5"
           >
-            <div className="font-mono text-[13px] text-muted">
+            {/* 極薄の巨大番号（背景タイポ） */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute right-8 top-1/2 hidden -translate-y-1/2 select-none font-display text-[70px] leading-none text-ink/[0.05] transition-colors duration-500 group-hover:text-brand/10 md:block"
+            >
               {String(i + 1).padStart(2, "0")}
-            </div>
-            <div>
-              <div className="font-mono text-[11px] tracking-[0.16em] text-brand uppercase">
+            </span>
+            <div className="relative">
+              <div className="flex items-center gap-2.5 font-mono text-[11px] tracking-[0.16em] text-brand uppercase">
+                <GeoMark index={i} size={14} />
                 {job.category}
               </div>
               <h3 className="mt-3 font-serif text-[24px] font-medium tracking-[0.02em] text-ink md:text-[28px]">
@@ -40,7 +46,7 @@ export function JobList() {
                 )}
               </div>
             </div>
-            <div className="hidden font-mono text-xl text-ink transition-all group-hover:translate-x-1.5 group-hover:text-brand md:block">
+            <div className="relative hidden font-mono text-xl text-ink transition-all group-hover:translate-x-1.5 group-hover:text-brand md:block">
               →
             </div>
           </Link>
