@@ -1,0 +1,6 @@
+User-Agent: *
+Allow: /
+Disallow: /entry/thanks
+Disallow: /api/
+
+Sitemap: https://careers.jqit.co.jp/sitemap.xml
