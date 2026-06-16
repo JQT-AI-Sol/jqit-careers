@@ -2,14 +2,17 @@ import { Container } from "@/components/ui/Container";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { Hero } from "@/components/sections/Hero";
-import { StrengthGrid } from "@/components/sections/StrengthGrid";
-import { Appeal } from "@/components/sections/Appeal";
+import { Weapons } from "@/components/sections/Weapons";
+import { Empathy } from "@/components/sections/Empathy";
+import { Frontier } from "@/components/sections/Frontier";
+import { LeaderMessage } from "@/components/sections/LeaderMessage";
 import { JobList } from "@/components/sections/JobList";
 import { Members } from "@/components/sections/Members";
 import { CTA } from "@/components/sections/CTA";
 import { Marquee } from "@/components/sections/Marquee";
 import { PhotoMarquee } from "@/components/sections/PhotoMarquee";
 import { GeoBackdrop } from "@/components/ui/GeoBackdrop";
+import { Statement } from "@/components/sections/Statement";
 
 export default function Home() {
   return (
@@ -23,10 +26,15 @@ export default function Home() {
             "/images/people/r7.jpg",
           ]}
           direction="left"
+          eager
         />
       </div>
 
       <Hero />
+
+      <Empathy />
+
+      <Statement />
 
       <div className="mt-16 md:mt-24">
         <Marquee
@@ -43,31 +51,33 @@ export default function Home() {
         />
       </div>
 
-      <section id="about" className="relative overflow-hidden py-20 md:py-[140px]">
-        <GeoBackdrop flip />
+      <section id="weapons" className="relative overflow-hidden bg-cream py-20 md:py-[140px]">
+        <GeoBackdrop />
         <Container className="relative">
           <SectionHead
-            kicker="Our Strength"
+            kicker="5 Weapons"
             title={
               <>
-                4つの専門領域で、
+                “進化するSES”、
                 <br />
-                社会に価値を生む。
+                5つの武器。
               </>
             }
-            lead="受託開発・自社サービス開発・AI導入コンサルまで。確かな技術力と、使う人を想う日本品質で、新しい価値を創造します。"
+            lead={
+              <>
+                ひとりで送り出さない。技術を、腐らせない。
+                <br className="hidden md:block" />
+                そのためのJQITの答えが、この5つ。
+              </>
+            }
           />
-          <StrengthGrid />
+          <Weapons />
         </Container>
       </section>
 
-      <section className="relative overflow-hidden bg-cream py-20 md:py-[140px]">
-        <GeoBackdrop />
-        <Container className="relative">
-          <SectionHead kicker="Why JQIT" title="JQITで働く、3つの理由。" />
-          <Appeal />
-        </Container>
-      </section>
+      <LeaderMessage />
+
+      <Frontier />
 
       <section id="jobs" className="relative overflow-hidden py-20 md:py-[140px]">
         <GeoBackdrop flip />
@@ -75,7 +85,7 @@ export default function Home() {
           <SectionHead
             kicker="Jobs"
             title="募集職種"
-            lead="あなたの強みと、挑戦したい領域で選べる4職種。未経験からのスタートも歓迎します。"
+            lead="開発・インフラ・QA・AI。あなたの経験を、チームを率いて活かせる4領域があります。"
           />
           <JobList />
         </Container>
@@ -86,7 +96,7 @@ export default function Home() {
           <SectionHead
             kicker="Members"
             title="社員の声"
-            lead="未経験から、経験者まで。実際に働くメンバーのリアルな声をお届けします。"
+            lead="現場で活躍するメンバーの、リアルな声をお届けします。"
           />
           <Members limit={3} />
           <div className="mt-12">
@@ -102,7 +112,7 @@ export default function Home() {
           <SectionHead
             kicker="Our People"
             title="ここには、挑戦する人がいる。"
-            lead="未経験から、経験者まで。多様なバックグラウンドの仲間が、技術で未来を切り拓いています。"
+            lead="多様な経験を持つ仲間が、チームで技術と未来を切り拓いています。"
           />
         </Container>
         <div className="flex flex-col gap-3 md:gap-4">

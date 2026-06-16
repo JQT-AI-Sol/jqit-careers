@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: "採用フロー・FAQ",
   description:
     "JQITの採用フロー（エントリーから内定まで）と、よくある質問をご紹介します。",
+  alternates: { canonical: "/recruit" },
 };
 
 export default function RecruitPage() {
@@ -20,6 +21,7 @@ export default function RecruitPage() {
             kicker="Recruit Flow"
             title="採用フロー"
             lead="エントリーから内定まで、丁寧に進めます。まずはカジュアル面談からのご応募も歓迎です。"
+            headingLevel="h1"
           />
           <RecruitFlow />
         </Container>

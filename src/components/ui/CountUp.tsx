@@ -45,47 +45,56 @@ export function CountUp({ value }: { value: string }) {
     if (!parsed) return;
 
     const { target, decimals } = parsed;
+    let rafId = 0;
+
+    const scheduleDisplay = (next: string) => {
+      rafId = requestAnimationFrame(() => setDisplay(next));
+    };
 
     // prefers-reduced-motion: reduce → 最終値を即表示（アニメ無し）。
     if (
       typeof window !== "undefined" &&
       window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
     ) {
-      setDisplay(format(target, decimals));
-      return;
+      scheduleDisplay(format(target, decimals));
+      return () => {
+        if (rafId) cancelAnimationFrame(rafId);
+      };
     }
 
     const el = ref.current;
     if (!el) return;
 
     let started = false;
-    let rafId = 0;
 
     const run = () => {
       if (started) return;
       started = true;
-      const start = performance.now();
-      const tick = (now: number) => {
-        const elapsed = now - start;
-        const progress = Math.min(elapsed / DURATION_MS, 1);
-        const current = target * easeOutCubic(progress);
-        setDisplay(format(current, decimals));
-        if (progress < 1) {
-          rafId = requestAnimationFrame(tick);
-        } else {
-          // 端数誤差を避け、最終フレームは厳密な目標値で確定。
-          setDisplay(format(target, decimals));
-        }
-      };
-      // 0 から再生開始（初期は最終値表示 → 可視時に 0 から立ち上げる）。
-      setDisplay(format(0, decimals));
-      rafId = requestAnimationFrame(tick);
+      rafId = requestAnimationFrame((start) => {
+        // 0 から再生開始（初期は最終値表示 → 可視時に 0 から立ち上げる）。
+        setDisplay(format(0, decimals));
+        const tick = (now: number) => {
+          const elapsed = now - start;
+          const progress = Math.min(elapsed / DURATION_MS, 1);
+          const current = target * easeOutCubic(progress);
+          setDisplay(format(current, decimals));
+          if (progress < 1) {
+            rafId = requestAnimationFrame(tick);
+          } else {
+            // 端数誤差を避け、最終フレームは厳密な目標値で確定。
+            setDisplay(format(target, decimals));
+          }
+        };
+        rafId = requestAnimationFrame(tick);
+      });
     };
 
     // IO 非対応環境では即最終値（コンテンツ消失を防ぐ）。
     if (typeof IntersectionObserver === "undefined") {
-      setDisplay(format(target, decimals));
-      return;
+      scheduleDisplay(format(target, decimals));
+      return () => {
+        if (rafId) cancelAnimationFrame(rafId);
+      };
     }
 
     const observer = new IntersectionObserver(

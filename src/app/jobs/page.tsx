@@ -11,7 +11,8 @@ import { asset } from "@/lib/asset";
 export const metadata: Metadata = {
   title: "職種紹介・募集要項",
   description:
-    "JQITの募集職種（開発／インフラ／QA／AI）。仕事内容・求める人物像・歓迎スキルをご紹介します。未経験歓迎・経験者歓迎。",
+    "JQITの募集職種（開発／インフラ／QA／AI）。仕事内容・求める人物像・歓迎スキルをご紹介します。経験者歓迎。",
+  alternates: { canonical: "/jobs" },
 };
 
 function jobPostingLd() {
@@ -50,7 +51,8 @@ export default function JobsPage() {
           <SectionHead
             kicker="Jobs"
             title="職種紹介・募集要項"
-            lead="あなたの強みと、挑戦したい領域で選べる4職種。未経験からのスタートも歓迎します。"
+            lead="あなたの経験と、挑戦したい領域で選べる4職種。チームを率いて活かせるポジションです。"
+            headingLevel="h1"
           />
 
           <div className="flex flex-col gap-px overflow-hidden border border-line bg-line">

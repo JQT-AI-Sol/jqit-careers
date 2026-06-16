@@ -17,22 +17,34 @@ const shapes = [
   "mt-2 w-[170px] h-[214px] md:w-[214px] md:h-[276px]", // 縦長・小
 ];
 
+const MIN_LOOP_IMAGES = 10;
+
 export function PhotoMarquee({
   images,
   direction = "left",
   durationSec = 62,
+  eager = false,
   className,
 }: {
   images: string[];
   direction?: "left" | "right";
   durationSec?: number;
+  eager?: boolean;
   className?: string;
 }) {
+  const loopImages =
+    images.length > 0
+      ? Array.from(
+          { length: Math.max(2, Math.ceil(MIN_LOOP_IMAGES / images.length)) },
+          () => images,
+        ).flat()
+      : [];
+
   const group = (
     <div className="flex shrink-0 items-start">
-      {images.map((src, i) => (
+      {loopImages.map((src, i) => (
         <div
-          key={i}
+          key={`${src}-${i}`}
           className={cn(
             "relative mx-1.5 shrink-0 overflow-hidden rounded-2xl bg-line md:mx-2.5",
             shapes[i % shapes.length],
@@ -43,7 +55,7 @@ export function PhotoMarquee({
             alt=""
             fill
             sizes="(max-width: 768px) 230px, 300px"
-            loading="eager"
+            loading={eager && i < images.length ? "eager" : "lazy"}
             unoptimized
             className="object-cover"
           />

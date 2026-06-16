@@ -46,20 +46,18 @@ export function Hero() {
               で顧客の<em className="not-italic text-brand">未来</em>を
               <br className="md:hidden" />
               <br className="hidden md:block" />
-              切り開く。
+              切り拓く。
             </p>
 
             <p
               className="hero-rise mt-7 max-w-[520px] font-sans text-base leading-[2.1] text-body md:mt-9 md:text-[17px]"
               style={{ animationDelay: "0.55s" }}
             >
-              開発・インフラ・QA、そしてAI。
+              ひとりで客先に放り込まれ、レガシーに塩漬け。
               <br className="hidden md:block" />
-              最新技術に挑むITの
-              <br className="md:hidden" />
-              プロフェッショナル集団で、
+              その“当たり前”を、私たちは変える。チームで率い、推奨技術で伸び、AIを現場へ。
               <br className="hidden md:block" />
-              あなたのキャリアを次のステージへ。
+              その先には、受託・自社AIへの道も。
             </p>
 
             <div

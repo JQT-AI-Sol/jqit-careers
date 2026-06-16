@@ -15,44 +15,29 @@ export function CareerPath() {
         />
 
         {/* 成長ステップ */}
-        <div className="grid grid-cols-1 border-t border-line md:grid-cols-4">
+        <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
           {data.steps.map((s, i) => (
             <FadeIn
               key={s.no}
-              className="relative border-b border-line py-9 md:border-b-0 md:border-r md:py-11 md:pr-7 md:pl-7 md:first:pl-0 md:last:border-r-0"
+              className="flex h-full flex-col bg-paper p-8 md:p-10"
               style={{ transitionDelay: `${i * 110}ms` } as React.CSSProperties}
             >
-              {/* 進む感を出す赤い矢印（PC、最終ステップ以外） */}
-              {i < data.steps.length - 1 && (
-                <span
-                  aria-hidden
-                  className="absolute top-11 -right-[7px] z-10 hidden font-mono text-[15px] leading-none text-brand md:block"
-                >
-                  →
-                </span>
-              )}
-              {/* 進む感を出す赤い矢印（モバイル、縦向き・最終ステップ以外） */}
-              {i < data.steps.length - 1 && (
-                <span
-                  aria-hidden
-                  className="absolute -bottom-[10px] left-0 z-10 font-mono text-[16px] leading-none text-brand md:hidden"
-                >
-                  ↓
-                </span>
-              )}
-              <div className="font-mono text-[13px] font-semibold tracking-[0.1em] text-brand">
-                {s.no}
+              <div className="flex items-center justify-between gap-4">
+                <div className="font-mono text-[13px] font-semibold tracking-[0.1em] text-brand">
+                  {s.no}
+                </div>
+                <div className="h-px flex-1 bg-line" />
               </div>
-              <h3 className="mt-4 font-serif text-[20px] font-medium leading-[1.5] text-ink">
+              <h3 className="mt-5 text-balance font-serif text-[22px] font-medium leading-[1.5] text-ink md:text-[24px]">
                 {s.title}
               </h3>
               <div className="mt-2 font-mono text-[11px] tracking-[0.08em] text-muted">
                 {s.period}
               </div>
-              <p className="mt-3.5 font-sans text-[13.5px] leading-[1.95] text-muted">
+              <p className="mt-4 font-sans text-[13.5px] leading-[1.95] text-muted">
                 {s.desc}
               </p>
-              <div className="mt-5 border-t border-line pt-4">
+              <div className="mt-8 border-t border-line pt-5 md:mt-auto">
                 <span className="font-mono text-[10px] tracking-[0.16em] text-muted uppercase">
                   Support
                 </span>
@@ -64,33 +49,45 @@ export function CareerPath() {
           ))}
         </div>
 
-        {/* 広がるキャリア（職種横断の異動例） */}
+        {/* 段階的なキャリアアップ例 */}
         <div className="mt-16 md:mt-24">
           <FadeIn>
             <h3 className="font-serif text-[22px] font-medium text-ink md:text-[26px]">
-              広がるキャリア
+              段階的にスキルアップするキャリア
             </h3>
             <p className="mt-3 font-sans text-[13.5px] leading-[1.95] text-muted">
-              職種は固定されません。QAから開発へ、開発から生成AIへ。これまでの経験を活かしながら、新しい領域へ越境していけます。
+              未経験からでも学べるオリジナルカリキュラムを用意。勉強会や1on1ヒアリング、メンター制度で、会社と先輩エンジニアが成長を支えます。
             </p>
           </FadeIn>
-          <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
+          <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2 xl:grid-cols-4">
             {data.crossPaths.map((c, i) => (
               <FadeIn
-                key={`${c.from}-${c.to}`}
+                key={c.title}
                 className="bg-paper p-7"
                 style={{ transitionDelay: `${i * 80}ms` } as React.CSSProperties}
               >
-                <div className="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-[13px] font-medium tracking-[0.04em] text-ink">
-                  <span className="inline-flex items-center rounded-card border border-line px-3 py-1.5 leading-none">
-                    {c.from}
-                  </span>
-                  <span aria-hidden className="text-[16px] leading-none text-brand">
-                    →
-                  </span>
-                  <span className="inline-flex items-center rounded-card border border-ink px-3 py-1.5 leading-none text-ink">
-                    {c.to}
-                  </span>
+                <h4 className="font-serif text-[17px] font-medium text-ink">
+                  {c.title}
+                </h4>
+                <div className="mt-5 flex flex-col">
+                  {c.steps.map((step, index) => (
+                    <div
+                      key={step}
+                      className="font-mono text-[12px] font-medium tracking-[0.04em] text-ink"
+                    >
+                      <span className="inline-flex min-h-8 w-full items-center rounded-card border border-line px-3 py-1.5 leading-[1.45]">
+                        {step}
+                      </span>
+                      {index < c.steps.length - 1 && (
+                        <span
+                          aria-hidden
+                          className="block py-1.5 text-center text-[15px] leading-none text-brand"
+                        >
+                          ↓
+                        </span>
+                      )}
+                    </div>
+                  ))}
                 </div>
                 <p className="mt-3.5 font-sans text-[13px] leading-[1.85] text-muted">
                   {c.note}

@@ -5,6 +5,7 @@ import { SectionHead } from "@/components/ui/SectionHead";
 export const metadata: Metadata = {
   title: "プライバシーポリシー",
   description: "JQIT 採用サイトにおける個人情報の取扱いについて。",
+  alternates: { canonical: "/privacy" },
 };
 
 const sections = [
@@ -41,7 +42,8 @@ export default function PrivacyPage() {
         <SectionHead
           kicker="Privacy Policy"
           title="プライバシーポリシー"
-          lead="本ポリシーは、JQIT 採用サイトにおける個人情報の取扱いについて定めるものです。※内容は社内確認のうえ確定します。"
+          lead="本ポリシーは、JQIT 採用サイトにおける個人情報の取扱いについて定めるものです。"
+          headingLevel="h1"
         />
         <div className="flex flex-col gap-9 border-t border-line pt-12">
           {sections.map((s) => (

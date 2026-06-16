@@ -12,11 +12,15 @@ export const entrySchema = z.object({
     .min(10, "電話番号を入力してください")
     .max(15)
     .regex(/^[0-9+\-() ]+$/, "電話番号の形式が正しくありません"),
-  applicationType: z.enum(applicationTypes),
+  applicationType: z.enum(applicationTypes, {
+    error: "応募種別を選択してください",
+  }),
   desiredPositions: z
-    .array(z.enum(positions))
+    .array(z.enum(positions, { error: "希望職種を選択してください" }))
     .min(1, "希望職種を1つ以上選択してください"),
-  experience: z.enum(experiences),
+  experience: z.enum(experiences, {
+    error: "経験区分を選択してください",
+  }),
   message: z
     .string()
     .min(1, "メッセージを入力してください")

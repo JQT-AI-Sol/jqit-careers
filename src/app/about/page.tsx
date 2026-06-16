@@ -13,6 +13,7 @@ export const metadata: Metadata = {
   title: "私たちについて",
   description:
     "JQITのミッション・事業（ITソリューション／AIソリューション）・強み・自社製品NOVAをご紹介します。",
+  alternates: { canonical: "/about" },
 };
 
 export default function AboutPage() {
@@ -25,7 +26,7 @@ export default function AboutPage() {
           <h1 className="mt-7 max-w-[820px] font-serif text-[28px] font-medium leading-[1.6] tracking-[0.03em] text-ink md:text-[44px]">
             {company.mission}
           </h1>
-          <p className="mt-10 max-w-[680px] font-sans text-[15px] leading-[2.1] text-body">
+          <p className="mt-10 max-w-[820px] font-sans text-[15px] leading-[2.1] text-body">
             {company.missionBody}
           </p>
           <div className="mt-10 flex flex-wrap gap-3">

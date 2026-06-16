@@ -7,7 +7,8 @@ import { CTA } from "@/components/sections/CTA";
 export const metadata: Metadata = {
   title: "社員の声",
   description:
-    "JQITで働くメンバーのリアルな声。未経験からの挑戦、AI・インフラ・QAの現場をご紹介します。",
+    "JQITで働くメンバーのリアルな声。開発・インフラ・QA・AIの現場と、経験者のキャリアをご紹介します。",
+  alternates: { canonical: "/interviews" },
 };
 
 export default function InterviewsPage() {
@@ -18,7 +19,8 @@ export default function InterviewsPage() {
           <SectionHead
             kicker="Members"
             title="社員の声"
-            lead="開発・インフラ・QA。未経験から、経験者まで。実際に働くメンバーのリアルな声をお届けします。"
+            lead="開発・インフラ・QA、そしてAI。各領域で活躍するメンバーの、リアルな声をお届けします。"
+            headingLevel="h1"
           />
           <Members />
         </Container>

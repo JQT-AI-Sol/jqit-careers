@@ -44,6 +44,7 @@ export const metadata: Metadata = {
     template: `%s | ${site.name} 採用`,
   },
   description: site.description,
+  alternates: { canonical: "/" },
   openGraph: {
     type: "website",
     siteName: `${site.name} 採用サイト`,
@@ -64,8 +65,16 @@ export default function RootLayout({
       className={`${notoSerif.variable} ${notoSans.variable} ${archivo.variable} ${anton.variable} antialiased`}
     >
       <body className="flex min-h-screen flex-col">
+        <a
+          href="#main-content"
+          className="sr-only z-[100] rounded-card bg-paper px-4 py-3 font-sans text-sm font-bold text-ink focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:outline-2 focus:outline-brand"
+        >
+          本文へスキップ
+        </a>
         <Header />
-        <main className="flex-1">{children}</main>
+        <main id="main-content" className="flex-1">
+          {children}
+        </main>
         <Footer />
       </body>
     </html>

@@ -1,6 +1,6 @@
 "use client";
 
-import { useId, useRef, useState } from "react";
+import { useId, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
@@ -46,7 +46,7 @@ export function EntryForm() {
     },
   });
 
-  const honeypotRef = useRef<HTMLInputElement>(null);
+  const [honeypot, setHoneypot] = useState("");
   const [token, setToken] = useState<string | null>(null);
   const [resume, setResume] = useState<File | null>(null);
   const [status, setStatus] = useState<
@@ -77,7 +77,7 @@ export function EntryForm() {
     fd.set("consent", values.consent ? "true" : "false");
     if (resume) fd.set("resume", resume);
     if (token) fd.set("turnstileToken", token);
-    fd.set("company", honeypotRef.current?.value ?? ""); // honeypot
+    fd.set("company", honeypot); // honeypot
     fd.set("source", searchParams.toString());
 
     try {
@@ -115,9 +115,10 @@ export function EntryForm() {
     >
       {/* honeypot（人間は入力しない。値があれば bot とみなす） */}
       <input
-        ref={honeypotRef}
         type="text"
         name="company"
+        value={honeypot}
+        onChange={(e) => setHoneypot(e.target.value)}
         tabIndex={-1}
         autoComplete="off"
         aria-hidden="true"
@@ -125,18 +126,40 @@ export function EntryForm() {
       />
 
       <Field label="お名前" required error={errors.name?.message}>
-        {(id) => <input id={id} className={inputCls} {...register("name")} />}
+        {(id, describedBy, invalid) => (
+          <input
+            id={id}
+            className={inputCls}
+            aria-invalid={invalid}
+            aria-describedby={describedBy}
+            {...register("name")}
+          />
+        )}
       </Field>
 
       <Field label="メールアドレス" required error={errors.email?.message}>
-        {(id) => (
-          <input id={id} type="email" className={inputCls} {...register("email")} />
+        {(id, describedBy, invalid) => (
+          <input
+            id={id}
+            type="email"
+            className={inputCls}
+            aria-invalid={invalid}
+            aria-describedby={describedBy}
+            {...register("email")}
+          />
         )}
       </Field>
 
       <Field label="電話番号" required error={errors.phone?.message}>
-        {(id) => (
-          <input id={id} type="tel" className={inputCls} {...register("phone")} />
+        {(id, describedBy, invalid) => (
+          <input
+            id={id}
+            type="tel"
+            className={inputCls}
+            aria-invalid={invalid}
+            aria-describedby={describedBy}
+            {...register("phone")}
+          />
         )}
       </Field>
 
@@ -186,11 +209,13 @@ export function EntryForm() {
       </Field>
 
       <Field label="自己PR・メッセージ" required error={errors.message?.message}>
-        {(id) => (
+        {(id, describedBy, invalid) => (
           <textarea
             id={id}
             rows={6}
             className={inputCls}
+            aria-invalid={invalid}
+            aria-describedby={describedBy}
             {...register("message")}
           />
         )}
@@ -200,12 +225,14 @@ export function EntryForm() {
         label="ポートフォリオ / GitHub 等 URL（任意）"
         error={errors.portfolioUrl?.message}
       >
-        {(id) => (
+        {(id, describedBy, invalid) => (
           <input
             id={id}
             type="url"
             placeholder="https://"
             className={inputCls}
+            aria-invalid={invalid}
+            aria-describedby={describedBy}
             {...register("portfolioUrl")}
           />
         )}
@@ -245,7 +272,9 @@ export function EntryForm() {
           </span>
         </label>
         {errors.consent && (
-          <p className={errCls}>{errors.consent.message}</p>
+          <p className={errCls} role="alert" aria-live="polite">
+            {errors.consent.message}
+          </p>
         )}
       </div>
 
@@ -254,7 +283,11 @@ export function EntryForm() {
       )}
 
       {serverError && (
-        <p className="rounded-card border border-brand/30 bg-brand/5 px-4 py-3 font-sans text-[14px] text-brand-dark">
+        <p
+          className="rounded-card border border-brand/30 bg-brand/5 px-4 py-3 font-sans text-[14px] text-brand-dark"
+          role="alert"
+          aria-live="polite"
+        >
           {serverError}
         </p>
       )}
@@ -285,18 +318,40 @@ function Field({
    * ラジオ/チェックボックス群など複数入力のフィールドは ReactNode を渡し、
    * label はグループ見出しとして機能する。
    */
-  children: React.ReactNode | ((id: string) => React.ReactNode);
+  children:
+    | React.ReactNode
+    | ((id: string, describedBy: string | undefined, invalid: boolean) => React.ReactNode);
 }) {
   const id = useId();
   const isRenderProp = typeof children === "function";
+  const errorId = error ? `${id}-error` : undefined;
+  const labelId = `${id}-label`;
   return (
     <div>
-      <label className={labelCls} htmlFor={isRenderProp ? id : undefined}>
+      <label
+        id={isRenderProp ? undefined : labelId}
+        className={labelCls}
+        htmlFor={isRenderProp ? id : undefined}
+      >
         {label}
         {required && <span className={reqCls}>*</span>}
       </label>
-      {isRenderProp ? children(id) : children}
-      {error && <p className={errCls}>{error}</p>}
+      {isRenderProp ? (
+        children(id, errorId, Boolean(error))
+      ) : (
+        <div
+          role="group"
+          aria-labelledby={labelId}
+          aria-describedby={errorId}
+        >
+          {children}
+        </div>
+      )}
+      {error && (
+        <p id={errorId} className={errCls} role="alert" aria-live="polite">
+          {error}
+        </p>
+      )}
     </div>
   );
 }

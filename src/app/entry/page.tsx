@@ -7,7 +7,8 @@ import { EntryForm } from "@/components/forms/EntryForm";
 export const metadata: Metadata = {
   title: "エントリー",
   description:
-    "JQITへのエントリー・カジュアル面談のお申し込みフォーム。未経験から経験者まで歓迎します。",
+    "JQITへのエントリー・カジュアル面談のお申し込みフォーム。経験を活かして次のステージへ進みたい方を歓迎します。",
+  alternates: { canonical: "/entry" },
 };
 
 export default function EntryPage() {
@@ -17,7 +18,8 @@ export default function EntryPage() {
         <SectionHead
           kicker="Entry"
           title="エントリー"
-          lead="本応募・カジュアル面談、どちらも歓迎します。下記フォームよりお気軽にお申し込みください。"
+          lead="本応募・カジュアル面談、どちらも歓迎します。カジュアル面談は、聞きたいことや興味のある職種だけでも大丈夫です。"
+          headingLevel="h1"
         />
         {process.env.NEXT_PUBLIC_STATIC_EXPORT === "true" && (
           <p className="mb-8 rounded-card border border-line bg-cream px-4 py-3 font-sans text-[13px] text-muted">

@@ -67,8 +67,10 @@
   display: inline-block;
 }
 
-/* ===== モーション（BizReach風の上品なリビール） ===== */
-@media (prefers-reduced-motion: no-preference) {
+/* ===== モーション（BizReach風の上品なリビール） =====
+   scripting: enabled を併用し、JS無効/一部計測環境では opacity:0 を当てない
+   （= is-visible が付かなくても本文が見える。空白化リスクの保険）。 */
+@media (prefers-reduced-motion: no-preference) and (scripting: enabled) {
   /* スクロールイン: フェードアップ */
   .fade-in {
     opacity: 0;

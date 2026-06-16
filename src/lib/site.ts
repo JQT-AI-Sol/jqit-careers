@@ -2,7 +2,7 @@ export const site = {
   name: "JQIT",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://careers.jqit.co.jp",
   description:
-    "JQITの採用サイト。開発・インフラ・QA、そしてAI。最新技術に挑むITのプロフェッショナル集団で、未経験から経験者まで、挑戦したい人を歓迎します。",
+    "JQITの採用サイト。開発・インフラ・QA、そしてAI。最新技術に挑むITのプロフェッショナル集団で、経験を活かして挑戦したい人を歓迎します。",
   corporateUrl: "https://jqit.co.jp",
   tagline: "挑戦と革新で、未来を切り拓く。",
 } as const;

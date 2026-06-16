@@ -22,7 +22,7 @@ export function Header() {
         </Link>
 
         {/* desktop nav */}
-        <nav className="hidden items-center gap-9 md:flex">
+        <nav className="hidden items-center gap-9 lg:flex">
           {nav.map((item) => (
             <Link
               key={item.href}
@@ -47,7 +47,7 @@ export function Header() {
           aria-expanded={open}
           aria-controls="mobile-menu"
           onClick={() => setOpen((v) => !v)}
-          className="relative z-50 -mr-1 flex h-11 w-11 flex-col items-center justify-center gap-1.5 md:hidden"
+          className="relative z-50 -mr-1 flex h-11 w-11 flex-col items-center justify-center gap-1.5 lg:hidden"
         >
           <span
             className={cn(
@@ -72,7 +72,7 @@ export function Header() {
         id="mobile-menu"
         aria-hidden={!open}
         className={cn(
-          "fixed inset-x-0 top-[78px] bottom-0 z-40 overflow-y-auto bg-paper transition-[opacity,transform] duration-[250ms] ease-[cubic-bezier(0.16,0.84,0.44,1)] md:hidden",
+          "fixed inset-x-0 top-[78px] bottom-0 z-40 overflow-y-auto bg-paper transition-[opacity,transform] duration-[250ms] ease-[cubic-bezier(0.16,0.84,0.44,1)] lg:hidden",
           open
             ? "translate-y-0 opacity-100"
             : "pointer-events-none -translate-y-2 opacity-0",

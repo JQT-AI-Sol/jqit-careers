@@ -1,10 +1,19 @@
+import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { Kicker } from "@/components/ui/SectionHead";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { Button } from "@/components/ui/Button";
+import { asset } from "@/lib/asset";
 import data from "@/../content/messages.json";
 
 const { ceo, leaders } = data;
+
+const leaderPortraits = [
+  { src: "/images/people/p1.jpg", position: "object-[50%_38%]" },
+  { src: "/images/people/r6.jpg", position: "object-[50%_28%]" },
+  { src: "/images/people/p3.jpg", position: "object-[50%_34%]" },
+  { src: "/images/people/r8.jpg", position: "object-[50%_24%]" },
+];
 
 export function Messages() {
   return (
@@ -12,23 +21,22 @@ export function Messages() {
       <Container>
         {/* === 代表メッセージ === */}
         <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-[0.85fr_1.15fr] md:gap-[72px]">
-          {/* 写真プレースホルダ（後日差し替え） */}
           <FadeIn>
-            <div className="relative flex aspect-[4/5] w-full items-end overflow-hidden rounded-2xl border border-line bg-paper">
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-line bg-paper">
+              <Image
+                src={asset("/images/about/team.jpg")}
+                alt="オフィスで協働するJQITのメンバー"
+                fill
+                sizes="(max-width: 768px) 100vw, 420px"
+                className="object-cover grayscale"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
               <span
                 aria-hidden
-                className="absolute top-6 left-7 font-serif text-[88px] leading-none text-line"
+                className="absolute bottom-7 left-7 font-mono text-[11px] tracking-[0.16em] text-white/80 uppercase"
               >
-                &ldquo;
+                Message
               </span>
-              <div className="w-full px-7 pb-7">
-                <span className="font-mono text-[11px] tracking-[0.16em] text-muted uppercase">
-                  Portrait
-                </span>
-                <p className="mt-2 font-sans text-[12px] text-muted">
-                  ※写真は後日掲載予定
-                </p>
-              </div>
             </div>
           </FadeIn>
 
@@ -83,21 +91,31 @@ export function Messages() {
                 }
                 className="bg-paper p-9 md:p-12"
               >
-                <span className="font-mono text-[12px] tracking-[0.16em] text-brand uppercase">
-                  {leader.dept}
-                </span>
-                <p className="mt-3 font-sans text-[12.5px] tracking-wide text-muted">
-                  {leader.role}
-                </p>
+                <div className="flex items-start gap-5">
+                  <div className="relative size-[86px] shrink-0 overflow-hidden rounded-xl bg-line md:size-[104px]">
+                    <Image
+                      src={asset(leaderPortraits[i % leaderPortraits.length].src)}
+                      alt=""
+                      fill
+                      sizes="104px"
+                      className={`object-cover grayscale ${leaderPortraits[i % leaderPortraits.length].position}`}
+                    />
+                  </div>
+                  <div className="min-w-0 pt-1">
+                    <span className="font-mono text-[12px] tracking-[0.16em] text-brand uppercase">
+                      {leader.dept}
+                    </span>
+                    <p className="mt-3 font-sans text-[12.5px] leading-[1.8] tracking-wide text-muted">
+                      {leader.role}
+                    </p>
+                  </div>
+                </div>
                 <p className="mt-6 font-serif text-[17px] leading-[1.95] tracking-[0.01em] text-ink">
                   {leader.quote}
                 </p>
               </FadeIn>
             ))}
           </div>
-          <p className="mt-6 font-sans text-[12px] text-muted">
-            ※部門リーダーの所属・氏名・コメントはすべて仮のドラフトです。正式な内容に差し替えてください。
-          </p>
         </div>
 
         {/* === エントリー CTA === */}

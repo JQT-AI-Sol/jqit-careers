@@ -28,13 +28,21 @@ export function FadeIn({
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
+    let revealRafId = 0;
+
+    const revealOnFrame = () => {
+      revealRafId = window.requestAnimationFrame(() => setVisible(true));
+    };
+
     // 4) prefers-reduced-motion: reduce の場合は即表示（リビール無効）。
     if (
       typeof window !== "undefined" &&
       window.matchMedia?.("(prefers-reduced-motion: reduce)").matches
     ) {
-      setVisible(true);
-      return;
+      revealOnFrame();
+      return () => {
+        window.cancelAnimationFrame(revealRafId);
+      };
     }
 
     const el = ref.current;
@@ -44,7 +52,7 @@ export function FadeIn({
     const reveal = () => {
       if (done) return;
       done = true;
-      setVisible(true);
+      revealOnFrame();
     };
 
     // 2) マウント時に既にビューポート内/近傍なら即表示（IO 発火を待たずに保証）。
@@ -80,6 +88,7 @@ export function FadeIn({
 
     return () => {
       window.clearTimeout(fallback);
+      window.cancelAnimationFrame(revealRafId);
       observer?.disconnect();
     };
   }, []);

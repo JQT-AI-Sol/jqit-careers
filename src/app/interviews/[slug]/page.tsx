@@ -39,6 +39,7 @@ export async function generateMetadata({
   return {
     title: member.title,
     description: member.excerpt,
+    alternates: { canonical: `/interviews/${slug}` },
   };
 }
 
@@ -205,7 +206,7 @@ export default async function InterviewDetailPage({
             <span className="text-brand">成長ストーリー</span>を。
           </h2>
           <p className="mt-6 font-sans text-[15px] text-muted">
-            未経験からでも、経験者でも。まずはカジュアル面談からお気軽に。
+            あなたの経験を、次のステージへ。まずはカジュアル面談からお気軽に。
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-5 sm:flex-row">
             <Button href="/entry" variant="primary">

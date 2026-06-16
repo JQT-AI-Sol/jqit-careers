@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Container } from "@/components/ui/Container";
-import { SectionHead } from "@/components/ui/SectionHead";
+import { Kicker, SectionHead } from "@/components/ui/SectionHead";
 import { CultureBlock } from "@/components/sections/CultureBlock";
 import { CareerPath } from "@/components/sections/CareerPath";
 import { PhotoMarquee } from "@/components/sections/PhotoMarquee";
@@ -11,6 +11,7 @@ export const metadata: Metadata = {
   title: "カルチャー",
   description:
     "数字とカルチャーで知るJQIT。資格取得支援・社内イベント・働く環境をご紹介します。",
+  alternates: { canonical: "/culture" },
 };
 
 const benefits = [
@@ -36,7 +37,8 @@ export default function CulturePage() {
           <SectionHead
             kicker="Culture & Data"
             title="数字が語る、JQITの“いま”。"
-            lead="エンジニア115名、平均29.8歳の若い組織。QAに強く、資格取得は受験費用を全額支援。数字から、私たちの輪郭が見えてきます。"
+            lead="エンジニア115名、約半数がQA。推奨技術の習得支援と資格費用の全額負担で、経験を積んだ人ほど報われる。数字から、私たちの輪郭が見えてきます。"
+            headingLevel="h1"
           />
           <CultureBlock />
         </Container>
@@ -76,26 +78,52 @@ export default function CulturePage() {
       <CareerPath />
 
       {/* 資格取得支援 詳細 */}
-      <section className="bg-cream py-20 md:py-[120px]">
+      <section className="bg-cream py-16 md:py-24">
         <Container>
-          <SectionHead
-            kicker="Certification Support"
-            title="資格取得支援制度"
-            lead={qualifications.intro}
-          />
-          <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
-            {qualifications.byDomain.map((d) => (
-              <div key={d.domain} className="bg-paper p-8">
-                <div className="font-mono text-[11px] tracking-[0.16em] text-brand uppercase">
-                  {d.domain}
+          <div className="grid gap-9 border-t border-line pt-10 md:grid-cols-[0.85fr_1.15fr] md:gap-14 md:pt-12">
+            <div>
+              <Kicker>Certification Support</Kicker>
+              <h2 className="mt-6 font-serif text-[27px] font-medium leading-[1.5] tracking-[0.02em] text-ink md:text-[38px]">
+                資格取得支援制度
+              </h2>
+            </div>
+            <div>
+              <p className="font-sans text-[15px] leading-[2] text-body">
+                {qualifications.intro}
+              </p>
+              <div className="mt-6 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line sm:grid-cols-3">
+                {["受験費用を会社負担", "合格時の一時報奨金", "月々の資格手当"].map(
+                  (item) => (
+                    <div key={item} className="bg-paper px-5 py-4">
+                      <p className="font-sans text-[13px] font-medium leading-[1.6] text-brand">
+                        {item}
+                      </p>
+                    </div>
+                  ),
+                )}
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-10 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
+            {qualifications.byDomain.map((d, i) => (
+              <div key={d.domain} className="flex h-full flex-col bg-paper p-6 md:p-7">
+                <div className="flex items-center justify-between gap-4">
+                  <div className="font-mono text-[11px] tracking-[0.16em] text-brand uppercase">
+                    {d.domain}
+                  </div>
+                  <span className="font-mono text-[11px] tracking-[0.12em] text-muted">
+                    0{i + 1}
+                  </span>
                 </div>
-                <ul className="mt-4 space-y-2.5">
+                <ul className="mt-5 space-y-3">
                   {d.items.map((item) => (
                     <li
                       key={item}
-                      className="font-sans text-[13px] leading-[1.8] text-muted before:mr-2 before:text-brand before:content-['—']"
+                      className="flex gap-2.5 font-sans text-[13px] leading-[1.75] text-muted"
                     >
-                      {item}
+                      <span aria-hidden className="mt-[0.7em] h-px w-3 shrink-0 bg-brand" />
+                      <span>{item}</span>
                     </li>
                   ))}
                 </ul>

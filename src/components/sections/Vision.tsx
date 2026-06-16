@@ -42,7 +42,7 @@ export function Vision() {
           {/* タグライン（右上） */}
           <div className="absolute top-14 right-0 max-w-[252px] text-right md:top-24 md:max-w-[560px]">
             <p className="font-serif text-[22px] leading-[1.7] font-bold tracking-[0.04em] text-ink md:text-[36px]">
-              で顧客の<em className="not-italic text-brand">未来</em>を切り開く。
+              で顧客の<em className="not-italic text-brand">未来</em>を切り拓く。
             </p>
             <span className="mt-5 ml-auto block h-px w-44 bg-brand/60 md:w-56" />
           </div>
