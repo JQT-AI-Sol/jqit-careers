@@ -42,3 +42,6 @@ next-env.d.ts
 
 # review artifacts (playwright-mcp screenshots)
 .playwright-mcp/
+
+# internal docs (社外秘: 戦略・要件・QA証跡など。publicリポジトリには含めない)
+docs/
