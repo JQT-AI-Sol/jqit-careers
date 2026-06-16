@@ -37,7 +37,7 @@ export default function CulturePage() {
           <SectionHead
             kicker="Culture & Data"
             title="数字が語る、JQITの“いま”。"
-            lead="エンジニア115名、約半数がQA。推奨技術の習得支援と資格費用の全額負担で、経験を積んだ人ほど報われる。数字から、私たちの輪郭が見えてきます。"
+            lead="社員115名、エンジニアは開発・インフラ・QAの3領域に87名。推奨技術の習得支援と資格費用の全額負担で、経験を積んだ人ほど報われる。数字から、私たちの輪郭が見えてきます。"
             headingLevel="h1"
           />
           <CultureBlock />

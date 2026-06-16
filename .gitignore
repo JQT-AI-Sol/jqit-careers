@@ -45,3 +45,6 @@ next-env.d.ts
 
 # internal docs (社外秘: 戦略・要件・QA証跡など。publicリポジトリには含めない)
 docs/
+
+# hook runtime logs
+.claude/hooks/*.log

@@ -10,7 +10,7 @@ export function CareerPath() {
       <Container>
         <SectionHead
           kicker="Career & Growth"
-          title="未経験から、専門家へ。"
+          title="経験を、次のステージへ。"
           lead={data.intro}
         />
 
@@ -47,54 +47,6 @@ export function CareerPath() {
               </div>
             </FadeIn>
           ))}
-        </div>
-
-        {/* 段階的なキャリアアップ例 */}
-        <div className="mt-16 md:mt-24">
-          <FadeIn>
-            <h3 className="font-serif text-[22px] font-medium text-ink md:text-[26px]">
-              段階的にスキルアップするキャリア
-            </h3>
-            <p className="mt-3 font-sans text-[13.5px] leading-[1.95] text-muted">
-              未経験からでも学べるオリジナルカリキュラムを用意。勉強会や1on1ヒアリング、メンター制度で、会社と先輩エンジニアが成長を支えます。
-            </p>
-          </FadeIn>
-          <div className="mt-8 grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2 xl:grid-cols-4">
-            {data.crossPaths.map((c, i) => (
-              <FadeIn
-                key={c.title}
-                className="bg-paper p-7"
-                style={{ transitionDelay: `${i * 80}ms` } as React.CSSProperties}
-              >
-                <h4 className="font-serif text-[17px] font-medium text-ink">
-                  {c.title}
-                </h4>
-                <div className="mt-5 flex flex-col">
-                  {c.steps.map((step, index) => (
-                    <div
-                      key={step}
-                      className="font-mono text-[12px] font-medium tracking-[0.04em] text-ink"
-                    >
-                      <span className="inline-flex min-h-8 w-full items-center rounded-card border border-line px-3 py-1.5 leading-[1.45]">
-                        {step}
-                      </span>
-                      {index < c.steps.length - 1 && (
-                        <span
-                          aria-hidden
-                          className="block py-1.5 text-center text-[15px] leading-none text-brand"
-                        >
-                          ↓
-                        </span>
-                      )}
-                    </div>
-                  ))}
-                </div>
-                <p className="mt-3.5 font-sans text-[13px] leading-[1.85] text-muted">
-                  {c.note}
-                </p>
-              </FadeIn>
-            ))}
-          </div>
         </div>
 
         {/* 資格取得支援への一言＋CTA */}
