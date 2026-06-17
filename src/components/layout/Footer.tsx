@@ -15,16 +15,16 @@ export function Footer() {
           </div>
           {Object.entries(footerNav).map(([heading, links]) => (
             <div key={heading}>
-              <h4 className="mb-5 font-mono text-[11px] font-semibold tracking-[0.18em] text-white uppercase">
+              <h2 className="mb-5 font-mono text-[11px] font-semibold tracking-[0.18em] text-white uppercase">
                 {heading}
-              </h4>
+              </h2>
               {links.map((link) => (
                 <FooterLink key={link.label} {...link} />
               ))}
             </div>
           ))}
         </div>
-        <div className="mt-14 flex items-center justify-between border-t border-[#2d2d28] pt-6 font-mono text-[11px] tracking-[0.1em] text-[#76766f]">
+        <div className="mt-14 flex items-center justify-between border-t border-[#2d2d28] pt-6 font-mono text-[11px] tracking-[0.1em] text-[#8f8f88]">
           <span>© 2026 JQIT INC.</span>
           <span>CAREERS</span>
         </div>

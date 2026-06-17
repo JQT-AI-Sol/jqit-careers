@@ -25,8 +25,9 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // 1. honeypot（botは hidden の company を埋めがち）→ 成功を装って破棄
-  if ((form.get("company") as string)?.trim()) {
+  // 1. honeypot（botは hidden フィールドを埋めがち）→ 成功を装って破棄。
+  //    name="company" 等の実在名はブラウザ自動入力で正規ユーザーを誤検知するため _gotcha を使う。
+  if ((form.get("_gotcha") as string)?.trim()) {
     return NextResponse.json({ ok: true });
   }
 

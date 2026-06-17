@@ -45,6 +45,11 @@
     outline: 2px solid var(--color-brand);
     outline-offset: 2px;
   }
+  /* フォーム部品のアクセントをブランド色に統一（OS標準UIの水色/グレー差異を吸収） */
+  input[type="checkbox"],
+  input[type="radio"] {
+    accent-color: var(--color-brand);
+  }
 }
 
 /* KICKER（赤の極細線 + 英大文字ラベル） */

@@ -24,6 +24,7 @@ export function Hero() {
         <div className="flex items-start gap-8 md:gap-14">
           {/* 縦書き「挑戦と革新」墨グラデ（赤→黒） */}
           <h1
+            aria-label="挑戦と革新で顧客の未来を切り拓く。"
             className="hero-rise shrink-0 bg-gradient-to-b from-brand via-ink to-ink bg-clip-text font-serif text-[68px] leading-none font-bold tracking-[0.04em] text-transparent [writing-mode:vertical-rl] md:text-[120px]"
             style={{ animationDelay: "0.1s" }}
           >

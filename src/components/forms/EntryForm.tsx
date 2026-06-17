@@ -22,7 +22,7 @@ const labelCls = "mb-2 block font-sans text-[13px] font-bold text-ink";
 const reqCls = "ml-1 text-brand";
 const inputCls =
   "w-full rounded-card border border-line bg-paper px-4 py-3 font-sans text-[15px] text-body outline-none transition-colors focus:border-brand";
-const errCls = "mt-1.5 font-sans text-[12px] text-brand";
+const errCls = "mt-1.5 font-sans text-[12px] text-brand-dark";
 
 export function EntryForm() {
   const router = useRouter();
@@ -77,7 +77,7 @@ export function EntryForm() {
     fd.set("consent", values.consent ? "true" : "false");
     if (resume) fd.set("resume", resume);
     if (token) fd.set("turnstileToken", token);
-    fd.set("company", honeypot); // honeypot
+    fd.set("_gotcha", honeypot); // honeypot
     fd.set("source", searchParams.toString());
 
     try {
@@ -113,10 +113,12 @@ export function EntryForm() {
       noValidate
       className="flex flex-col gap-7"
     >
-      {/* honeypot（人間は入力しない。値があれば bot とみなす） */}
+      {/* honeypot（人間は入力しない。値があれば bot とみなす）
+          name は company 等の実在名を避ける（ブラウザ自動入力で正規ユーザーを誤検知し
+          サイレント破棄されるのを防ぐ）。 */}
       <input
         type="text"
-        name="company"
+        name="_gotcha"
         value={honeypot}
         onChange={(e) => setHoneypot(e.target.value)}
         tabIndex={-1}
@@ -264,7 +266,12 @@ export function EntryForm() {
         <label className="flex items-start gap-2.5 font-sans text-[14px] text-body">
           <input type="checkbox" value="true" {...register("consent")} className="mt-1" />
           <span>
-            <a href="/privacy" target="_blank" className="text-brand underline">
+            <a
+              href="/privacy"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-brand-dark underline"
+            >
               プライバシーポリシー
             </a>
             に同意します
@@ -279,7 +286,13 @@ export function EntryForm() {
       </div>
 
       {siteKey && (
-        <Turnstile siteKey={siteKey} onSuccess={setToken} options={{ theme: "light" }} />
+        <Turnstile
+          siteKey={siteKey}
+          onSuccess={setToken}
+          onError={() => setToken(null)}
+          onExpire={() => setToken(null)}
+          options={{ theme: "light" }}
+        />
       )}
 
       {serverError && (

@@ -56,7 +56,6 @@ export function PhotoMarquee({
             fill
             sizes="(max-width: 768px) 230px, 300px"
             loading={eager && i < images.length ? "eager" : "lazy"}
-            unoptimized
             className="object-cover"
           />
         </div>

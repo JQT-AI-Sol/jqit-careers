@@ -5,7 +5,11 @@ export const experiences = ["inexperienced", "experienced"] as const;
 export const positions = ["dev", "infra", "qa", "ai"] as const;
 
 export const entrySchema = z.object({
-  name: z.string().min(1, "お名前を入力してください").max(50),
+  name: z
+    .string()
+    .min(1, "お名前を入力してください")
+    .max(50)
+    .regex(/^[^\r\n]*$/, "お名前に改行は使用できません"),
   email: z.email("メールアドレスの形式が正しくありません"),
   phone: z
     .string()
