@@ -54,11 +54,11 @@ export function Hero() {
               className="hero-rise mt-7 max-w-[520px] font-sans text-base leading-[2.1] text-body md:mt-9 md:text-[17px]"
               style={{ animationDelay: "0.55s" }}
             >
-              ひとりで客先に放り込まれ、レガシーに塩漬け。
+              開発・インフラ・QA、そしてAI。
               <br className="hidden md:block" />
-              その“当たり前”を、私たちは変える。チームで率い、推奨技術で伸び、AIを現場へ。
+              最新技術に挑むITのプロフェッショナル集団で、
               <br className="hidden md:block" />
-              その先には、受託・自社AIへの道も。
+              あなたのキャリアを次のステージへ。
             </p>
 
             <div
@@ -66,7 +66,7 @@ export function Hero() {
               style={{ animationDelay: "0.68s" }}
             >
               <Button href="/entry" variant="primary">
-                エントリーする
+                まずはカジュアル面談
               </Button>
               <Button href="/jobs" variant="arrow">
                 職種を見る →
