@@ -8,24 +8,19 @@ import { Marquee } from "@/components/sections/Marquee";
 import { Strengths } from "@/components/sections/Strengths";
 import { WhyJqit } from "@/components/sections/WhyJqit";
 import { JobList } from "@/components/sections/JobList";
-import { PhotoMarquee } from "@/components/sections/PhotoMarquee";
+import {
+  BrandMarquee,
+  heroMarqueeTiles,
+  ourPeopleMarqueeTiles,
+} from "@/components/sections/BrandMarquee";
 import { CTA } from "@/components/sections/CTA";
 
 export default function Home() {
   return (
     <>
-      {/* ヒーロー上部：人物写真のマーキー */}
+      {/* ヒーロー上部：人物写真＋幾何学シェイプのマーキー */}
       <div className="pt-5 md:pt-8">
-        <PhotoMarquee
-          images={[
-            "/images/people/r6.jpg",
-            "/images/people/r1.jpg",
-            "/images/people/r2.jpg",
-            "/images/people/r7.jpg",
-          ]}
-          direction="left"
-          eager
-        />
+        <BrandMarquee tiles={heroMarqueeTiles} eager />
       </div>
 
       <Hero />
@@ -106,12 +101,8 @@ export default function Home() {
             lead="未経験から、経験者まで。多様なバックグラウンドの仲間が、技術で未来を切り拓いています。"
           />
         </Container>
-        <PhotoMarquee
-          images={[
-            "/images/people/r4.jpg",
-            "/images/people/r3.jpg",
-            "/images/people/r8.jpg",
-          ]}
+        <BrandMarquee
+          tiles={ourPeopleMarqueeTiles}
           direction="right"
           durationSec={66}
         />
