@@ -48,3 +48,13 @@ docs/
 
 # Claude Code local config (個人/マシンローカル設定。hookログ含む)
 .claude/
+
+# design-sync (claude.ai/design 同期): 生成物・ステージ済スクリプト・キャッシュは除外。
+# 永続入力(config.json / NOTES.md / conventions.md / previews/ / shims/ / prep-css.mjs /
+# tsconfig.build.json)はコミットする。
+.ds-sync/
+ds-bundle/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules
+.design-sync/styles/
