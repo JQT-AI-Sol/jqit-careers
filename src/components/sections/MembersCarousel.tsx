@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { interviews, memberImageFor } from "@/lib/content";
 import { asset } from "@/lib/asset";
+import { cn } from "@/lib/cn";
 
 const COPIES = 3;
 
@@ -164,7 +165,10 @@ export function MembersCarousel() {
                     fill
                     draggable={false}
                     sizes="372px"
-                    className={`object-cover transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.04] ${m.photo ? "object-[center_30%]" : "grayscale group-hover:grayscale-0"}`}
+                    className={cn(
+                      "object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]",
+                      m.photo && "object-[center_30%]",
+                    )}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-black/10" />
                   <span

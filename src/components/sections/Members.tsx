@@ -3,6 +3,7 @@ import Link from "next/link";
 import { interviews, memberImageFor } from "@/lib/content";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { asset } from "@/lib/asset";
+import { cn } from "@/lib/cn";
 
 export function Members({ limit }: { limit?: number }) {
   const items = limit ? interviews.slice(0, limit) : interviews;
@@ -23,7 +24,10 @@ export function Members({ limit }: { limit?: number }) {
                 alt=""
                 fill
                 sizes="(max-width: 768px) 100vw, 360px"
-                className={`object-cover transition-transform duration-500 group-hover:scale-[1.04] ${m.photo ? "object-[center_30%]" : "grayscale"}`}
+                className={cn(
+                  "object-cover transition-transform duration-500 group-hover:scale-[1.04]",
+                  m.photo && "object-[center_30%]",
+                )}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-black/10" />
               <span
