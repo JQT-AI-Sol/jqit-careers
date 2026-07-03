@@ -2,4 +2,4 @@
 :HL["/jqit-careers/_next/static/chunks/1mvnofrladsid.css","style"]
 :HL["/jqit-careers/_next/static/chunks/3434rxqtazs4o.css","style"]
 :HL["/jqit-careers/_next/static/media/75affa71d1e2f6a7-s.p.17-aodiw50953.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"interviews","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"minami","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"Mt9R-oDEmLQ4DbZ4i-Lwa"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"interviews","param":null,"prefetchHints":0,"slots":{"children":{"name":"slug","param":{"type":"d","key":"minami","siblings":null},"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}}}},"staleTime":300,"buildId":"A56JKgNRjpur6hEBfnwZk"}
