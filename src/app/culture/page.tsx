@@ -45,11 +45,11 @@ export default function CulturePage() {
         <div className="mt-16 flex flex-col gap-3 md:mt-24 md:gap-4">
           <PhotoMarquee
             images={[
-              "/images/people/p4.jpg",
-              "/images/people/p2.jpg",
+              "/images/people/r1.jpg",
+              "/images/people/r7.jpg",
               "/images/people/p6.jpg",
-              "/images/people/p8.jpg",
-              "/images/people/p9.jpg",
+              "/images/people/r3.jpg",
+              "/images/people/r4.jpg",
             ]}
             direction="left"
           />

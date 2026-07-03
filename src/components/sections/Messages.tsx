@@ -9,9 +9,9 @@ import data from "@/../content/messages.json";
 const { ceo, leaders } = data;
 
 const leaderPortraits = [
-  { src: "/images/people/p1.jpg", position: "object-[50%_38%]" },
+  { src: "/images/people/r2.jpg", position: "object-[50%_35%]" },
   { src: "/images/people/r6.jpg", position: "object-[50%_28%]" },
-  { src: "/images/people/p3.jpg", position: "object-[50%_34%]" },
+  { src: "/images/people/r4.jpg", position: "object-[30%_35%]" },
   { src: "/images/people/r8.jpg", position: "object-[50%_24%]" },
 ];
 
