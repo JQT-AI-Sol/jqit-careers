@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { GeoMark } from "@/components/ui/GeoMark";
+import { GhostNumber } from "@/components/ui/GhostNumber";
 import { appeals } from "@/lib/content";
 
 // デザインの並び（三角・円・六条星）に合わせた GeoMark インデックス
@@ -23,12 +24,9 @@ export function WhyJqit() {
               style={{ transitionDelay: `${i * 120}ms` } as React.CSSProperties}
               className="relative overflow-hidden"
             >
-              <span
-                aria-hidden
-                className="pointer-events-none absolute top-2 right-0 font-display text-[100px] leading-none text-ink/[0.06]"
-              >
+              <GhostNumber className="top-2 right-0 text-[100px]">
                 {a.no}
-              </span>
+              </GhostNumber>
               <GeoMark index={iconIndex[i]} size={28} className="relative text-brand" />
               <h3 className="relative mt-4 font-serif text-[22px] font-medium leading-[1.6] text-ink">
                 {a.title}

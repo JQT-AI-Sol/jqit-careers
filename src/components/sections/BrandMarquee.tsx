@@ -155,10 +155,17 @@ export function BrandMarquee({
   eager?: boolean;
   className?: string;
 }) {
-  const group = (
+  // eager指定時も先読みは初期ビューポートに入りうる1グループ目の先頭数枚だけ。
+  // 2グループ目（ループ用の複製）と帯の後方タイルはlazyのままにする。
+  const EAGER_TILE_COUNT = 4;
+  const renderGroup = (isFirstGroup: boolean) => (
     <div className="flex shrink-0 items-start">
       {tiles.map((t, i) => (
-        <TileView key={i} t={t} eager={eager && i < tiles.length} />
+        <TileView
+          key={i}
+          t={t}
+          eager={eager && isFirstGroup && i < EAGER_TILE_COUNT}
+        />
       ))}
     </div>
   );
@@ -179,8 +186,8 @@ export function BrandMarquee({
         className={cn("marquee-track items-start", direction === "right" && "is-rtl")}
         style={{ animationDuration: `${durationSec}s` }}
       >
-        {group}
-        {group}
+        {renderGroup(true)}
+        {renderGroup(false)}
       </div>
     </div>
   );

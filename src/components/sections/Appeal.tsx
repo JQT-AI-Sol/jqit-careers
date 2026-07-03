@@ -1,6 +1,7 @@
 import { appeals } from "@/lib/content";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { GeoMark } from "@/components/ui/GeoMark";
+import { GhostNumber } from "@/components/ui/GhostNumber";
 
 export function Appeal() {
   return (
@@ -11,13 +12,9 @@ export function Appeal() {
           className="group relative overflow-hidden"
           style={{ transitionDelay: `${i * 120}ms` } as React.CSSProperties}
         >
-          {/* 極薄の巨大番号（背景タイポ） */}
-          <span
-            aria-hidden
-            className="pointer-events-none absolute right-0 top-2 select-none font-display text-[60px] leading-none text-ink/[0.06] transition-colors duration-500 group-hover:text-brand/[0.12] md:text-[100px]"
-          >
+          <GhostNumber className="right-0 top-2 text-[60px] md:text-[100px]">
             {a.no}
-          </span>
+          </GhostNumber>
           <GeoMark index={i + 1} size={28} className="relative text-brand" />
           <h3 className="relative mt-4 font-serif text-[22px] font-medium leading-[1.6] text-ink">
             {a.title}

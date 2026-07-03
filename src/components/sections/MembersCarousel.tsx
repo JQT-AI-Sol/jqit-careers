@@ -3,15 +3,8 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { interviews } from "@/lib/content";
+import { interviews, memberImageFor } from "@/lib/content";
 import { asset } from "@/lib/asset";
-
-// 顔の写らない抽象的な「働く人/職場」モノクロ画像（匿名化に整合）
-const memberImages = [
-  "/images/members/m1.jpg",
-  "/images/members/m3.jpg",
-  "/images/members/m5.jpg",
-];
 
 const COPIES = 3;
 
@@ -166,12 +159,12 @@ export function MembersCarousel() {
               >
                 <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-ink">
                   <Image
-                    src={asset(memberImages[i % memberImages.length])}
+                    src={asset(memberImageFor(m, i))}
                     alt=""
                     fill
                     draggable={false}
                     sizes="372px"
-                    className="object-cover grayscale transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.04] group-hover:grayscale-0"
+                    className={`object-cover transition-[filter,transform] duration-500 ease-out group-hover:scale-[1.04] ${m.photo ? "object-[center_30%]" : "grayscale group-hover:grayscale-0"}`}
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-black/10" />
                   <span

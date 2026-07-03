@@ -2,6 +2,7 @@ import Link from "next/link";
 import { jobs } from "@/lib/content";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { GeoMark } from "@/components/ui/GeoMark";
+import { GhostNumber } from "@/components/ui/GhostNumber";
 
 export function JobList() {
   return (
@@ -15,13 +16,9 @@ export function JobList() {
             href={`/jobs#${job.slug}`}
             className="group relative grid grid-cols-1 items-start gap-2 overflow-hidden border-b border-line py-9 transition-all hover:bg-cream md:grid-cols-[1fr_auto] md:items-center md:gap-8 md:hover:pl-5"
           >
-            {/* 極薄の巨大番号（背景タイポ） */}
-            <span
-              aria-hidden
-              className="pointer-events-none absolute right-8 top-1/2 hidden -translate-y-1/2 select-none font-display text-[70px] leading-none text-ink/[0.05] transition-colors duration-500 group-hover:text-brand/10 md:block"
-            >
+            <GhostNumber className="right-8 top-1/2 hidden -translate-y-1/2 text-[70px] md:block">
               {String(i + 1).padStart(2, "0")}
-            </span>
+            </GhostNumber>
             <div className="relative">
               <div className="flex items-center gap-2.5 font-mono text-[11px] tracking-[0.16em] text-brand uppercase">
                 <GeoMark index={i} size={14} />

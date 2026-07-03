@@ -2,6 +2,7 @@ import { Container } from "@/components/ui/Container";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { GeoMark } from "@/components/ui/GeoMark";
+import { GhostNumber } from "@/components/ui/GhostNumber";
 import { strengths } from "@/lib/content";
 
 // デザインの並び（十字・菱形・六条星・円）に合わせた GeoMark インデックス
@@ -36,12 +37,9 @@ export function Strengths() {
               style={{ transitionDelay: `${i * 80}ms` } as React.CSSProperties}
               className="group relative overflow-hidden border-b border-line py-10 pr-7"
             >
-              <span
-                aria-hidden
-                className="pointer-events-none absolute top-8 right-0 font-display text-[72px] leading-none text-ink/[0.06] transition-colors duration-500 group-hover:text-brand/[0.13]"
-              >
+              <GhostNumber className="top-8 right-0 text-[72px]">
                 {s.no}
-              </span>
+              </GhostNumber>
               <GeoMark index={iconIndex[i]} size={24} className="relative text-brand" />
               <h3 className="relative mt-5 font-serif text-[23px] font-medium text-ink">
                 {s.title}

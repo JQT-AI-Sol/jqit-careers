@@ -16,6 +16,10 @@ const marks = [
   <path key="triangle" d="M12 3 21 20H3Z" />, // 三角
 ];
 
+// Claude Design 原本の語ごとのマーク割当て（8語目以降は繰り返し）。
+// 単純な5種巡回ではなく、6〜8語目は 十字→円→菱形 の並びになっている。
+const markOrder = [0, 1, 2, 3, 4, 0, 2, 1];
+
 function Mark({ index }: { index: number }) {
   return (
     <svg
@@ -30,7 +34,7 @@ function Mark({ index }: { index: number }) {
       aria-hidden
       className="shrink-0 text-brand md:h-9 md:w-9"
     >
-      {marks[index % marks.length]}
+      {marks[markOrder[index % markOrder.length]]}
     </svg>
   );
 }

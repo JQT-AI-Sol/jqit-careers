@@ -1,18 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
-import { interviews } from "@/lib/content";
+import { interviews, memberImageFor } from "@/lib/content";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { asset } from "@/lib/asset";
-
-// 顔の写らない抽象的な「働く人/職場」モノクロ画像（匿名化に整合）
-const memberImages = [
-  "/images/members/m1.jpg",
-  "/images/members/m3.jpg",
-  "/images/members/m5.jpg",
-  "/images/members/m2.jpg",
-  "/images/members/m4.jpg",
-  "/images/members/m6.jpg",
-];
 
 export function Members({ limit }: { limit?: number }) {
   const items = limit ? interviews.slice(0, limit) : interviews;
@@ -29,11 +19,11 @@ export function Members({ limit }: { limit?: number }) {
           >
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-ink">
               <Image
-                src={asset(memberImages[i % memberImages.length])}
+                src={asset(memberImageFor(m, i))}
                 alt=""
                 fill
                 sizes="(max-width: 768px) 100vw, 360px"
-                className="object-cover grayscale transition-transform duration-500 group-hover:scale-[1.04]"
+                className={`object-cover transition-transform duration-500 group-hover:scale-[1.04] ${m.photo ? "object-[center_30%]" : "grayscale"}`}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-black/10" />
               <span

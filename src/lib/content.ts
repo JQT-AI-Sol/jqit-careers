@@ -22,6 +22,7 @@ export type Interview = {
   role: string;
   name: string;
   dept?: string;
+  photo?: string; // 本人写真（サンプル差し込み中。無い人は memberImageFor が抽象画像にフォールバック）
   career?: string;
   title: string;
   excerpt: string;
@@ -38,6 +39,22 @@ export type FlowStep = { step: string; title: string; desc: string };
 
 export const jobs: Job[] = jobsData as Job[];
 export const interviews: Interview[] = interviewsData as Interview[];
+
+// 社員紹介のフォールバック画像（顔の写らない抽象モノクロ）。
+// 一覧・カルーセル・詳細で必ずこの1配列を共有し、同一メンバーの絵柄が
+// サーフェス間で食い違わないようにする（複製定義の禁止）。
+export const memberFallbackImages = [
+  "/images/members/m1.jpg",
+  "/images/members/m3.jpg",
+  "/images/members/m5.jpg",
+  "/images/members/m2.jpg",
+  "/images/members/m4.jpg",
+  "/images/members/m6.jpg",
+];
+
+// interviews 配列上の index に対するカード画像。本人写真があれば優先。
+export const memberImageFor = (m: Interview, index: number): string =>
+  m.photo ?? memberFallbackImages[index % memberFallbackImages.length];
 export const faqs: Faq[] = faqData as Faq[];
 export const stats: Stat[] = statsData as Stat[];
 export const recruitFlow: FlowStep[] = flowData as FlowStep[];

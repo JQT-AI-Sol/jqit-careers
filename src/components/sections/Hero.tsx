@@ -41,7 +41,7 @@ export function Hero() {
             </span>
 
             <p
-              className="hero-rise mt-5 font-serif text-[24px] leading-[1.55] font-bold tracking-[0.03em] text-ink md:mt-8 md:text-[42px]"
+              className="hero-rise mt-5 font-serif text-[26px] leading-[1.5] font-bold tracking-[0.03em] text-ink md:mt-8 md:text-[52px]"
               style={{ animationDelay: "0.22s" }}
             >
               で顧客の<em className="not-italic text-brand">未来</em>を
@@ -65,7 +65,11 @@ export function Hero() {
               className="hero-rise mt-8 flex flex-col items-start gap-5 md:mt-11 md:flex-row md:items-center md:gap-9"
               style={{ animationDelay: "0.68s" }}
             >
-              <Button href="/entry" variant="primary">
+              <Button
+                href="/entry"
+                variant="primary"
+                className="whitespace-nowrap px-8 md:px-10"
+              >
                 まずはカジュアル面談
               </Button>
               <Button href="/jobs" variant="arrow">
@@ -86,7 +90,7 @@ export function Hero() {
             src={asset("/images/people/r5.jpg")}
             alt="桜並木に集うJQITのメンバー"
             fill
-            priority
+            preload
             sizes="(max-width: 768px) 100vw, 1160px"
             className="object-cover"
           />

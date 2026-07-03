@@ -83,7 +83,7 @@ export default function CulturePage() {
           <div className="grid gap-9 border-t border-line pt-10 md:grid-cols-[0.85fr_1.15fr] md:gap-14 md:pt-12">
             <div>
               <Kicker>Certification Support</Kicker>
-              <h2 className="mt-6 font-serif text-[27px] font-medium leading-[1.5] tracking-[0.02em] text-ink md:text-[38px]">
+              <h2 className="mt-6 font-serif text-[30px] font-medium leading-[1.45] tracking-[0.02em] text-ink md:text-[48px]">
                 資格取得支援制度
               </h2>
             </div>

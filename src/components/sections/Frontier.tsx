@@ -37,8 +37,8 @@ export function Frontier() {
       <Container className="relative">
         {/* 見出し（暗背景のため SectionHead は使わず自前で組む） */}
         <FadeIn>
-          <Kicker>Frontier</Kicker>
-          <h2 className="mt-6 font-serif text-[27px] font-medium leading-[1.5] tracking-[0.02em] text-cream md:text-[38px]">
+          <Kicker tone="inverse">Frontier</Kicker>
+          <h2 className="mt-6 font-serif text-[30px] font-medium leading-[1.45] tracking-[0.02em] text-cream md:text-[48px]">
             SESの、その先へ。
           </h2>
           <p className="mt-6 max-w-[640px] font-sans text-[15px] leading-[2.05] text-white/70 md:text-base">

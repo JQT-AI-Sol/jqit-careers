@@ -1,8 +1,18 @@
 import { cn } from "@/lib/cn";
 import { FadeIn } from "@/components/ui/FadeIn";
 
-export function Kicker({ children }: { children: React.ReactNode }) {
-  return <span className="kicker">{children}</span>;
+export function Kicker({
+  children,
+  tone = "default",
+}: {
+  children: React.ReactNode;
+  tone?: "default" | "inverse"; // inverse: 暗背景（bg-ink等）用の白文字
+}) {
+  return (
+    <span className={cn("kicker", tone === "inverse" && "kicker-inverse")}>
+      {children}
+    </span>
+  );
 }
 
 export function SectionHead({
@@ -31,7 +41,7 @@ export function SectionHead({
       )}
     >
       <Kicker>{kicker}</Kicker>
-      <Heading className="mt-6 text-balance font-serif text-[27px] font-medium leading-[1.5] tracking-[0.02em] text-ink md:text-[38px]">
+      <Heading className="mt-6 text-balance font-serif text-[30px] font-medium leading-[1.45] tracking-[0.02em] text-ink md:text-[48px]">
         {title}
       </Heading>
       {lead && (
