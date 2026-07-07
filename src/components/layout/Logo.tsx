@@ -1,22 +1,24 @@
+import Image from "next/image";
+import { asset } from "@/lib/asset";
 import { cn } from "@/lib/cn";
 
 export function Logo({
   className,
-  light,
 }: {
   className?: string;
   light?: boolean;
 }) {
   return (
-    <span
+    <Image
+      src={asset("/jqit-logo.png")}
+      alt="JQIT"
+      width={299}
+      height={83}
+      priority
       className={cn(
-        "inline-flex items-center gap-2.5 font-mono text-[21px] font-semibold tracking-[0.06em]",
-        light ? "text-white" : "text-ink",
+        "h-auto w-[96px] object-contain md:w-[112px]",
         className,
       )}
-    >
-      <span className="inline-block h-2.5 w-2.5 rounded-full bg-brand" />
-      JQIT
-    </span>
+    />
   );
 }
