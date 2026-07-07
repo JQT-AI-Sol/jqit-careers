@@ -4,13 +4,14 @@ import { cn } from "@/lib/cn";
 
 export function Logo({
   className,
+  light = false,
 }: {
   className?: string;
   light?: boolean;
 }) {
   return (
     <Image
-      src={asset("/jqit-logo.png")}
+      src={asset(light ? "/jqit-logo-light.png" : "/jqit-logo.png")}
       alt="JQIT"
       width={299}
       height={83}
