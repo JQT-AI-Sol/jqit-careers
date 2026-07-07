@@ -57,12 +57,10 @@ export function Empathy() {
           ))}
         </div>
 
-        {/* ピボット文（唯一の赤強調・このセクション最大の見せ場） */}
-        <FadeIn className="mt-16 md:mt-28">
-          <p className="text-balance font-serif text-[30px] font-medium leading-[1.55] tracking-[0.01em] text-ink md:text-[56px]">
-            それは、あなたの実力の
-            <br className="md:hidden" />
-            問題じゃない。
+        {/* ピボット文（唯一の赤強調） */}
+        <FadeIn className="mt-14 md:mt-20">
+          <p className="font-serif text-[22px] leading-[1.6] text-ink md:text-[30px]">
+            それは、あなたの実力の問題じゃない。
             <br />
             <em className="not-italic text-brand">
               “どこで働くか”の問題だ。

@@ -45,11 +45,11 @@ export default function CulturePage() {
         <div className="mt-16 flex flex-col gap-3 md:mt-24 md:gap-4">
           <PhotoMarquee
             images={[
-              "/images/people/r1.jpg",
-              "/images/people/r7.jpg",
+              "/images/people/p4.jpg",
+              "/images/people/p2.jpg",
               "/images/people/p6.jpg",
-              "/images/people/r3.jpg",
-              "/images/people/r4.jpg",
+              "/images/people/p8.jpg",
+              "/images/people/p9.jpg",
             ]}
             direction="left"
           />
@@ -83,7 +83,7 @@ export default function CulturePage() {
           <div className="grid gap-9 border-t border-line pt-10 md:grid-cols-[0.85fr_1.15fr] md:gap-14 md:pt-12">
             <div>
               <Kicker>Certification Support</Kicker>
-              <h2 className="mt-6 font-serif text-[30px] font-medium leading-[1.45] tracking-[0.02em] text-ink md:text-[48px]">
+              <h2 className="mt-6 font-serif text-[27px] font-medium leading-[1.5] tracking-[0.02em] text-ink md:text-[38px]">
                 資格取得支援制度
               </h2>
             </div>

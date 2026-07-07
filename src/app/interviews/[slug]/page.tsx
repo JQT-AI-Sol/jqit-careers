@@ -6,14 +6,22 @@ import { Container } from "@/components/ui/Container";
 import { Kicker } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { interviews, memberFallbackImages, type Interview } from "@/lib/content";
+import { interviews, type Interview } from "@/lib/content";
 import { asset } from "@/lib/asset";
 
-// キービジュアルは顔の写らない抽象画像（content.ts の共有配列）を index 循環で使う。
-// 本人写真があるメンバーは 16:9 に引き伸ばさず、名前横の丸アバターとして表示する
-// （元写真が小さく、ヒーローに拡大すると破綻するため）。
+// 顔の写らない抽象画像（m1〜m6）を一覧上の並びで循環利用。
+// Members.tsx のカード画像と同じ index ロジックで、一覧↔詳細の絵柄を一致させる。
+const memberImages = [
+  "/images/members/m1.jpg",
+  "/images/members/m3.jpg",
+  "/images/members/m5.jpg",
+  "/images/members/m2.jpg",
+  "/images/members/m4.jpg",
+  "/images/members/m6.jpg",
+];
+
 function imageFor(index: number) {
-  return memberFallbackImages[index % memberFallbackImages.length];
+  return memberImages[index % memberImages.length];
 }
 
 export async function generateStaticParams() {
@@ -76,9 +84,9 @@ export default async function InterviewDetailPage({
                 src={asset(imageFor(index))}
                 alt=""
                 fill
-                preload
+                priority
                 sizes="(max-width: 768px) 100vw, 1160px"
-                className="object-cover"
+                className="object-cover grayscale"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-black/10" />
               <span
@@ -87,33 +95,19 @@ export default async function InterviewDetailPage({
               >
                 &ldquo;
               </span>
-              <div className="absolute bottom-7 left-7 right-7 flex items-end gap-5">
-                {member.photo && (
-                  <span className="relative block h-20 w-20 shrink-0 overflow-hidden rounded-full border-2 border-white/60 md:h-24 md:w-24">
-                    <Image
-                      src={asset(member.photo)}
-                      alt=""
-                      fill
-                      loading="eager"
-                      sizes="96px"
-                      className="object-cover object-[center_30%]"
-                    />
+              <div className="absolute bottom-7 left-7 right-7">
+                <span className="font-mono text-[11px] tracking-[0.18em] text-brand uppercase md:text-[13px]">
+                  {member.role}
+                </span>
+                <div className="mt-2 flex items-baseline gap-3">
+                  <span className="font-serif text-4xl tracking-[0.08em] text-white md:text-5xl">
+                    {member.name}
                   </span>
-                )}
-                <div>
-                  <span className="font-mono text-[11px] tracking-[0.18em] text-brand uppercase md:text-[13px]">
-                    {member.role}
-                  </span>
-                  <div className="mt-2 flex items-baseline gap-3">
-                    <span className="font-serif text-4xl tracking-[0.08em] text-white md:text-5xl">
-                      {member.name}
+                  {member.dept && (
+                    <span className="font-mono text-[11px] tracking-[0.12em] text-white/75 uppercase">
+                      {member.dept}
                     </span>
-                    {member.dept && (
-                      <span className="font-mono text-[11px] tracking-[0.12em] text-white/75 uppercase">
-                        {member.dept}
-                      </span>
-                    )}
-                  </div>
+                  )}
                 </div>
               </div>
             </div>

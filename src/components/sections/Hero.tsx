@@ -41,7 +41,7 @@ export function Hero() {
             </span>
 
             <p
-              className="hero-rise mt-5 font-serif text-[26px] leading-[1.5] font-bold tracking-[0.03em] text-ink md:mt-8 md:text-[52px]"
+              className="hero-rise mt-5 font-serif text-[24px] leading-[1.55] font-bold tracking-[0.03em] text-ink md:mt-8 md:text-[42px]"
               style={{ animationDelay: "0.22s" }}
             >
               で顧客の<em className="not-italic text-brand">未来</em>を
@@ -54,23 +54,19 @@ export function Hero() {
               className="hero-rise mt-7 max-w-[520px] font-sans text-base leading-[2.1] text-body md:mt-9 md:text-[17px]"
               style={{ animationDelay: "0.55s" }}
             >
-              開発・インフラ・QA、そしてAI。
+              ひとりで客先に放り込まれ、レガシーに塩漬け。
               <br className="hidden md:block" />
-              最新技術に挑むITのプロフェッショナル集団で、
+              その“当たり前”を、私たちは変える。チームで率い、推奨技術で伸び、AIを現場へ。
               <br className="hidden md:block" />
-              あなたのキャリアを次のステージへ。
+              その先には、受託・自社AIへの道も。
             </p>
 
             <div
               className="hero-rise mt-8 flex flex-col items-start gap-5 md:mt-11 md:flex-row md:items-center md:gap-9"
               style={{ animationDelay: "0.68s" }}
             >
-              <Button
-                href="/entry"
-                variant="primary"
-                className="whitespace-nowrap px-8 md:px-10"
-              >
-                まずはカジュアル面談
+              <Button href="/entry" variant="primary">
+                エントリーする
               </Button>
               <Button href="/jobs" variant="arrow">
                 職種を見る →
@@ -90,7 +86,7 @@ export function Hero() {
             src={asset("/images/people/r5.jpg")}
             alt="桜並木に集うJQITのメンバー"
             fill
-            preload
+            priority
             sizes="(max-width: 768px) 100vw, 1160px"
             className="object-cover"
           />

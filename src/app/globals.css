@@ -71,10 +71,6 @@
   background: var(--color-brand);
   display: inline-block;
 }
-/* 暗背景（bg-ink等）用。文字を白系に上げてコントラストを確保する */
-.kicker-inverse {
-  color: rgba(255, 255, 255, 0.92);
-}
 
 /* ===== モーション（BizReach風の上品なリビール） =====
    scripting: enabled を併用し、JS無効/一部計測環境では opacity:0 を当てない

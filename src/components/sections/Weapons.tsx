@@ -2,7 +2,6 @@ import { weapons, weaponsUpside } from "@/lib/content";
 import { cn } from "@/lib/cn";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { GeoMark } from "@/components/ui/GeoMark";
-import { GhostNumber } from "@/components/ui/GhostNumber";
 
 /**
  * 進化するSES＝5つの武器（トップ核セクション #3）。
@@ -21,9 +20,13 @@ export function Weapons() {
             style={{ transitionDelay: `${i * 90}ms` } as React.CSSProperties}
             className="group relative grid grid-cols-1 gap-4 overflow-hidden border-b border-line py-9 md:grid-cols-[0.92fr_1.08fr] md:gap-16 md:py-14"
           >
-            <GhostNumber className="-top-3 right-0 text-[64px] md:text-[112px]">
+            {/* 極薄の巨大番号（背景タイポ） */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute -top-3 right-0 select-none font-display text-[64px] leading-none text-ink/[0.05] transition-colors duration-500 group-hover:text-brand/[0.11] md:text-[112px]"
+            >
               {w.no}
-            </GhostNumber>
+            </span>
 
             {/* 左：マーク＋カテゴリ＋見出し */}
             <div className="relative">

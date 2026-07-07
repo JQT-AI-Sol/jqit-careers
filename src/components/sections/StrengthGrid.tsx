@@ -1,7 +1,6 @@
 import { strengths } from "@/lib/content";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { GeoMark } from "@/components/ui/GeoMark";
-import { GhostNumber } from "@/components/ui/GhostNumber";
 
 export function StrengthGrid() {
   return (
@@ -12,9 +11,13 @@ export function StrengthGrid() {
           className="group relative overflow-hidden border-b border-line py-10 pr-7"
           style={{ transitionDelay: `${i * 80}ms` } as React.CSSProperties}
         >
-          <GhostNumber className="right-0 top-8 text-[46px] md:text-[72px]">
+          {/* 極薄の巨大番号（背景タイポ） */}
+          <span
+            aria-hidden
+            className="pointer-events-none absolute right-0 top-8 select-none font-display text-[46px] leading-none text-ink/[0.06] transition-colors duration-500 group-hover:text-brand/[0.13] md:text-[72px]"
+          >
             {s.no}
-          </GhostNumber>
+          </span>
           {/* 領域を示す幾何学マーク */}
           <GeoMark index={i} size={24} className="relative text-brand" />
           <h3 className="relative mt-5 font-serif text-[23px] font-medium text-ink">
