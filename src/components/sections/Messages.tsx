@@ -28,7 +28,7 @@ export function Messages() {
                 alt="オフィスで協働するJQITのメンバー"
                 fill
                 sizes="(max-width: 768px) 100vw, 420px"
-                className="object-cover grayscale"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
               <span
@@ -98,7 +98,7 @@ export function Messages() {
                       alt=""
                       fill
                       sizes="104px"
-                      className={`object-cover grayscale ${leaderPortraits[i % leaderPortraits.length].position}`}
+                      className={`object-cover ${leaderPortraits[i % leaderPortraits.length].position}`}
                     />
                   </div>
                   <div className="min-w-0 pt-1">

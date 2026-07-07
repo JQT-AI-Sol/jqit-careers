@@ -33,7 +33,7 @@ export function Members({ limit }: { limit?: number }) {
                 alt=""
                 fill
                 sizes="(max-width: 768px) 100vw, 360px"
-                className="object-cover grayscale transition-transform duration-500 group-hover:scale-[1.04]"
+                className="object-cover transition-transform duration-500 group-hover:scale-[1.04]"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/65 via-black/10 to-black/10" />
               <span

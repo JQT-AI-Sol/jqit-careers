@@ -10,24 +10,19 @@ import { JobList } from "@/components/sections/JobList";
 import { Members } from "@/components/sections/Members";
 import { CTA } from "@/components/sections/CTA";
 import { Marquee } from "@/components/sections/Marquee";
-import { PhotoMarquee } from "@/components/sections/PhotoMarquee";
 import { GeoBackdrop } from "@/components/ui/GeoBackdrop";
 import { Statement } from "@/components/sections/Statement";
+import {
+  BrandMarquee,
+  heroMarqueeTiles,
+  ourPeopleMarqueeTiles,
+} from "@/components/sections/BrandMarquee";
 
 export default function Home() {
   return (
     <>
       <div className="pt-5 md:pt-8">
-        <PhotoMarquee
-          images={[
-            "/images/people/r6.jpg",
-            "/images/people/r1.jpg",
-            "/images/people/r2.jpg",
-            "/images/people/r7.jpg",
-          ]}
-          direction="left"
-          eager
-        />
+        <BrandMarquee tiles={heroMarqueeTiles} direction="left" eager />
       </div>
 
       <Hero />
@@ -115,17 +110,11 @@ export default function Home() {
             lead="多様な経験を持つ仲間が、チームで技術と未来を切り拓いています。"
           />
         </Container>
-        <div className="flex flex-col gap-3 md:gap-4">
-          <PhotoMarquee
-            images={[
-              "/images/people/r4.jpg",
-              "/images/people/r3.jpg",
-              "/images/people/r8.jpg",
-            ]}
-            direction="right"
-            durationSec={66}
-          />
-        </div>
+        <BrandMarquee
+          tiles={ourPeopleMarqueeTiles}
+          direction="right"
+          durationSec={66}
+        />
         <Container className="mt-12 md:mt-16">
           <Button href="/culture" variant="arrow">
             数字とカルチャーを見る →

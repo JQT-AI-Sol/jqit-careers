@@ -86,7 +86,7 @@ export default async function InterviewDetailPage({
                 fill
                 priority
                 sizes="(max-width: 768px) 100vw, 1160px"
-                className="object-cover grayscale"
+                className="object-cover"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-black/10" />
               <span
