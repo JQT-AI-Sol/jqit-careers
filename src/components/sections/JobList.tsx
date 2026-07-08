@@ -13,7 +13,7 @@ export function JobList() {
         >
           <Link
             href={`/jobs#${job.slug}`}
-            className="group relative grid grid-cols-1 items-start gap-2 overflow-hidden border-b border-line py-9 transition-all hover:bg-cream md:grid-cols-[1fr_auto] md:items-center md:gap-8 md:hover:pl-5"
+            className="group brand-line-row relative grid grid-cols-1 items-start gap-2 overflow-hidden border-b border-line py-9 md:grid-cols-[1fr_auto] md:items-center md:gap-8"
           >
             {/* 極薄の巨大番号（背景タイポ） */}
             <span
@@ -22,7 +22,7 @@ export function JobList() {
             >
               {String(i + 1).padStart(2, "0")}
             </span>
-            <div className="relative">
+            <div className="brand-line-label relative">
               <div className="flex items-center gap-2.5 font-mono text-[11px] tracking-[0.16em] text-brand uppercase">
                 <GeoMark index={i} size={14} />
                 {job.category}

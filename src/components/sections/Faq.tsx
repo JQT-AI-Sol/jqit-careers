@@ -11,7 +11,7 @@ export function Faq() {
       {faqs.map((item, i) => {
         const isOpen = open === i;
         return (
-          <div key={i} className="border-b border-line">
+          <div key={i} className="brand-line-row border-b border-line">
             <button
               type="button"
               onClick={() => setOpen(isOpen ? null : i)}
@@ -21,7 +21,7 @@ export function Faq() {
                 isOpen && "border-l-2 border-brand pl-5",
               )}
             >
-              <span className="font-serif text-[17px] font-medium text-ink md:text-[19px]">
+              <span className="brand-line-label font-serif text-[17px] font-medium text-ink md:text-[19px]">
                 {item.q}
               </span>
               <span className="font-mono text-xl text-brand">

@@ -8,7 +8,7 @@ export function StrengthGrid() {
       {strengths.map((s, i) => (
         <FadeIn
           key={s.no}
-          className="group relative overflow-hidden border-b border-line py-10 pr-7"
+          className="group brand-line-card relative overflow-hidden border-b border-line py-10 pr-7"
           style={{ transitionDelay: `${i * 80}ms` } as React.CSSProperties}
         >
           {/* 極薄の巨大番号（背景タイポ） */}
@@ -20,7 +20,7 @@ export function StrengthGrid() {
           </span>
           {/* 領域を示す幾何学マーク */}
           <GeoMark index={i} size={24} className="relative text-brand" />
-          <h3 className="relative mt-5 font-serif text-[23px] font-medium text-ink">
+          <h3 className="brand-line-label relative mt-5 font-serif text-[23px] font-medium text-ink">
             {s.title}
           </h3>
           <p className="relative mt-3.5 font-sans text-[13.5px] leading-[1.95] text-muted min-h-[4.6em] md:min-h-[5.1em]">

@@ -18,7 +18,7 @@ export function Weapons() {
             as="li"
             key={w.no}
             style={{ transitionDelay: `${i * 90}ms` } as React.CSSProperties}
-            className="group relative grid grid-cols-1 gap-4 overflow-hidden border-b border-line py-9 md:grid-cols-[0.92fr_1.08fr] md:gap-16 md:py-14"
+            className="group brand-line-row relative grid grid-cols-1 gap-4 overflow-hidden border-b border-line py-9 md:grid-cols-[0.92fr_1.08fr] md:gap-16 md:py-14"
           >
             {/* 極薄の巨大番号（背景タイポ） */}
             <span
@@ -29,7 +29,7 @@ export function Weapons() {
             </span>
 
             {/* 左：マーク＋カテゴリ＋見出し */}
-            <div className="relative">
+            <div className="brand-line-label relative">
               <div className="flex items-center gap-3">
                 <GeoMark index={i} size={26} className="text-brand" />
                 <span className="kicker">{w.label}</span>
