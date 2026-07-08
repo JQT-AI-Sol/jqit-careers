@@ -11,7 +11,7 @@ import { asset } from "@/lib/asset";
 export const metadata: Metadata = {
   title: "職種紹介・募集要項",
   description:
-    "JQITの募集職種（開発／インフラ／QA／AI）。仕事内容・求める人物像・歓迎スキルをご紹介します。経験者歓迎。",
+    "JQITの募集職種（開発／インフラ／QA／AI／営業）。仕事内容・求める人物像・歓迎スキルをご紹介します。経験者歓迎。",
   alternates: { canonical: "/jobs" },
 };
 
@@ -51,7 +51,7 @@ export default function JobsPage() {
           <SectionHead
             kicker="Jobs"
             title="職種紹介・募集要項"
-            lead="あなたの経験と、挑戦したい領域で選べる4職種。チームを率いて活かせるポジションです。"
+            lead="あなたの経験と、挑戦したい領域で選べる5職種。チームを率いて活かせるポジションです。"
             headingLevel="h1"
           />
 
@@ -62,7 +62,7 @@ export default function JobsPage() {
                 id={job.slug}
                 className="scroll-mt-24 bg-paper p-8 md:p-12"
               >
-                <div className="relative mb-8 h-44 w-full overflow-hidden rounded-2xl md:h-56">
+                <div className="relative mb-8 aspect-[3/2] w-full overflow-hidden rounded-2xl md:aspect-[3/1.65]">
                   <Image
                     src={asset(`/images/jobs/${jobSlugToValue[job.slug]}.jpg`)}
                     alt={`${job.title}のイメージ`}
@@ -80,8 +80,8 @@ export default function JobsPage() {
                   </h2>
                   <div className="flex gap-2">
                     {job.acceptInexperienced && (
-                      <span className="rounded-card bg-brand/10 px-2.5 py-1 font-sans text-[12px] font-bold text-brand-dark">
-                        未経験OK
+                      <span className="rounded-card bg-brand px-3 py-1.5 font-sans text-[12px] font-bold text-white shadow-sm">
+                        未経験可
                       </span>
                     )}
                     {job.acceptExperienced && (
@@ -152,7 +152,7 @@ export default function JobsPage() {
                     href={`/entry?position=${jobSlugToValue[job.slug]}`}
                     variant="outline"
                   >
-                    この職種に応募 / 相談する
+                    この職種でカジュアル面談する
                   </Button>
                 </div>
               </article>

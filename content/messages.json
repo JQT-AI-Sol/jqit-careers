@@ -13,27 +13,35 @@
   },
   "leaders": {
     "kicker": "Leaders",
-    "title": "部門リーダーからのメッセージ",
-    "lead": "開発・インフラ・QA・AI。それぞれの最前線に立つリーダーが、これから挑む仲間へ。",
+    "title": "事業部長からのメッセージ",
+    "lead": "開発・インフラ・QA・AI。それぞれの最前線を率いる事業部長が、これから挑む仲間へ。",
     "items": [
       {
         "dept": "Development",
-        "role": "開発領域",
+        "role": "開発事業部長",
+        "name": "大野 健",
+        "image": "/images/leaders/ohno.jpg",
         "quote": "モバイルアプリやWeb開発の現場では、技術力だけでなく、使う人を想像してつくる姿勢が大切です。基礎から積み上げながら、価値を届けるものづくりに挑戦できます。"
       },
       {
         "dept": "Infrastructure",
-        "role": "インフラ領域",
+        "role": "インフラ事業部長",
+        "name": "嵐 亮太",
+        "image": "/images/leaders/arashi.png",
         "quote": "キッティングや運用の基礎から、Linux、クラウドへ。安定した仕組みを支える仕事は、地道な学びが確かな専門性につながる領域です。"
       },
       {
         "dept": "Quality Assurance",
-        "role": "QA領域",
+        "role": "QA事業部長",
+        "name": "岩崎 顕儀",
+        "image": "/images/leaders/iwasaki.jpg",
         "quote": "品質は、使う人への想いそのものです。未経験からでも品質の考え方を学び、テスト設計や自動化へ進むことで、プロダクトを支える力を磨けます。"
       },
       {
         "dept": "Artificial Intelligence",
-        "role": "AI領域",
+        "role": "AIソリューション事業部長",
+        "name": "宮本 尚寛",
+        "image": "/images/leaders/miyamoto.jpg",
         "quote": "生成AIやLLMは、まだ正解が固まりきっていない領域です。Web開発の基礎や業務経験を土台に、新しい技術で価値を生む挑戦ができます。"
       }
     ]

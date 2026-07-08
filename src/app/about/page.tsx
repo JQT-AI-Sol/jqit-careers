@@ -8,6 +8,7 @@ import { Button } from "@/components/ui/Button";
 import { CTA } from "@/components/sections/CTA";
 import { company } from "@/lib/content";
 import { asset } from "@/lib/asset";
+import { site } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "私たちについて",
@@ -98,18 +99,18 @@ export default function AboutPage() {
                 {company.product.body}
               </p>
               <div className="mt-9">
-                <Button href={"https://jqit.co.jp"} variant="primary">
+                <Button href={site.novaUrl} variant="primary">
                   製品サイトを見る
                 </Button>
               </div>
             </div>
-            <div className="relative h-[260px] w-full overflow-hidden rounded-2xl border border-white/10 md:h-[340px]">
+            <div className="relative flex h-[300px] w-full items-center overflow-hidden rounded-2xl border border-white/10 bg-white md:h-[400px]">
               <Image
-                src={asset("/images/ai-face.jpg")}
-                alt="AIのイメージ"
+                src={asset("/images/products/nova-pc-crop.png")}
+                alt="NOVA管理画面のスクリーンショット"
                 fill
                 sizes="(max-width: 768px) 100vw, 540px"
-                className="object-cover"
+                className="object-contain"
               />
             </div>
           </div>

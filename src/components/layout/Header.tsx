@@ -36,7 +36,7 @@ export function Header() {
             href="/entry"
             className="rounded-card bg-brand px-6 py-3 font-sans text-[13px] font-bold text-white transition-colors hover:bg-brand-dark"
           >
-            エントリー
+            カジュアル面談
           </Link>
         </nav>
 
@@ -96,7 +96,7 @@ export function Header() {
             onClick={() => setOpen(false)}
             className="mt-8 rounded-card bg-brand px-6 py-4 text-center font-sans font-bold text-white"
           >
-            エントリー
+            カジュアル面談
           </Link>
         </nav>
       </div>

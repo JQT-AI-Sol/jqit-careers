@@ -65,6 +65,30 @@ export const ourPeopleMarqueeTiles: Tile[] = [
   { kind: "photo", src: "/images/people/r2.jpg", w: 330, h: 236, mt: 88 },
 ];
 
+export const cultureMarqueeTiles: Tile[] = [
+  { kind: "photo", src: "/images/generated/cafe-table.png", w: 330, h: 236, mt: 88 },
+  { kind: "circleImg", src: "/images/generated/solo-portrait.png", size: 178, mt: 28 },
+  { kind: "ring", size: 118, outer: "#e60012", inner: "#faf9f7", mt: 108, mx: 14 },
+  { kind: "photo", src: "/images/generated/desk-review.png", w: 246, h: 316, mt: 22 },
+  { kind: "photo", src: "/images/generated/team-outdoor.png", w: 360, h: 242, mt: 96 },
+  {
+    kind: "hourglass",
+    w: 194,
+    h: 236,
+    top: "10,12 184,12 97,122",
+    bottom: "10,224 184,224 97,112",
+    cx: 97,
+    cy: 117,
+    r: 42,
+    mt: 40,
+    mx: 12,
+  },
+  { kind: "photo", src: "/images/generated/trio-laptop.png", w: 300, h: 218, mt: 62 },
+  { kind: "circleImg", src: "/images/generated/greenery-chat.png", size: 216, mt: 108 },
+  { kind: "dot", size: 72, color: "#14140f", mt: 34, mx: 10 },
+  { kind: "photo", src: "/images/generated/meeting-room.png", w: 330, h: 236, mt: 84 },
+];
+
 function TileView({ tile, eager }: { tile: Tile; eager: boolean }) {
   const mx = tile.mx ?? 10;
   const margin = { marginTop: tile.mt ?? 0, marginLeft: mx, marginRight: mx };

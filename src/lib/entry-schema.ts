@@ -1,8 +1,8 @@
 import { z } from "zod";
 
-export const applicationTypes = ["apply", "casual"] as const;
+export const applicationTypes = ["casual", "apply"] as const;
 export const experiences = ["inexperienced", "experienced"] as const;
-export const positions = ["dev", "infra", "qa", "ai"] as const;
+export const positions = ["dev", "infra", "qa", "ai", "sales"] as const;
 
 export const entrySchema = z.object({
   name: z
@@ -60,4 +60,5 @@ export const positionLabels: Record<(typeof positions)[number], string> = {
   infra: "インフラ",
   qa: "QA",
   ai: "AI",
+  sales: "営業",
 };

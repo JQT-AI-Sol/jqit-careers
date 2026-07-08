@@ -17,11 +17,11 @@ export function CTA() {
           <span className="text-brand">待っています。</span>
         </h2>
         <p className="mt-6 font-sans text-[15px] text-muted">
-          まずはカジュアル面談から。本応募も歓迎。お気軽にエントリーください。
+          まずはカジュアル面談から。本応募も歓迎です。お気軽にお話ししましょう。
         </p>
         <div className="mt-11 flex justify-center">
           <Button href="/entry" variant="primary">
-            エントリーフォームへ
+            カジュアル面談を申し込む
           </Button>
         </div>
       </Container>

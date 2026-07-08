@@ -8,6 +8,14 @@ import data from "@/../content/messages.json";
 
 const { ceo, leaders } = data;
 
+type LeaderItem = {
+  dept: string;
+  role: string;
+  name?: string;
+  image?: string;
+  quote: string;
+};
+
 const leaderPortraits = [
   { src: "/images/people/p1.jpg", position: "object-[50%_38%]" },
   { src: "/images/people/r6.jpg", position: "object-[50%_28%]" },
@@ -83,7 +91,7 @@ export function Messages() {
           </FadeIn>
 
           <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
-            {leaders.items.map((leader, i) => (
+            {(leaders.items as LeaderItem[]).map((leader, i) => (
               <FadeIn
                 key={leader.dept}
                 style={
@@ -94,7 +102,9 @@ export function Messages() {
                 <div className="flex items-start gap-5">
                   <div className="relative size-[86px] shrink-0 overflow-hidden rounded-xl bg-line md:size-[104px]">
                     <Image
-                      src={asset(leaderPortraits[i % leaderPortraits.length].src)}
+                      src={asset(
+                        leader.image ?? leaderPortraits[i % leaderPortraits.length].src,
+                      )}
                       alt=""
                       fill
                       sizes="104px"
@@ -108,6 +118,11 @@ export function Messages() {
                     <p className="mt-3 font-sans text-[12.5px] leading-[1.8] tracking-wide text-muted">
                       {leader.role}
                     </p>
+                    {leader.name && (
+                      <p className="mt-1 font-serif text-[18px] tracking-[0.03em] text-ink">
+                        {leader.name}
+                      </p>
+                    )}
                   </div>
                 </div>
                 <p className="mt-6 font-serif text-[17px] leading-[1.95] tracking-[0.01em] text-ink">
@@ -118,13 +133,13 @@ export function Messages() {
           </div>
         </div>
 
-        {/* === エントリー CTA === */}
+        {/* === カジュアル面談 CTA === */}
         <FadeIn className="mt-16 flex flex-col items-start gap-6 border-t border-line pt-12 md:mt-20 md:flex-row md:items-center md:justify-between">
           <p className="font-serif text-[20px] leading-[1.6] text-ink md:text-[24px]">
             この未来を、一緒に切り拓きませんか。
           </p>
           <Button href="/entry" variant="primary">
-            エントリーフォームへ
+            カジュアル面談を申し込む
           </Button>
         </FadeIn>
       </Container>

@@ -29,8 +29,8 @@ export function Weapons() {
             </span>
 
             {/* 左：マーク＋カテゴリ＋見出し */}
-            <div className="brand-line-label relative">
-              <div className="flex items-center gap-3">
+            <div className="brand-line-label relative pl-2 md:pl-3">
+              <div className="flex items-center gap-5">
                 <GeoMark index={i} size={26} className="text-brand" />
                 <span className="kicker">{w.label}</span>
                 {w.core && (

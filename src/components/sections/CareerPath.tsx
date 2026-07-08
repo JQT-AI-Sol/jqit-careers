@@ -55,7 +55,7 @@ export function CareerPath() {
             {data.closing}
           </p>
           <Button href="/entry" variant="primary" className="shrink-0">
-            エントリーする
+            カジュアル面談を申し込む
           </Button>
         </FadeIn>
       </Container>

@@ -5,9 +5,9 @@ import { SectionHead } from "@/components/ui/SectionHead";
 import { EntryForm } from "@/components/forms/EntryForm";
 
 export const metadata: Metadata = {
-  title: "エントリー",
+  title: "カジュアル面談",
   description:
-    "JQITへのエントリー・カジュアル面談のお申し込みフォーム。経験を活かして次のステージへ進みたい方を歓迎します。",
+    "JQITへのカジュアル面談・本応募のお申し込みフォーム。経験を活かして次のステージへ進みたい方を歓迎します。",
   alternates: { canonical: "/entry" },
 };
 
@@ -16,9 +16,9 @@ export default function EntryPage() {
     <section className="py-20 md:py-[120px]">
       <Container className="max-w-[720px]">
         <SectionHead
-          kicker="Entry"
-          title="エントリー"
-          lead="本応募・カジュアル面談、どちらも歓迎します。カジュアル面談は、聞きたいことや興味のある職種だけでも大丈夫です。"
+          kicker="Casual Interview"
+          title="カジュアル面談"
+          lead="まずは話を聞いてみたい、興味のある職種について相談したい。そんな段階でも歓迎します。本応募もこちらから可能です。"
           headingLevel="h1"
         />
         {process.env.NEXT_PUBLIC_STATIC_EXPORT === "true" && (

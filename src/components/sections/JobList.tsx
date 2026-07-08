@@ -22,8 +22,8 @@ export function JobList() {
             >
               {String(i + 1).padStart(2, "0")}
             </span>
-            <div className="brand-line-label relative">
-              <div className="flex items-center gap-2.5 font-mono text-[11px] tracking-[0.16em] text-brand uppercase">
+            <div className="brand-line-label relative pl-2 md:pl-3">
+              <div className="flex items-center gap-5 font-mono text-[11px] tracking-[0.16em] text-brand uppercase">
                 <GeoMark index={i} size={14} />
                 {job.category}
               </div>
@@ -35,8 +35,8 @@ export function JobList() {
               </p>
               <div className="mt-3.5 flex gap-3.5 font-sans text-xs text-body">
                 {job.acceptInexperienced && (
-                  <span className="before:mr-1.5 before:text-brand before:content-['—']">
-                    未経験OK
+                  <span className="bg-brand px-2 py-1 font-bold text-white">
+                    未経験可
                   </span>
                 )}
                 {job.acceptExperienced && (

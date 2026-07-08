@@ -2,8 +2,9 @@ export const site = {
   name: "JQIT",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://careers.jqit.co.jp",
   description:
-    "JQITの採用サイト。開発・インフラ・QA、そしてAI。最新技術に挑むITのプロフェッショナル集団で、経験を活かして挑戦したい人を歓迎します。",
+    "JQITの採用サイト。開発・インフラ・QA・AI・営業。最新技術に挑むITのプロフェッショナル集団で、経験を活かして挑戦したい人を歓迎します。",
   corporateUrl: "https://jqit.co.jp",
+  novaUrl: "https://nova-ai.jp",
   tagline: "挑戦と革新で、未来を切り拓く。",
 } as const;
 
@@ -25,11 +26,11 @@ export const footerNav = {
   Company: [
     { href: "https://jqit.co.jp", label: "会社概要", external: true },
     { href: "https://jqit.co.jp", label: "事業一覧", external: true },
-    { href: "https://jqit.co.jp", label: "製品 NOVA", external: true },
+    { href: site.novaUrl, label: "製品 NOVA", external: true },
     { href: "https://jqit.co.jp", label: "コーポレートサイト", external: true },
   ],
   Contact: [
-    { href: "/entry", label: "エントリー" },
+    { href: "/entry", label: "カジュアル面談" },
     { href: "/entry", label: "お問い合わせ" },
     { href: "/privacy", label: "プライバシーポリシー" },
   ],

@@ -66,7 +66,7 @@ export function Hero() {
               style={{ animationDelay: "0.68s" }}
             >
               <Button href="/entry" variant="primary">
-                エントリーする
+                カジュアル面談を申し込む
               </Button>
               <Button href="/jobs" variant="arrow">
                 職種を見る →

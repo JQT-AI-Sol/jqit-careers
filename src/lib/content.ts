@@ -22,6 +22,9 @@ export type Interview = {
   role: string;
   name: string;
   dept?: string;
+  image?: string;
+  imagePosition?: string;
+  sourceUrl?: string;
   career?: string;
   title: string;
   excerpt: string;
@@ -42,7 +45,7 @@ export const faqs: Faq[] = faqData as Faq[];
 export const stats: Stat[] = statsData as Stat[];
 export const recruitFlow: FlowStep[] = flowData as FlowStep[];
 
-export const jobCategoryValues = ["dev", "infra", "qa", "ai"] as const;
+export const jobCategoryValues = ["dev", "infra", "qa", "ai", "sales"] as const;
 export type JobCategoryValue = (typeof jobCategoryValues)[number];
 
 // slug ↔ フォームの希望職種value 対応
@@ -51,6 +54,7 @@ export const jobSlugToValue: Record<string, JobCategoryValue> = {
   infra: "infra",
   qa: "qa",
   ai: "ai",
+  sales: "sales",
 };
 
 export const positionLabels: Record<JobCategoryValue, string> = {
@@ -58,6 +62,7 @@ export const positionLabels: Record<JobCategoryValue, string> = {
   infra: "インフラ",
   qa: "QA",
   ai: "AI",
+  sales: "営業",
 };
 
 // 会社・ミッション・事業（Why JQIT）
@@ -93,30 +98,57 @@ export const strengths = [
 // 資格取得支援制度（Canva「JQITのいろいろな数字」より）
 export const qualifications = {
   intro:
-    "推奨資格に合格した場合、受験費用を会社が負担。さらに一時報奨金と資格手当（月々）を支給します（金額は資格により異なる）。",
+    "AI・開発・インフラ・QA・共通領域まで、対象資格は30以上。推奨資格に合格した場合、受験費用を会社が負担し、資格に応じて一時報奨金と月々の資格手当を支給します。",
+  highlights: ["対象資格30以上", "受験費用を会社負担", "一時報奨金", "月々の資格手当"],
   byDomain: [
     {
-      domain: "開発",
+      domain: "AI",
+      count: "4資格＋講座",
+      focus: "生成AI・LLM・ディープラーニング",
       items: [
-        "ORACLE MASTER DBA（Bronze / Silver）",
-        "Oracle Certified Java Programmer Silver SE 11",
-        "ITパスポート / 基本情報技術者 / 応用情報技術者",
+        "生成AIパスポート / GenerativeAI",
+        "G検定 / E検定",
+        "松尾研LLM講座",
+      ],
+    },
+    {
+      domain: "開発",
+      count: "7資格",
+      focus: "DB・Java・情報処理",
+      items: [
+        "ORACLE MASTER",
+        "Java Silver",
+        "基本情報 / 応用情報",
       ],
     },
     {
       domain: "インフラ",
+      count: "10資格以上",
+      focus: "Linux・ネットワーク・クラウド",
       items: [
-        "LinuC（レベル1〜3）",
+        "LinuC",
         "CCNA",
-        "AWS認定ソリューションアーキテクト / 専門知識",
+        "AWS認定各種",
       ],
     },
     {
       domain: "QA",
+      count: "9資格",
+      focus: "テスト設計・品質・マネジメント",
       items: [
-        "IVEC（レベル1〜5）",
-        "JSTQB Foundation Level",
-        "JSTQB Advanced Level（テストアナリスト / テストマネージャー）",
+        "IVEC",
+        "JSTQB",
+        "JCSQE 初級",
+      ],
+    },
+    {
+      domain: "共通",
+      count: "5資格",
+      focus: "基礎力・業務運営",
+      items: [
+        "ITパスポート",
+        "基本情報 / 応用情報",
+        "衛生管理者",
       ],
     },
   ],
@@ -142,9 +174,9 @@ export type Weapon = {
 export const weapons: Weapon[] = [
   {
     no: "01",
-    label: "チームで率いて入る",
-    headline: "ひとり常駐で、終わらせない。",
-    body: "客先でも、JQITのチームで参画。あなたはメンバーを率いるリーダーとして現場に立つ。孤立も指示待ちも、もう要らない。",
+    label: "現場で孤立させない",
+    headline: "ひとり任せで、終わらせない。",
+    body: "案件や体制はさまざまでも、営業・上長・事業部とつながりながら現場に立つ。チーム参画の機会も活かし、経験者が次の役割へ進めるよう支えます。",
   },
   {
     no: "02",

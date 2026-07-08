@@ -60,7 +60,7 @@ export default function Home() {
             }
             lead={
               <>
-                ひとりで送り出さない。技術を、腐らせない。
+                ひとり任せにしない。技術を、腐らせない。
                 <br className="hidden md:block" />
                 そのためのJQITの答えが、この5つ。
               </>
@@ -80,7 +80,7 @@ export default function Home() {
           <SectionHead
             kicker="Jobs"
             title="募集職種"
-            lead="開発・インフラ・QA・AI。あなたの経験を、チームを率いて活かせる4領域があります。"
+            lead="開発・インフラ・QA・AI・営業。あなたの経験を、チームを率いて活かせる5領域があります。"
           />
           <JobList />
         </Container>

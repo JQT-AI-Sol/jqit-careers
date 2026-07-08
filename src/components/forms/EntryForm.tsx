@@ -36,7 +36,7 @@ export function EntryForm() {
   } = useForm<EntryInput>({
     resolver: zodResolver(entrySchema),
     defaultValues: {
-      applicationType: "apply",
+      applicationType: "casual",
       desiredPositions: positions.includes(
         initialPosition as (typeof positions)[number],
       )
@@ -310,7 +310,7 @@ export function EntryForm() {
         disabled={status === "submitting"}
         className="mt-2 w-full rounded-card bg-brand px-9 py-4 font-sans text-[15px] font-bold text-white transition-colors hover:bg-brand-dark disabled:opacity-60 md:w-auto"
       >
-        {status === "submitting" ? "送信中…" : "エントリーを送信する"}
+        {status === "submitting" ? "送信中…" : "カジュアル面談を申し込む"}
       </button>
     </form>
   );
