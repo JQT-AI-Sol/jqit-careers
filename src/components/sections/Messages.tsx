@@ -89,7 +89,7 @@ export function Messages() {
                 style={
                   { transitionDelay: `${(i % 2) * 90}ms` } as React.CSSProperties
                 }
-                className="bg-paper p-9 md:p-12"
+                className="brand-line-card bg-paper p-9 md:p-12"
               >
                 <div className="flex items-start gap-5">
                   <div className="relative size-[86px] shrink-0 overflow-hidden rounded-xl bg-line md:size-[104px]">
