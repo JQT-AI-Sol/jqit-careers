@@ -19,7 +19,7 @@ export function CareerPath() {
           {data.steps.map((s, i) => (
             <FadeIn
               key={s.no}
-              className="flex h-full flex-col bg-paper p-8 md:p-10"
+              className="brand-line-card flex h-full flex-col bg-paper p-8 md:p-10"
               style={{ transitionDelay: `${i * 110}ms` } as React.CSSProperties}
             >
               <div className="flex items-center justify-between gap-4">
@@ -28,7 +28,7 @@ export function CareerPath() {
                 </div>
                 <div className="h-px flex-1 bg-line" />
               </div>
-              <h3 className="mt-5 text-balance font-serif text-[22px] font-medium leading-[1.5] text-ink md:text-[24px]">
+              <h3 className="brand-line-label mt-5 text-balance font-serif text-[22px] font-medium leading-[1.5] text-ink md:text-[24px]">
                 {s.title}
               </h3>
               <div className="mt-2 font-mono text-[11px] tracking-[0.08em] text-muted">

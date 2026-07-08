@@ -9,8 +9,6 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import { interviews, type Interview } from "@/lib/content";
 import { asset } from "@/lib/asset";
 
-// 顔の写らない抽象画像（m1〜m6）を一覧上の並びで循環利用。
-// Members.tsx のカード画像と同じ index ロジックで、一覧↔詳細の絵柄を一致させる。
 const memberImages = [
   "/images/members/m1.jpg",
   "/images/members/m3.jpg",
@@ -21,7 +19,7 @@ const memberImages = [
 ];
 
 function imageFor(index: number) {
-  return memberImages[index % memberImages.length];
+  return interviews[index]?.image ?? memberImages[index % memberImages.length];
 }
 
 export async function generateStaticParams() {
@@ -87,6 +85,7 @@ export default async function InterviewDetailPage({
                 priority
                 sizes="(max-width: 768px) 100vw, 1160px"
                 className="object-cover"
+                style={{ objectPosition: member.imagePosition ?? "50% 38%" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-black/10" />
               <span
@@ -165,12 +164,12 @@ export default async function InterviewDetailPage({
               {prev ? (
                 <Link
                   href={`/interviews/${prev.slug}`}
-                  className="group flex flex-col gap-2 py-9 transition-colors hover:bg-cream md:pr-10"
+                  className="group brand-line-row flex flex-col gap-2 py-9 md:pr-10"
                 >
                   <span className="font-mono text-[11px] tracking-[0.14em] text-muted uppercase">
                     ← Prev
                   </span>
-                  <span className="font-serif text-[16px] leading-[1.6] text-ink transition-colors group-hover:text-brand">
+                  <span className="brand-line-label font-serif text-[16px] leading-[1.6] text-ink transition-colors group-hover:text-brand">
                     {prev.name}・{prev.title}
                   </span>
                 </Link>
@@ -180,12 +179,12 @@ export default async function InterviewDetailPage({
               {next && (
                 <Link
                   href={`/interviews/${next.slug}`}
-                  className="group flex flex-col items-start gap-2 py-9 transition-colors hover:bg-cream md:items-end md:pl-10 md:text-right"
+                  className="group brand-line-row flex flex-col items-start gap-2 py-9 md:items-end md:pl-10 md:text-right"
                 >
                   <span className="font-mono text-[11px] tracking-[0.14em] text-muted uppercase">
                     Next →
                   </span>
-                  <span className="font-serif text-[16px] leading-[1.6] text-ink transition-colors group-hover:text-brand">
+                  <span className="brand-line-label font-serif text-[16px] leading-[1.6] text-ink transition-colors group-hover:text-brand">
                     {next.name}・{next.title}
                   </span>
                 </Link>
@@ -210,7 +209,7 @@ export default async function InterviewDetailPage({
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-5 sm:flex-row">
             <Button href="/entry" variant="primary">
-              エントリーする
+              カジュアル面談・エントリー
             </Button>
             <Button href="/interviews" variant="arrow">
               一覧に戻る

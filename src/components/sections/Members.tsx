@@ -25,7 +25,7 @@ export function Members({ limit }: { limit?: number }) {
         >
           <Link
             href={`/interviews/${m.slug}`}
-            className="group flex h-full flex-col rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-4 focus-visible:ring-offset-paper"
+            className="group brand-line-card flex h-full flex-col rounded-2xl focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand focus-visible:ring-offset-4 focus-visible:ring-offset-paper"
           >
             <div className="relative aspect-[4/3] w-full overflow-hidden rounded-2xl bg-ink">
               <Image
