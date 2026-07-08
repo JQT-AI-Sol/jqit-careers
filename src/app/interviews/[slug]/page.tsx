@@ -9,6 +9,8 @@ import { FadeIn } from "@/components/ui/FadeIn";
 import { interviews, type Interview } from "@/lib/content";
 import { asset } from "@/lib/asset";
 
+// 顔の写らない抽象画像（m1〜m6）を一覧上の並びで循環利用。
+// Members.tsx のカード画像と同じ index ロジックで、一覧↔詳細の絵柄を一致させる。
 const memberImages = [
   "/images/members/m1.jpg",
   "/images/members/m3.jpg",
@@ -19,7 +21,7 @@ const memberImages = [
 ];
 
 function imageFor(index: number) {
-  return interviews[index]?.image ?? memberImages[index % memberImages.length];
+  return memberImages[index % memberImages.length];
 }
 
 export async function generateStaticParams() {
@@ -85,7 +87,6 @@ export default async function InterviewDetailPage({
                 priority
                 sizes="(max-width: 768px) 100vw, 1160px"
                 className="object-cover"
-                style={{ objectPosition: member.imagePosition ?? "50% 38%" }}
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-black/10" />
               <span
@@ -209,7 +210,7 @@ export default async function InterviewDetailPage({
           </p>
           <div className="mt-10 flex flex-col items-center justify-center gap-5 sm:flex-row">
             <Button href="/entry" variant="primary">
-              カジュアル面談・エントリー
+              エントリーする
             </Button>
             <Button href="/interviews" variant="arrow">
               一覧に戻る
