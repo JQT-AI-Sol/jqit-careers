@@ -216,3 +216,86 @@
     will-change: transform;
   }
 }
+
+/* ===== brand-line: hover時に赤の縦線＋cream背景（Corporateサイト共通パターン） ===== */
+.brand-line-card,
+.brand-line-row {
+  position: relative;
+  overflow: hidden;
+  transition:
+    background-color 0.28s ease,
+    color 0.28s ease;
+}
+
+.brand-line-card::before,
+.brand-line-row::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: var(--color-brand);
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+  transition: transform 0.32s cubic-bezier(0.16, 0.84, 0.44, 1);
+  z-index: 1; /* Members等の画像フルブリードカードでも線が画像の上に出るように */
+}
+
+.brand-line-label {
+  transition:
+    color 0.28s ease,
+    transform 0.32s cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+
+.brand-line-no {
+  transition: color 0.28s ease;
+}
+
+/* FadeIn(.fade-in)と同一要素に付く場合、リビールのtransitionを潰さず合成する */
+@media (prefers-reduced-motion: no-preference) and (scripting: enabled) {
+  .fade-in.brand-line-card,
+  .fade-in.brand-line-row {
+    transition:
+      opacity 0.8s cubic-bezier(0.16, 0.84, 0.44, 1),
+      transform 0.8s cubic-bezier(0.16, 0.84, 0.44, 1),
+      background-color 0.28s ease,
+      color 0.28s ease;
+  }
+}
+
+@media (hover: hover) {
+  .brand-line-card:hover,
+  .brand-line-row:hover {
+    background: var(--color-cream);
+  }
+
+  .brand-line-card:hover::before,
+  .brand-line-row:hover::before {
+    transform: scaleY(1);
+  }
+
+  .brand-line-card:hover .brand-line-label,
+  .brand-line-row:hover .brand-line-label {
+    transform: translateX(3px);
+  }
+
+  .brand-line-card:hover .brand-line-no,
+  .brand-line-row:hover .brand-line-no {
+    color: var(--color-brand-dark);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-line-card,
+  .brand-line-row,
+  .brand-line-card::before,
+  .brand-line-row::before,
+  .brand-line-label,
+  .brand-line-no {
+    transition: none;
+  }
+
+  .brand-line-card:hover .brand-line-label,
+  .brand-line-row:hover .brand-line-label {
+    transform: none;
+  }
+}
