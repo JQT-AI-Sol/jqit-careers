@@ -1,5 +1,2 @@
-:HL["/jqit-careers/_next/static/chunks/1qhlgf7-46d45.css","style"]
-:HL["/jqit-careers/_next/static/chunks/1mvnofrladsid.css","style"]
-:HL["/jqit-careers/_next/static/chunks/0qb927232j1gn.css","style"]
-:HL["/jqit-careers/_next/static/media/75affa71d1e2f6a7-s.p.17-aodiw50953.woff2","font",{"crossOrigin":"","type":"font/woff2"}]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"privacy","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"ZRrEw6W8hNrm7s4nItAjt"}
+:HL["/jqit-careers/_next/static/css/c1cd603abbdb4d4c.css","style"]
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"privacy","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"6-ThZ3KTiiOedt3T-zdQ4"}
