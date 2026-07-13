@@ -32,8 +32,8 @@ export function Messages() {
           <FadeIn>
             <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-line bg-paper">
               <Image
-                src={asset("/images/about/team.jpg")}
-                alt="オフィスで協働するJQITのメンバー"
+                src={asset("/images/generated/message-standing-pair-crop.jpg")}
+                alt="明るいオフィスで並ぶJQITのメンバー"
                 fill
                 sizes="(max-width: 768px) 100vw, 420px"
                 className="object-cover"

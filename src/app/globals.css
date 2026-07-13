@@ -22,6 +22,10 @@
 :root {
   --background: #ffffff;
   --foreground: #2a2a28;
+  --font-noto-serif: "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", serif;
+  --font-noto-sans: "Hiragino Sans", "Yu Gothic", "YuGothic", system-ui, sans-serif;
+  --font-archivo: "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-anton: Impact, "Arial Black", "Helvetica Neue", Arial, sans-serif;
 }
 
 @layer base {

@@ -75,10 +75,10 @@ export default function CulturePage() {
             title="働く環境・制度"
             lead="経験者が安心して力を出せるように、学び・交流・評価の仕組みを整えています。"
           />
-          <div className="grid grid-cols-1 gap-10 border-t border-line pt-12 md:grid-cols-3 md:gap-14">
+          <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
             {benefits.map((b) => (
-              <div key={b.title}>
-                <h3 className="font-serif text-[20px] font-medium text-ink">
+              <div key={b.title} className="brand-line-card bg-paper p-7 md:p-8">
+                <h3 className="brand-line-label font-serif text-[20px] font-medium text-ink">
                   {b.title}
                 </h3>
                 <p className="mt-3 font-sans text-[13.5px] leading-[1.95] text-muted">

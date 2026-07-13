@@ -24,20 +24,27 @@ export default function AboutPage() {
       <section className="py-20 md:py-[120px]">
         <Container>
           <Kicker>Why JQIT</Kicker>
-          <h1 className="mt-7 max-w-[820px] font-serif text-[28px] font-medium leading-[1.6] tracking-[0.03em] text-ink md:text-[44px]">
-            {company.mission}
+          <h1 className="mt-7 max-w-[980px] text-balance font-serif text-[30px] font-medium leading-[1.45] tracking-[0.03em] text-ink md:text-[46px] md:leading-[1.5]">
+            技術の力で、
+            <br className="hidden md:block" />
+            お客様の本質的な課題を解決する。
           </h1>
-          <p className="mt-10 max-w-[820px] font-sans text-[15px] leading-[2.1] text-body">
+          <p className="mt-8 max-w-[980px] text-pretty font-sans text-[15px] leading-[2.15] text-body md:mt-9 md:text-[15.5px]">
             {company.missionBody}
           </p>
-          <div className="mt-10 flex flex-wrap gap-3">
+          <div className="mt-10 grid max-w-[980px] grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
             {company.values.map((v) => (
-              <span
-                key={v}
-                className="rounded-card border border-line px-4 py-2 font-sans text-[13px] text-ink"
+              <div
+                key={v.title}
+                className="bg-paper px-5 py-4"
               >
-                {v}
-              </span>
+                <p className="font-sans text-[14px] font-bold text-ink">
+                  {v.title}
+                </p>
+                <p className="mt-2 font-sans text-[12.5px] leading-[1.8] text-muted">
+                  {v.body}
+                </p>
+              </div>
             ))}
           </div>
           <div className="relative mt-14 h-[280px] w-full overflow-hidden rounded-2xl md:h-[420px]">
@@ -61,8 +68,8 @@ export default function AboutPage() {
           <SectionHead kicker="Business" title="事業について" />
           <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
             {company.businesses.map((b) => (
-              <div key={b.name} className="bg-paper p-9 md:p-12">
-                <h3 className="font-serif text-[22px] font-medium text-ink">
+              <div key={b.name} className="brand-line-card bg-paper p-9 md:p-12">
+                <h3 className="brand-line-label font-serif text-[22px] font-medium text-ink">
                   {b.name}
                 </h3>
                 <p className="mt-4 font-sans text-[14px] leading-[2] text-muted">
