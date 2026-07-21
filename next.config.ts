@@ -15,6 +15,9 @@ const nextConfig: NextConfig = isStatic
     }
   : {
       images: {
+        // Keep the response format deterministic for microCMS and local images
+        // when the Next.js image optimizer is available (for example on Vercel).
+        formats: ["image/webp"],
         remotePatterns: [
           { protocol: "https", hostname: "images.microcms-assets.io" },
         ],

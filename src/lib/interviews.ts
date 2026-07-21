@@ -14,13 +14,36 @@ type MicroCMSInterview = Omit<Interview, "image"> & {
 const serviceDomain = process.env.MICROCMS_SERVICE_DOMAIN;
 const apiKey = process.env.MICROCMS_API_KEY;
 
+/**
+ * microCMS Image API can return a WebP representation without requiring a
+ * server-side image optimizer. This is important for the static GitHub Pages
+ * build, where next/image is intentionally unoptimized.
+ */
+function toMicroCmsWebp(url?: string): string | undefined {
+  if (!url) return undefined;
+
+  try {
+    const parsed = new URL(url);
+    if (parsed.hostname !== "images.microcms-assets.io") return url;
+
+    parsed.searchParams.set("fm", "webp");
+    return parsed.toString();
+  } catch {
+    // Preserve malformed/relative values so the existing fallback behavior
+    // remains unchanged and the rendering layer can handle them normally.
+    return url;
+  }
+}
+
 function normalize(items: MicroCMSInterview[]): Interview[] {
   const fallbackBySlug = new Map(
     interviewFallback.map((interview) => [interview.slug, interview]),
   );
   const normalized = items.map((item) => {
     const fallback = fallbackBySlug.get(item.slug);
-    const cmsImage = typeof item.image === "string" ? item.image : item.image?.url;
+    const cmsImage = toMicroCmsWebp(
+      typeof item.image === "string" ? item.image : item.image?.url,
+    );
 
     return {
       ...fallback,
