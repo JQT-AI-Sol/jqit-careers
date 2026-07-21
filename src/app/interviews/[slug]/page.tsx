@@ -1,0 +1,259 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import Link from "next/link";
+import { notFound } from "next/navigation";
+import { Container } from "@/components/ui/Container";
+import { Kicker } from "@/components/ui/SectionHead";
+import { Button } from "@/components/ui/Button";
+import { FadeIn } from "@/components/ui/FadeIn";
+import type { Interview } from "@/lib/content";
+import { getInterviewBySlug, getInterviews } from "@/lib/interviews";
+import { asset } from "@/lib/asset";
+import { site } from "@/lib/site";
+
+const memberImages = [
+  "/images/members/m1.jpg",
+  "/images/members/m3.jpg",
+  "/images/members/m5.jpg",
+  "/images/members/m2.jpg",
+  "/images/members/m4.jpg",
+  "/images/members/m6.jpg",
+];
+
+function imageFor(member: Interview, index: number) {
+  return member.image ?? memberImages[index % memberImages.length];
+}
+
+export async function generateStaticParams() {
+  const interviews = await getInterviews();
+  return interviews.map((m) => ({ slug: m.slug }));
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}): Promise<Metadata> {
+  const { slug } = await params;
+  const member = await getInterviewBySlug(slug);
+  if (!member) return { title: "社員インタビュー" };
+  return {
+    title: member.seoTitle || member.title,
+    description: member.seoDescription || member.excerpt,
+    alternates: { canonical: `/interviews/${slug}` },
+    openGraph: {
+      type: "article",
+      title: member.seoTitle || member.title,
+      description: member.seoDescription || member.excerpt,
+      images: member.image ? [{ url: member.image }] : undefined,
+    },
+  };
+}
+
+type Block = { kicker: string; heading: string; body: string };
+
+export default async function InterviewDetailPage({
+  params,
+}: {
+  params: Promise<{ slug: string }>;
+}) {
+  const { slug } = await params;
+  const interviews = await getInterviews();
+  const index = interviews.findIndex((m) => m.slug === slug);
+  if (index === -1) notFound();
+
+  const member = interviews[index] as Interview;
+  const prev = index > 0 ? interviews[index - 1] : null;
+  const next = index < interviews.length - 1 ? interviews[index + 1] : null;
+
+  const blocks = [
+    { kicker: "Why JQIT", heading: "入社のきっかけ", body: member.reason },
+    { kicker: "My Work", heading: "いまの仕事", body: member.work },
+    { kicker: "Growth", heading: "成長と変化", body: member.growth },
+    { kicker: "Message", heading: "挑戦するあなたへ", body: member.message },
+  ].filter((b): b is Block => Boolean(b.body));
+
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    name: member.title,
+    description: member.seoDescription || member.excerpt,
+    url: `${site.url}/interviews/${member.slug}`,
+    datePublished: member.publishedAt,
+    dateModified: member.revisedAt,
+    mainEntity: {
+      "@type": "Person",
+      name: member.name,
+      jobTitle: member.career || member.role,
+      worksFor: { "@type": "Organization", name: "JQIT", url: site.corporateUrl },
+      image: member.image,
+      description: member.excerpt,
+    },
+  };
+
+  return (
+    <article>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      {/* キービジュアル */}
+      <section className="pt-10 md:pt-16">
+        <Container>
+          <FadeIn>
+            <Link
+              href="/interviews"
+              className="font-mono text-[12px] tracking-[0.12em] text-muted uppercase transition-colors hover:text-brand"
+            >
+              ← Members
+            </Link>
+          </FadeIn>
+          <FadeIn className="mt-6">
+            <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-ink">
+              <Image
+                src={asset(imageFor(member, index))}
+                alt=""
+                fill
+                priority
+                sizes="(max-width: 768px) 100vw, 1160px"
+                className="object-cover"
+                style={{ objectPosition: member.imagePosition ?? "50% 38%" }}
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/15 to-black/10" />
+              <span
+                aria-hidden
+                className="absolute top-5 left-7 font-serif text-7xl leading-none text-white/40 md:text-8xl"
+              >
+                &ldquo;
+              </span>
+              <div className="absolute bottom-7 left-7 right-7">
+                <span className="font-mono text-[11px] tracking-[0.18em] text-brand uppercase md:text-[13px]">
+                  {member.role}
+                </span>
+                <div className="mt-2 flex items-baseline gap-3">
+                  <span className="font-serif text-4xl tracking-[0.08em] text-white md:text-5xl">
+                    {member.name}
+                  </span>
+                  {member.dept && (
+                    <span className="font-mono text-[11px] tracking-[0.12em] text-white/75 uppercase">
+                      {member.dept}
+                    </span>
+                  )}
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </Container>
+      </section>
+
+      {/* 見出し（インタビュー引用＋経歴） */}
+      <section className="pt-12 md:pt-16">
+        <Container>
+          <FadeIn className="max-w-[820px]">
+            <h1 className="font-serif text-[27px] font-medium leading-[1.6] tracking-[0.02em] text-ink md:text-[40px]">
+              {member.title}
+            </h1>
+            {member.career && (
+              <p className="mt-6 font-mono text-[13px] tracking-[0.08em] text-muted">
+                {member.career}
+              </p>
+            )}
+          </FadeIn>
+        </Container>
+      </section>
+
+      {/* 本文セクション */}
+      <section className="py-16 md:py-24">
+        <Container>
+          <div className="mx-auto flex max-w-[820px] flex-col gap-14 md:gap-20">
+            {blocks.map((b, i) => (
+              <FadeIn
+                key={b.heading}
+                style={
+                  { transitionDelay: `${i * 60}ms` } as React.CSSProperties
+                }
+              >
+                <div className="border-l-2 border-brand/30 pl-6 md:pl-9">
+                  <Kicker>{b.kicker}</Kicker>
+                  <h2 className="mt-4 font-serif text-[21px] font-medium leading-[1.6] text-ink md:text-[26px]">
+                    {b.heading}
+                  </h2>
+                  <p className="mt-5 font-sans text-[15px] leading-[2.05] text-body md:text-[16px]">
+                    {b.body}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* 前後ナビ */}
+      {(prev || next) && (
+        <section className="border-t border-line">
+          <Container>
+            <nav className="grid grid-cols-1 gap-px md:grid-cols-2">
+              {prev ? (
+                <Link
+                  href={`/interviews/${prev.slug}`}
+                  className="group brand-line-row flex flex-col gap-2 py-9 md:pr-10"
+                >
+                  <span className="font-mono text-[11px] tracking-[0.14em] text-muted uppercase">
+                    ← Prev
+                  </span>
+                  <span className="brand-line-label font-serif text-[16px] leading-[1.6] text-ink transition-colors group-hover:text-brand">
+                    {prev.name}・{prev.title}
+                  </span>
+                </Link>
+              ) : (
+                <span className="hidden md:block" />
+              )}
+              {next && (
+                <Link
+                  href={`/interviews/${next.slug}`}
+                  className="group brand-line-row flex flex-col items-start gap-2 py-9 md:items-end md:pl-10 md:text-right"
+                >
+                  <span className="font-mono text-[11px] tracking-[0.14em] text-muted uppercase">
+                    Next →
+                  </span>
+                  <span className="brand-line-label font-serif text-[16px] leading-[1.6] text-ink transition-colors group-hover:text-brand">
+                    {next.name}・{next.title}
+                  </span>
+                </Link>
+              )}
+            </nav>
+          </Container>
+        </section>
+      )}
+
+      {/* 末尾CTA */}
+      <section className="bg-cream py-[88px] text-center md:py-[120px]">
+        <Container>
+          <div className="flex justify-center">
+            <Kicker>Join Us</Kicker>
+          </div>
+          <h2 className="mt-6 font-serif text-[28px] font-medium leading-[1.6] tracking-[0.03em] text-ink md:text-[44px]">
+            次は、あなたの
+            <span className="text-brand">成長ストーリー</span>を。
+          </h2>
+          <p className="mt-6 font-sans text-[15px] text-muted">
+            あなたの経験を、次のステージへ。まずはカジュアル面談からお気軽に。
+          </p>
+          <div className="mt-10 flex flex-col items-center justify-center gap-5 sm:flex-row">
+            <Button href="/entry" variant="primary">
+              カジュアル面談を申し込む
+            </Button>
+            <Button href="/interviews" variant="arrow">
+              一覧に戻る
+            </Button>
+            {member.noteUrl && (
+              <Button href={member.noteUrl} variant="arrow">
+                noteでも読む
+              </Button>
+            )}
+          </div>
+        </Container>
+      </section>
+    </article>
+  );
+}

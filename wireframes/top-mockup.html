@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>JQIT 採用サイト — トップ モックアップ</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@600;700;800&family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --c-red:#E60012; --c-red-dark:#B3000E; --c-red-soft:#FDE7E9;
+    --c-ink:#0A0A0A; --c-ink-2:#1A1A1E; --c-text:#1C1C1E; --c-muted:#6B7280;
+    --c-line:#E5E7EB; --c-bg:#FFFFFF; --c-bg-soft:#F7F7F8;
+    --container:1200px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:"Noto Sans JP",sans-serif;color:var(--c-text);background:var(--c-bg);line-height:1.8;-webkit-font-smoothing:antialiased}
+  .wrap{max-width:var(--container);margin:0 auto;padding:0 24px}
+  a{color:inherit;text-decoration:none}
+  .kicker{font-family:"Archivo",sans-serif;font-weight:700;font-size:13px;letter-spacing:.14em;color:var(--c-red);text-transform:uppercase;display:inline-block;margin-bottom:14px}
+  .kicker.light{color:#fff;opacity:.8}
+  h2.sec{font-size:32px;font-weight:800;letter-spacing:-.01em;line-height:1.25;margin-bottom:16px}
+  .lead{color:var(--c-muted);font-size:16px;max-width:640px}
+  .btn{display:inline-flex;align-items:center;gap:8px;font-weight:700;font-size:15px;padding:14px 28px;border-radius:4px;transition:.2s;cursor:pointer;border:2px solid transparent}
+  .btn-primary{background:var(--c-red);color:#fff}
+  .btn-primary:hover{background:var(--c-red-dark)}
+  .btn-secondary{border-color:var(--c-ink);color:var(--c-ink)}
+  .btn-secondary:hover{background:var(--c-ink);color:#fff}
+  .btn-ghost{border-color:rgba(255,255,255,.5);color:#fff}
+  .btn-ghost:hover{background:#fff;color:var(--c-ink)}
+
+  /* Header */
+  header{position:sticky;top:0;z-index:50;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-bottom:1px solid var(--c-line)}
+  .nav{display:flex;align-items:center;justify-content:space-between;height:72px}
+  .logo{display:flex;align-items:center;gap:10px;font-family:"Archivo",sans-serif;font-weight:800;font-size:22px;letter-spacing:.02em;color:var(--c-ink)}
+  .logo .dot{width:18px;height:18px;border-radius:50%;background:var(--c-red);display:inline-block}
+  .navlinks{display:flex;gap:30px;align-items:center;font-size:14px;font-weight:500}
+  .navlinks a:hover{color:var(--c-red)}
+  .nav-cta{font-size:14px;padding:11px 22px}
+
+  /* Hero */
+  .hero{background:var(--c-ink);color:#fff;position:relative;overflow:hidden}
+  .hero-inner{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:center;min-height:560px;padding:80px 0}
+  .hero h1{font-size:60px;font-weight:900;line-height:1.16;letter-spacing:-.02em;margin-bottom:22px}
+  .hero h1 .red{color:var(--c-red)}
+  .hero p{color:#c9c9cf;font-size:17px;max-width:480px;margin-bottom:32px}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap}
+  .hero-visual{position:relative;height:420px;border-radius:8px;background:
+     linear-gradient(135deg,rgba(230,0,18,.25),rgba(10,10,10,.1)),
+     repeating-linear-gradient(45deg,#222 0 2px,transparent 2px 22px),
+     linear-gradient(160deg,#3a3a40,#0e0e12);
+     border:1px solid rgba(255,255,255,.12);display:flex;align-items:flex-end;padding:26px}
+  .hero-visual .tagjp{font-weight:900;font-size:30px;line-height:1.3;text-shadow:0 2px 18px rgba(0,0,0,.5)}
+  .hero-accent{position:absolute;right:-60px;top:-60px;width:280px;height:280px;border:2px solid var(--c-red);border-radius:50%;opacity:.5}
+  .hero-accent2{position:absolute;left:48%;bottom:-40px;width:120px;height:120px;background:var(--c-red);opacity:.12;border-radius:50%}
+
+  /* generic section */
+  section.block{padding:104px 0}
+  .block.soft{background:var(--c-bg-soft)}
+  .sec-head{margin-bottom:48px}
+
+  /* strengths */
+  .grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .scard{background:#fff;border:1px solid var(--c-line);border-radius:8px;padding:30px 24px;transition:.25s;border-top:3px solid transparent}
+  .scard:hover{box-shadow:0 8px 28px rgba(0,0,0,.08);border-top-color:var(--c-red);transform:translateY(-3px)}
+  .scard .ic{width:46px;height:46px;border-radius:8px;background:var(--c-ink);color:#fff;display:flex;align-items:center;justify-content:center;font-family:"Archivo";font-weight:800;margin-bottom:16px}
+  .scard h3{font-size:19px;font-weight:700;margin-bottom:8px}
+  .scard p{font-size:14px;color:var(--c-muted)}
+
+  /* appeal */
+  .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:28px}
+  .appeal .num{font-family:"Archivo";font-weight:800;font-size:15px;color:var(--c-red);margin-bottom:10px}
+  .appeal h3{font-size:21px;font-weight:800;margin-bottom:10px;line-height:1.4}
+  .appeal p{font-size:14px;color:var(--c-muted)}
+  .appeal .item{border-left:2px solid var(--c-line);padding-left:22px}
+
+  /* jobs */
+  .jobs{display:grid;grid-template-columns:repeat(2,1fr);gap:20px}
+  .jcard{background:#fff;border:1px solid var(--c-line);border-radius:8px;padding:28px;display:flex;flex-direction:column;gap:12px;transition:.25s}
+  .jcard:hover{box-shadow:0 10px 30px rgba(0,0,0,.08);transform:translateY(-3px)}
+  .jcat{font-family:"Archivo";font-size:12px;font-weight:700;letter-spacing:.1em;color:var(--c-muted);text-transform:uppercase}
+  .jcard h3{font-size:23px;font-weight:800}
+  .jcard p{font-size:14px;color:var(--c-muted)}
+  .badges{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+  .badge{font-size:12px;font-weight:700;padding:5px 10px;border-radius:4px}
+  .badge.red{background:var(--c-red-soft);color:var(--c-red-dark)}
+  .badge.dark{border:1px solid var(--c-ink);color:var(--c-ink)}
+  .jlink{color:var(--c-red);font-weight:700;font-size:14px;margin-top:6px}
+
+  /* interviews */
+  .intv{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+  .icard{border-radius:8px;overflow:hidden;border:1px solid var(--c-line);background:#fff}
+  .icard .ph{height:220px;background:linear-gradient(160deg,#4a4a52,#15151a);position:relative;filter:grayscale(1)}
+  .icard .ph::after{content:"";position:absolute;left:0;bottom:0;width:48px;height:4px;background:var(--c-red)}
+  .icard .body{padding:20px}
+  .icard .role{font-family:"Archivo";font-size:12px;color:var(--c-red);font-weight:700;letter-spacing:.08em;text-transform:uppercase}
+  .icard h3{font-size:18px;font-weight:700;margin:6px 0 8px}
+  .icard p{font-size:14px;color:var(--c-muted)}
+
+  /* culture */
+  .culture-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:center}
+  .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:24px}
+  .stat .v{font-family:"Archivo";font-size:44px;font-weight:800;color:var(--c-ink);line-height:1}
+  .stat .v span{color:var(--c-red)}
+  .stat .l{font-size:13px;color:var(--c-muted);margin-top:6px}
+  .photos{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:10px;height:340px}
+  .photos div{border-radius:6px;filter:grayscale(1);background:linear-gradient(160deg,#5a5a62,#1a1a1f)}
+  .photos div:nth-child(1){grid-row:1/3;background:linear-gradient(160deg,#48484f,#101015)}
+
+  /* bottom cta */
+  .cta{background:var(--c-ink);color:#fff;text-align:center;padding:96px 24px;position:relative;overflow:hidden}
+  .cta h2{font-size:42px;font-weight:900;line-height:1.25;margin-bottom:14px}
+  .cta h2 .red{color:var(--c-red)}
+  .cta p{color:#c9c9cf;margin-bottom:30px}
+  .cta .bar{position:absolute;left:0;top:0;width:100%;height:4px;background:var(--c-red)}
+
+  /* footer */
+  footer{background:#050505;color:#9a9aa2;padding:60px 0 30px}
+  .fgrid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:30px;margin-bottom:40px}
+  footer .logo{color:#fff}
+  footer h4{color:#fff;font-size:13px;letter-spacing:.1em;text-transform:uppercase;font-family:"Archivo";margin-bottom:14px}
+  footer a{display:block;font-size:14px;padding:5px 0}
+  footer a:hover{color:#fff}
+  .copy{border-top:1px solid #222;padding-top:20px;font-size:12px;display:flex;justify-content:space-between}
+
+  /* badge note for mockup */
+  .mock-note{position:fixed;right:14px;bottom:14px;background:var(--c-red);color:#fff;font-size:12px;font-weight:700;padding:8px 14px;border-radius:20px;z-index:99;box-shadow:0 6px 20px rgba(0,0,0,.25)}
+
+  @media(max-width:900px){
+    .hero-inner{grid-template-columns:1fr;min-height:auto;padding:56px 0}
+    .hero h1{font-size:38px}
+    .hero-visual{height:260px}
+    .grid4{grid-template-columns:1fr 1fr}
+    .grid3{grid-template-columns:1fr}
+    .jobs{grid-template-columns:1fr}
+    .intv{grid-template-columns:1fr}
+    .culture-grid{grid-template-columns:1fr}
+    .navlinks{display:none}
+    h2.sec{font-size:24px}
+  }
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header>
+  <div class="wrap nav">
+    <div class="logo"><span class="dot"></span>JQIT</div>
+    <nav class="navlinks">
+      <a href="#about">私たちについて</a>
+      <a href="#jobs">職種紹介</a>
+      <a href="#interview">社員の声</a>
+      <a href="#culture">カルチャー</a>
+      <a href="#recruit">採用フロー</a>
+      <a class="btn btn-primary nav-cta" href="#entry">エントリー</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-accent"></div>
+  <div class="hero-accent2"></div>
+  <div class="wrap hero-inner">
+    <div>
+      <span class="kicker light">CAREERS AT JQIT</span>
+      <h1>挑戦と革新で、<br>未来を<span class="red">切り拓く</span>。</h1>
+      <p>開発・インフラ・QA、そしてAI。最新技術に挑むITのプロフェッショナル集団で、あなたのキャリアを次のステージへ。未経験から、経験者まで。</p>
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="#entry">エントリーする →</a>
+        <a class="btn btn-ghost" href="#jobs">職種を見る</a>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="tagjp">技術で、<br>本質的な課題を解く。</div>
+    </div>
+  </div>
+</section>
+
+<!-- STRENGTHS -->
+<section class="block" id="about">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">OUR STRENGTH</span>
+      <h2 class="sec">4つの専門領域で、価値を生む。</h2>
+      <p class="lead">受託開発・自社サービス開発・AI導入コンサルまで。確かな技術力と日本品質で社会に新しい価値を創造します。</p>
+    </div>
+    <div class="grid4">
+      <div class="scard"><div class="ic">DEV</div><h3>開発</h3><p>要件定義から運用まで、上流〜実装を一気通貫。モダンな技術スタックで価値を届ける。</p></div>
+      <div class="scard"><div class="ic">INF</div><h3>インフラ</h3><p>クラウド設計・構築・運用。安定とスケールを支える基盤づくり。</p></div>
+      <div class="scard"><div class="ic">QA</div><h3>QA</h3><p>テスト設計・自動化で品質を担保。「使う人」を想う日本品質の要。</p></div>
+      <div class="scard"><div class="ic">AI</div><h3>AI</h3><p>LLM・生成AI・AIエージェント。新規事業に挑むAIトランスフォーメーション。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- WORK APPEAL -->
+<section class="block soft appeal">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">WHY JQIT</span>
+      <h2 class="sec">JQITで働く、3つの魅力。</h2>
+    </div>
+    <div class="grid3">
+      <div class="item"><div class="num">01</div><h3>最新のIT・AI技術に挑める</h3><p>生成AI・LLMを中心とした最先端の案件と自社プロダクト。学びと挑戦が止まらない環境。</p></div>
+      <div class="item"><div class="num">02</div><h3>未経験歓迎 × 経験者歓迎</h3><p>育成と研修でポテンシャル層を後押し。経験者には裁量とAI案件への入口を。</p></div>
+      <div class="item"><div class="num">03</div><h3>挑戦と革新の文化</h3><p>受託・自社サービス・AIコンサルと、新規事業へ踏み出すカルチャー。</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- JOBS -->
+<section class="block" id="jobs">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">JOBS</span>
+      <h2 class="sec">募集職種</h2>
+      <p class="lead">あなたの強みと挑戦したい領域で選べる4職種。未経験からのスタートも歓迎します。</p>
+    </div>
+    <div class="jobs">
+      <div class="jcard"><div class="jcat">Engineering</div><h3>開発エンジニア</h3><p>Webアプリ・業務システムの設計・実装。上流から関わり、技術選定にも参画。</p><div class="badges"><span class="badge red">未経験OK</span><span class="badge dark">経験者歓迎</span></div><a class="jlink" href="#">この職種に応募 / 相談 →</a></div>
+      <div class="jcard"><div class="jcat">Infrastructure</div><h3>インフラエンジニア</h3><p>クラウド基盤の設計・構築・運用自動化。IaC・監視・セキュリティ。</p><div class="badges"><span class="badge red">未経験OK</span><span class="badge dark">経験者歓迎</span></div><a class="jlink" href="#">この職種に応募 / 相談 →</a></div>
+      <div class="jcard"><div class="jcat">Quality Assurance</div><h3>QAエンジニア</h3><p>テスト設計・自動化・品質プロセス構築。プロダクト品質を技術で支える。</p><div class="badges"><span class="badge red">未経験OK</span><span class="badge dark">経験者歓迎</span></div><a class="jlink" href="#">この職種に応募 / 相談 →</a></div>
+      <div class="jcard"><div class="jcat">Artificial Intelligence</div><h3>AIエンジニア</h3><p>生成AI・LLM活用、AIエージェント開発。新規事業の最前線。</p><div class="badges"><span class="badge red">未経験OK</span><span class="badge dark">経験者歓迎</span></div><a class="jlink" href="#">この職種に応募 / 相談 →</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- INTERVIEWS -->
+<section class="block soft" id="interview">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">MEMBERS</span>
+      <h2 class="sec">社員の声</h2>
+      <p class="lead">実際に働くメンバーのリアルな声。※写真・内容は後日支給データに差し替え。</p>
+    </div>
+    <div class="intv">
+      <div class="icard"><div class="ph"></div><div class="body"><div class="role">AI Engineer</div><h3>「未経験からAIの最前線へ」</h3><p>入社1年で生成AI案件のメイン担当に。学べる環境と挑戦の連続です。</p></div></div>
+      <div class="icard"><div class="ph"></div><div class="body"><div class="role">Infra Engineer</div><h3>「裁量を持って基盤を設計」</h3><p>クラウド設計を任され、技術選定から関われるのが面白い。</p></div></div>
+      <div class="icard"><div class="ph"></div><div class="body"><div class="role">QA Engineer</div><h3>「品質で価値を支える誇り」</h3><p>テスト自動化を推進。日本品質を技術で体現しています。</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- CULTURE -->
+<section class="block" id="culture">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="kicker">CULTURE & DATA</span>
+      <h2 class="sec">数字とカルチャーで見るJQIT</h2>
+    </div>
+    <div class="culture-grid">
+      <div class="stats">
+        <div class="stat"><div class="v">28<span>歳</span></div><div class="l">平均年齢（※仮）</div></div>
+        <div class="stat"><div class="v">40<span>%</span></div><div class="l">AI関連案件比率（※仮）</div></div>
+        <div class="stat"><div class="v">100<span>%</span></div><div class="l">資格取得支援（※仮）</div></div>
+        <div class="stat"><div class="v">月2<span>回</span></div><div class="l">社内イベント・交流（※仮）</div></div>
+      </div>
+      <div class="photos"><div></div><div></div><div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- BOTTOM CTA -->
+<section class="cta" id="entry">
+  <div class="bar"></div>
+  <span class="kicker light">JOIN US</span>
+  <h2>挑戦したいあなたを、<br><span class="red">待っています。</span></h2>
+  <p>まずはカジュアル面談から。本応募も大歓迎。お気軽にエントリーください。</p>
+  <a class="btn btn-primary" href="#">エントリーフォームへ →</a>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="fgrid">
+      <div>
+        <div class="logo"><span class="dot"></span>JQIT</div>
+        <p style="margin-top:14px;font-size:13px;max-width:280px">技術の力でお客様の本質的な課題を解決する、ITのプロフェッショナル集団。</p>
+      </div>
+      <div><h4>Recruit</h4><a href="#">私たちについて</a><a href="#">職種紹介</a><a href="#">社員の声</a><a href="#">採用フロー</a></div>
+      <div><h4>Company</h4><a href="#">会社概要</a><a href="#">事業一覧</a><a href="#">製品 NOVA</a><a href="#">コーポレートサイト</a></div>
+      <div><h4>Contact</h4><a href="#">エントリー</a><a href="#">お問い合わせ</a><a href="#">プライバシーポリシー</a></div>
+    </div>
+    <div class="copy"><span>© 2026 JQIT Inc.</span><span>CAREERS</span></div>
+  </div>
+</footer>
+
+<div class="mock-note">◀ デザイン方向性モックアップ（仮テキスト）</div>
+</body>
+</html>

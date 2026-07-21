@@ -1,0 +1,105 @@
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { nav, site } from "@/lib/site";
+import { Logo } from "./Logo";
+import { cn } from "@/lib/cn";
+
+export function Header() {
+  const [open, setOpen] = useState(false);
+
+  return (
+    <header className="sticky top-0 z-50 border-b border-line">
+      <div className="absolute inset-0 -z-10 bg-paper/85 backdrop-blur-md" aria-hidden />
+      <div className="mx-auto flex h-[78px] w-full max-w-[1160px] items-center justify-between px-5 md:px-8">
+        <Link
+          href="/"
+          aria-label={`${site.name} 採用サイト トップ`}
+          className="flex h-full items-center"
+        >
+          <Logo />
+        </Link>
+
+        {/* desktop nav */}
+        <nav className="hidden items-center gap-9 lg:flex">
+          {nav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className="font-sans text-[13.5px] font-medium tracking-wide text-body transition-colors hover:text-brand"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <Link
+            href="/entry"
+            className="rounded-card bg-brand px-6 py-3 font-sans text-[13px] font-bold text-white transition-colors hover:bg-brand-dark"
+          >
+            カジュアル面談
+          </Link>
+        </nav>
+
+        {/* mobile toggle */}
+        <button
+          type="button"
+          aria-label={open ? "メニューを閉じる" : "メニューを開く"}
+          aria-expanded={open}
+          aria-controls="mobile-menu"
+          onClick={() => setOpen((v) => !v)}
+          className="relative z-50 -mr-1 flex h-11 w-11 flex-col items-center justify-center gap-1.5 lg:hidden"
+        >
+          <span
+            className={cn(
+              "h-px w-6 bg-ink transition-transform",
+              open && "translate-y-[7px] rotate-45",
+            )}
+          />
+          <span
+            className={cn("h-px w-6 bg-ink transition-opacity", open && "opacity-0")}
+          />
+          <span
+            className={cn(
+              "h-px w-6 bg-ink transition-transform",
+              open && "-translate-y-[7px] -rotate-45",
+            )}
+          />
+        </button>
+      </div>
+
+      {/* mobile menu: 完全不透明な全面オーバーレイ（ヘッダー下〜画面下を覆う） */}
+      <div
+        id="mobile-menu"
+        aria-hidden={!open}
+        className={cn(
+          "fixed inset-x-0 top-[78px] bottom-0 z-40 overflow-y-auto bg-paper transition-[opacity,transform] duration-[250ms] ease-[cubic-bezier(0.16,0.84,0.44,1)] lg:hidden",
+          open
+            ? "translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-2 opacity-0",
+        )}
+      >
+        <nav className="flex flex-col px-6 py-6">
+          {nav.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              tabIndex={open ? undefined : -1}
+              onClick={() => setOpen(false)}
+              className="border-b border-line py-5 font-serif text-xl text-ink"
+            >
+              {item.label}
+            </Link>
+          ))}
+          <Link
+            href="/entry"
+            tabIndex={open ? undefined : -1}
+            onClick={() => setOpen(false)}
+            className="mt-8 rounded-card bg-brand px-6 py-4 text-center font-sans font-bold text-white"
+          >
+            カジュアル面談
+          </Link>
+        </nav>
+      </div>
+    </header>
+  );
+}

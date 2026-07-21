@@ -1,0 +1,57 @@
+import Link from "next/link";
+import { jobs } from "@/lib/content";
+import { FadeIn } from "@/components/ui/FadeIn";
+import { GeoMark } from "@/components/ui/GeoMark";
+
+export function JobList() {
+  return (
+    <div className="border-t border-line">
+      {jobs.map((job, i) => (
+        <FadeIn
+          key={job.slug}
+          style={{ transitionDelay: `${i * 90}ms` } as React.CSSProperties}
+        >
+          <Link
+            href={`/jobs#${job.slug}`}
+            className="group brand-line-row relative grid grid-cols-1 items-start gap-2 overflow-hidden border-b border-line py-9 md:grid-cols-[1fr_auto] md:items-center md:gap-8"
+          >
+            {/* 極薄の巨大番号（背景タイポ） */}
+            <span
+              aria-hidden
+              className="pointer-events-none absolute right-8 top-1/2 hidden -translate-y-1/2 select-none font-display text-[70px] leading-none text-ink/[0.05] transition-colors duration-500 group-hover:text-brand/10 md:block"
+            >
+              {String(i + 1).padStart(2, "0")}
+            </span>
+            <div className="brand-line-label relative pl-2 md:pl-3">
+              <div className="flex items-center gap-5 font-mono text-[11px] tracking-[0.16em] text-brand uppercase">
+                <GeoMark index={i} size={14} />
+                {job.category}
+              </div>
+              <h3 className="mt-3 font-serif text-[24px] font-medium tracking-[0.02em] text-ink md:text-[28px]">
+                {job.title}
+              </h3>
+              <p className="mt-2 max-w-[560px] font-sans text-[13.5px] text-muted">
+                {job.summary}
+              </p>
+              <div className="mt-3.5 flex gap-3.5 font-sans text-xs text-body">
+                {job.acceptInexperienced && (
+                  <span className="bg-brand px-2 py-1 font-bold text-white">
+                    未経験可
+                  </span>
+                )}
+                {job.acceptExperienced && (
+                  <span className="before:mr-1.5 before:text-brand before:content-['—']">
+                    経験者歓迎
+                  </span>
+                )}
+              </div>
+            </div>
+            <div className="relative hidden font-mono text-xl text-ink transition-all group-hover:translate-x-1.5 group-hover:text-brand md:block">
+              →
+            </div>
+          </Link>
+        </FadeIn>
+      ))}
+    </div>
+  );
+}

@@ -1,0 +1,182 @@
+import type { Metadata } from "next";
+import Image from "next/image";
+import { Container } from "@/components/ui/Container";
+import { SectionHead, Kicker } from "@/components/ui/SectionHead";
+import { StrengthGrid } from "@/components/sections/StrengthGrid";
+import { Messages } from "@/components/sections/Messages";
+import { Button } from "@/components/ui/Button";
+import { CTA } from "@/components/sections/CTA";
+import { company } from "@/lib/content";
+import { asset } from "@/lib/asset";
+import { site } from "@/lib/site";
+
+export const metadata: Metadata = {
+  title: "私たちについて",
+  description:
+    "JQITのミッション・事業（ITソリューション／AIソリューション）・強み・自社製品NOVA・AI導入伴走支援をご紹介します。",
+  alternates: { canonical: "/about" },
+};
+
+export default function AboutPage() {
+  return (
+    <>
+      {/* Mission */}
+      <section className="py-20 md:py-[120px]">
+        <Container>
+          <Kicker>Why JQIT</Kicker>
+          <h1 className="mt-7 max-w-[980px] text-balance font-serif text-[30px] font-medium leading-[1.45] tracking-[0.03em] text-ink md:text-[46px] md:leading-[1.5]">
+            技術の力で、
+            <br className="hidden md:block" />
+            お客様の本質的な課題を解決する。
+          </h1>
+          <p className="mt-8 max-w-[980px] text-pretty font-sans text-[15px] leading-[2.15] text-body md:mt-9 md:text-[15.5px]">
+            {company.missionBody}
+          </p>
+          <div className="mt-10 grid max-w-[980px] grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-3">
+            {company.values.map((v) => (
+              <div
+                key={v.title}
+                className="bg-paper px-5 py-4"
+              >
+                <p className="font-sans text-[14px] font-bold text-ink">
+                  {v.title}
+                </p>
+                <p className="mt-2 font-sans text-[12.5px] leading-[1.8] text-muted">
+                  {v.body}
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="relative mt-14 h-[280px] w-full overflow-hidden rounded-2xl md:h-[420px]">
+            <Image
+              src={asset("/images/about/team.jpg")}
+              alt="モダンなオフィスで協働するメンバー"
+              fill
+              sizes="(max-width: 768px) 100vw, 1096px"
+              className="object-cover"
+            />
+          </div>
+        </Container>
+      </section>
+
+      {/* Message（代表＋部門リーダー） */}
+      <Messages />
+
+      {/* Business */}
+      <section className="bg-cream py-20 md:py-[120px]">
+        <Container>
+          <SectionHead kicker="Business" title="事業について" />
+          <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
+            {company.businesses.map((b) => (
+              <div key={b.name} className="brand-line-card bg-paper p-9 md:p-12">
+                <h3 className="brand-line-label font-serif text-[22px] font-medium text-ink">
+                  {b.name}
+                </h3>
+                <p className="mt-4 font-sans text-[14px] leading-[2] text-muted">
+                  {b.body}
+                </p>
+              </div>
+            ))}
+          </div>
+        </Container>
+      </section>
+
+      {/* Strength */}
+      <section className="py-20 md:py-[120px]">
+        <Container>
+          <SectionHead
+            kicker="Our Strength"
+            title="4つの専門領域"
+            lead="開発・インフラ・QA・AI。確かな技術力と日本品質で価値を生みます。"
+          />
+          <StrengthGrid />
+        </Container>
+      </section>
+
+      {/* Product NOVA */}
+      <section className="bg-ink py-20 text-white md:py-[120px]">
+        <Container>
+          <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-16">
+            <div>
+              <Kicker>Our Product</Kicker>
+              <h2 className="mt-6 font-serif text-[30px] font-medium text-white md:text-[40px]">
+                {company.product.name}
+              </h2>
+              <p className="mt-5 max-w-[560px] text-pretty font-sans text-[15px] leading-[2] text-[#c9c9c4] [word-break:auto-phrase]">
+                {company.product.body}
+              </p>
+              <div className="mt-9">
+                <Button href={site.novaUrl} variant="primary">
+                  製品サイトを見る
+                </Button>
+              </div>
+            </div>
+            <div className="relative flex h-[300px] w-full items-center overflow-hidden rounded-2xl border border-white/10 bg-white md:h-[400px]">
+              <Image
+                src={asset("/images/products/nova-pc-crop.png")}
+                alt="NOVA管理画面のスクリーンショット"
+                fill
+                sizes="(max-width: 768px) 100vw, 540px"
+                className="object-contain"
+              />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* AI Enablement */}
+      <section className="overflow-hidden bg-paper py-20 md:py-[120px]">
+        <Container>
+          <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-[1.02fr_0.98fr] md:gap-16 lg:gap-20">
+            <div className="relative h-[320px] overflow-hidden rounded-2xl bg-cream md:h-[480px]">
+              <Image
+                src={asset("/images/services/ai-enablement.jpg")}
+                alt="画面を見ながらAI導入について相談する担当者"
+                fill
+                sizes="(max-width: 768px) 100vw, 540px"
+                className="object-cover object-center"
+              />
+            </div>
+
+            <div>
+              <Kicker>AI Enablement</Kicker>
+              <p className="mt-5 font-mono text-[12px] font-semibold uppercase tracking-[0.14em] text-brand">
+                {company.aiEnablement.name}
+              </p>
+              <h2 className="mt-4 whitespace-pre-line text-balance font-serif text-[29px] font-medium leading-[1.55] tracking-[0.01em] text-ink md:text-[38px]">
+                {company.aiEnablement.title}
+              </h2>
+              <p className="mt-6 text-pretty font-sans text-[15px] leading-[2] text-body [word-break:auto-phrase]">
+                {company.aiEnablement.body}
+              </p>
+
+              <ol className="mt-8 border-t border-line">
+                {company.aiEnablement.features.map((feature, index) => (
+                  <li
+                    key={feature}
+                    className="grid grid-cols-[36px_1fr] items-center border-b border-line py-4"
+                  >
+                    <span className="font-mono text-[11px] font-semibold text-brand">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-sans text-[13.5px] font-bold text-ink">
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+
+              <div className="mt-9">
+                <Button href={site.aiSupportUrl} variant="primary">
+                  AI導入伴走支援を見る
+                </Button>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      <CTA />
+    </>
+  );
+}

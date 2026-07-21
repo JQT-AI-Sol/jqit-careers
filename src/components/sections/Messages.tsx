@@ -1,0 +1,161 @@
+import Image from "next/image";
+import { Container } from "@/components/ui/Container";
+import { Kicker } from "@/components/ui/SectionHead";
+import { FadeIn } from "@/components/ui/FadeIn";
+import { Button } from "@/components/ui/Button";
+import { asset } from "@/lib/asset";
+import data from "@/../content/messages.json";
+
+const { ceo, leaders } = data;
+
+type LeaderItem = {
+  dept: string;
+  role: string;
+  name?: string;
+  image?: string;
+  quote: string;
+};
+
+const leaderPortraits = [
+  { src: "/images/people/p1.jpg", position: "object-[50%_38%]" },
+  { src: "/images/people/r6.jpg", position: "object-[50%_28%]" },
+  { src: "/images/people/p3.jpg", position: "object-[50%_34%]" },
+  { src: "/images/people/r8.jpg", position: "object-[50%_24%]" },
+];
+
+export function Messages() {
+  return (
+    <section className="bg-cream py-20 md:py-[120px]">
+      <Container>
+        {/* === 代表メッセージ === */}
+        <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-[0.85fr_1.15fr] md:gap-[72px]">
+          <FadeIn>
+            <div className="relative aspect-[4/5] w-full overflow-hidden rounded-2xl border border-line bg-paper">
+              <Image
+                src={asset("/images/generated/message-standing-pair-crop.jpg")}
+                alt="明るいオフィスで並ぶJQITのメンバー"
+                fill
+                sizes="(max-width: 768px) 100vw, 420px"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-black/10 to-transparent" />
+              <span
+                aria-hidden
+                className="absolute bottom-7 left-7 font-mono text-[11px] tracking-[0.16em] text-white/80 uppercase"
+              >
+                Message
+              </span>
+            </div>
+          </FadeIn>
+
+          {/* 本文 */}
+          <FadeIn style={{ transitionDelay: "90ms" } as React.CSSProperties}>
+            <Kicker>{ceo.kicker}</Kicker>
+            <p className="mt-5 font-mono text-[11px] tracking-[0.16em] text-brand uppercase">
+              {ceo.role}
+            </p>
+            <h2 className="mt-4 max-w-[640px] font-serif text-[26px] font-medium leading-[1.55] tracking-[0.02em] text-ink md:text-[36px]">
+              {ceo.title}
+            </h2>
+            <div className="mt-9 max-w-[640px] space-y-6">
+              {ceo.body.map((para, i) => (
+                <p
+                  key={i}
+                  className="font-sans text-[15px] leading-[2.1] text-body"
+                >
+                  {para}
+                </p>
+              ))}
+            </div>
+            <div className="mt-10 border-t border-line pt-6">
+              <p className="font-serif text-[18px] tracking-[0.04em] text-ink">
+                {ceo.name}
+              </p>
+              <p className="mt-3 font-sans text-[12px] leading-[1.8] text-muted">
+                {ceo.note}
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+
+        {/* === 部門リーダー === */}
+        <div className="mt-20 md:mt-[120px]">
+          <FadeIn className="mb-12 max-w-[720px] md:mb-[72px]">
+            <Kicker>{leaders.kicker}</Kicker>
+            <h2 className="mt-6 font-serif text-[24px] font-medium leading-[1.5] tracking-[0.02em] text-ink md:text-[32px]">
+              {leaders.title}
+            </h2>
+            <p className="mt-6 font-sans text-[15px] leading-[2] text-body">
+              {leaders.lead}
+            </p>
+          </FadeIn>
+
+          <div className="overflow-hidden border border-line">
+            {(leaders.items as LeaderItem[]).map((leader, i) => {
+              const portrait =
+                leader.image ?? leaderPortraits[i % leaderPortraits.length].src;
+              const isLandscapePortrait = portrait.endsWith("kikuchi.jpg");
+
+              return (
+                <FadeIn
+                  key={leader.dept}
+                  className="grid grid-cols-1 border-b border-line last:border-b-0 md:grid-cols-2"
+                >
+                  <div
+                    className={`relative min-h-[280px] overflow-hidden bg-paper md:min-h-[360px] ${
+                      i % 2 === 1 ? "md:order-2" : ""
+                    }`}
+                  >
+                    <Image
+                      src={asset(portrait)}
+                      alt=""
+                      fill
+                      sizes="(max-width: 768px) 100vw, 548px"
+                      className={
+                        isLandscapePortrait
+                          ? "object-cover object-[58%_40%]"
+                          : `object-contain p-8 md:p-10 ${leaderPortraits[i % leaderPortraits.length].position}`
+                      }
+                    />
+                  </div>
+
+                  <div
+                    className={`flex min-h-[280px] flex-col justify-center border-t border-line bg-cream px-7 py-10 md:min-h-[360px] md:border-t-0 md:px-12 md:py-14 ${
+                      i % 2 === 1 ? "md:border-r" : "md:border-l"
+                    }`}
+                  >
+                    <span className="font-mono text-[11px] tracking-[0.18em] text-brand uppercase">
+                      {leader.dept}
+                    </span>
+                    <p className="mt-5 font-sans text-[12.5px] leading-[1.8] tracking-wide text-muted">
+                      {leader.role}
+                    </p>
+                    {leader.name && (
+                      <p className="mt-1 font-serif text-[21px] tracking-[0.03em] text-ink md:text-[24px]">
+                        {leader.name}
+                      </p>
+                    )}
+                    <span className="mt-7 block h-px w-8 bg-brand" aria-hidden />
+                    <p className="mt-6 max-w-[520px] font-serif text-[17px] leading-[2] tracking-[0.01em] text-ink md:text-[18px]">
+                      {leader.quote}
+                    </p>
+                  </div>
+                </FadeIn>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* === カジュアル面談 CTA === */}
+        <FadeIn className="mt-16 flex flex-col items-start gap-6 border-t border-line pt-12 md:mt-20 md:flex-row md:items-center md:justify-between">
+          <p className="font-serif text-[20px] leading-[1.6] text-ink md:text-[24px]">
+            この未来を、一緒に切り拓きませんか。
+          </p>
+          <Button href="/entry" variant="primary">
+            カジュアル面談を申し込む
+          </Button>
+        </FadeIn>
+      </Container>
+    </section>
+  );
+}

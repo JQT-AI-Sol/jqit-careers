@@ -1,0 +1,24 @@
+{
+  "shape": "package",
+  "pkg": "jqit-careers",
+  "globalName": "JqitCareers",
+  "projectId": "e01f6f79-a6d1-416d-96f0-0bc7de648ddc",
+  "entry": ".design-sync/ds-entry.mjs",
+  "srcDir": "src/components/ui",
+  "tsconfig": ".design-sync/tsconfig.build.json",
+  "cssEntry": ".design-sync/styles/tokens.css",
+  "extraFonts": ".design-sync/styles/fonts-src.css",
+  "guidelinesGlob": [],
+  "docsDir": ".design-sync/component-docs",
+  "readmeHeader": ".design-sync/conventions.md",
+  "componentSrcMap": {
+    "Button": "src/components/ui/Button.tsx",
+    "Container": "src/components/ui/Container.tsx",
+    "SectionHead": "src/components/ui/SectionHead.tsx",
+    "Kicker": "src/components/ui/SectionHead.tsx",
+    "FadeIn": "src/components/ui/FadeIn.tsx",
+    "CountUp": "src/components/ui/CountUp.tsx",
+    "GeoBackdrop": "src/components/ui/GeoBackdrop.tsx",
+    "GeoMark": "src/components/ui/GeoMark.tsx"
+  }
+}

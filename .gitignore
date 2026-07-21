@@ -1,0 +1,61 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# review artifacts (playwright-mcp screenshots)
+.playwright-mcp/
+
+# internal docs (社外秘: 戦略・要件・QA証跡など。publicリポジトリには含めない)
+docs/
+
+# Claude Code local config (個人/マシンローカル設定。hookログ含む)
+.claude/
+
+# design-sync (claude.ai/design 同期): 生成物・ステージ済スクリプト・キャッシュは除外。
+# 永続入力(config.json / NOTES.md / conventions.md / previews/ / shims/ / prep-css.mjs /
+# tsconfig.build.json)はコミットする。
+.ds-sync/
+ds-bundle/
+.design-sync/.cache/
+.design-sync/learnings/
+.design-sync/node_modules
+.design-sync/styles/

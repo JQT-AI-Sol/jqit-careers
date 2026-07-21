@@ -1,0 +1,305 @@
+@import "tailwindcss";
+
+/* ===== JQIT 採用サイト デザイントークン（design/design-system.md v2 準拠） ===== */
+@theme {
+  --color-brand: #e60012;
+  --color-brand-dark: #b3000e;
+  --color-ink: #14140f;
+  --color-body: #2a2a28;
+  --color-muted: #6b6b67;
+  --color-line: #e7e5e0;
+  --color-paper: #ffffff;
+  --color-cream: #faf9f7;
+
+  --font-serif: var(--font-noto-serif), "Noto Serif JP", serif;
+  --font-sans: var(--font-noto-sans), "Noto Sans JP", system-ui, sans-serif;
+  --font-mono: var(--font-archivo), "Archivo", sans-serif;
+  --font-display: var(--font-anton), "Archivo", system-ui, sans-serif;
+
+  --radius-card: 2px;
+}
+
+:root {
+  --background: #ffffff;
+  --foreground: #2a2a28;
+  --font-noto-serif: "Yu Mincho", "Hiragino Mincho ProN", "Hiragino Mincho Pro", serif;
+  --font-noto-sans: "Hiragino Sans", "Yu Gothic", "YuGothic", system-ui, sans-serif;
+  --font-archivo: "Helvetica Neue", Arial, system-ui, sans-serif;
+  --font-anton: Impact, "Arial Black", "Helvetica Neue", Arial, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--color-paper);
+    color: var(--color-body);
+    font-family: var(--font-serif);
+    font-weight: 400;
+    line-height: 1.9;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  ::selection {
+    background: var(--color-brand);
+    color: #fff;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+  }
+  /* フォーム部品のアクセントをブランド色に統一（OS標準UIの水色/グレー差異を吸収） */
+  input[type="checkbox"],
+  input[type="radio"] {
+    accent-color: var(--color-brand);
+  }
+}
+
+/* KICKER（赤の極細線 + 英大文字ラベル） */
+.kicker {
+  font-family: var(--font-mono);
+  font-weight: 600;
+  font-size: 11px;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: var(--color-muted);
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+.kicker::before {
+  content: "";
+  width: 24px;
+  height: 1px;
+  background: var(--color-brand);
+  display: inline-block;
+}
+
+/* ===== モーション（BizReach風の上品なリビール） =====
+   scripting: enabled を併用し、JS無効/一部計測環境では opacity:0 を当てない
+   （= is-visible が付かなくても本文が見える。空白化リスクの保険）。 */
+@media (prefers-reduced-motion: no-preference) and (scripting: enabled) {
+  /* スクロールイン: フェードアップ */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition:
+      opacity 0.8s cubic-bezier(0.16, 0.84, 0.44, 1),
+      transform 0.8s cubic-bezier(0.16, 0.84, 0.44, 1);
+  }
+  .fade-in.is-visible {
+    opacity: 1;
+    transform: none;
+  }
+
+  /* スクロールイン: マスク立ち上げ（見出し向け。行を下から迫り上げる） */
+  .reveal-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+  }
+  .reveal-mask > span {
+    display: inline-block;
+    transform: translateY(110%);
+    transition: transform 0.9s cubic-bezier(0.16, 0.84, 0.44, 1);
+  }
+  .reveal-mask.is-visible > span {
+    transform: none;
+  }
+
+  /* ヒーロー登場（ロード時に自動再生） */
+  @keyframes heroRise {
+    from {
+      opacity: 0;
+      transform: translateY(26px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  @keyframes heroMask {
+    from {
+      transform: translateY(110%);
+    }
+    to {
+      transform: none;
+    }
+  }
+  @keyframes heroZoom {
+    from {
+      opacity: 0;
+      transform: scale(1.08);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+  .hero-rise {
+    opacity: 0;
+    animation: heroRise 0.9s cubic-bezier(0.16, 0.84, 0.44, 1) both;
+  }
+  .hero-mask {
+    display: inline-block;
+    overflow: hidden;
+    vertical-align: top;
+  }
+  .hero-mask > span {
+    display: inline-block;
+    animation: heroMask 1s cubic-bezier(0.16, 0.84, 0.44, 1) both;
+  }
+  .hero-zoom {
+    animation: heroZoom 1.4s cubic-bezier(0.16, 0.84, 0.44, 1) both;
+  }
+}
+
+/* reduced-motion 環境では即表示（マスクで隠れないように） */
+@media (prefers-reduced-motion: reduce) {
+  .reveal-mask > span,
+  .hero-mask > span {
+    transform: none;
+  }
+}
+
+/* ===== マーキー帯（幾何/英字が流れる演出） ===== */
+@keyframes marqueeL {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+@keyframes marqueeR {
+  from {
+    transform: translateX(-50%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: marqueeL linear infinite;
+}
+.marquee-track.is-rtl {
+  animation-name: marqueeR;
+}
+@media (prefers-reduced-motion: reduce) {
+  .marquee-track {
+    animation: none;
+  }
+}
+
+/* ===== 背景幾何装飾（GeoBackdrop）のゆるやかな浮遊・微回転 ===== */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes geoFloat {
+    0% {
+      transform: translateY(-8px);
+    }
+    100% {
+      transform: translateY(10px);
+    }
+  }
+  @keyframes geoSpin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  .geo-float {
+    animation: geoFloat 9s ease-in-out infinite alternate;
+  }
+  .geo-spin {
+    animation: geoSpin 64s linear infinite;
+    will-change: transform;
+  }
+}
+
+/* ===== brand-line: hover時に赤の縦線＋cream背景（Corporateサイト共通パターン） ===== */
+.brand-line-card,
+.brand-line-row {
+  position: relative;
+  overflow: hidden;
+  transition:
+    background-color 0.28s ease,
+    color 0.28s ease;
+}
+
+.brand-line-card::before,
+.brand-line-row::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 2px;
+  background: var(--color-brand);
+  transform: scaleY(0);
+  transform-origin: 50% 0;
+  transition: transform 0.32s cubic-bezier(0.16, 0.84, 0.44, 1);
+  z-index: 1; /* Members等の画像フルブリードカードでも線が画像の上に出るように */
+}
+
+.brand-line-label {
+  transition:
+    color 0.28s ease,
+    transform 0.32s cubic-bezier(0.16, 0.84, 0.44, 1);
+}
+
+.brand-line-no {
+  transition: color 0.28s ease;
+}
+
+/* FadeIn(.fade-in)と同一要素に付く場合、リビールのtransitionを潰さず合成する */
+@media (prefers-reduced-motion: no-preference) and (scripting: enabled) {
+  .fade-in.brand-line-card,
+  .fade-in.brand-line-row {
+    transition:
+      opacity 0.8s cubic-bezier(0.16, 0.84, 0.44, 1),
+      transform 0.8s cubic-bezier(0.16, 0.84, 0.44, 1),
+      background-color 0.28s ease,
+      color 0.28s ease;
+  }
+}
+
+@media (hover: hover) {
+  .brand-line-card:hover,
+  .brand-line-row:hover {
+    background: var(--color-cream);
+  }
+
+  .brand-line-card:hover::before,
+  .brand-line-row:hover::before {
+    transform: scaleY(1);
+  }
+
+  .brand-line-card:hover .brand-line-label,
+  .brand-line-row:hover .brand-line-label {
+    transform: translateX(3px);
+  }
+
+  .brand-line-card:hover .brand-line-no,
+  .brand-line-row:hover .brand-line-no {
+    color: var(--color-brand-dark);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .brand-line-card,
+  .brand-line-row,
+  .brand-line-card::before,
+  .brand-line-row::before,
+  .brand-line-label,
+  .brand-line-no {
+    transition: none;
+  }
+
+  .brand-line-card:hover .brand-line-label,
+  .brand-line-row:hover .brand-line-label {
+    transform: none;
+  }
+}
