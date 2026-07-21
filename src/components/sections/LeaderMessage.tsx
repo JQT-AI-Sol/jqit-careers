@@ -2,12 +2,12 @@ import Image from "next/image";
 import { Container } from "@/components/ui/Container";
 import { SectionHead } from "@/components/ui/SectionHead";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { strengths } from "@/lib/content";
+import { company, strengths } from "@/lib/content";
 import { asset } from "@/lib/asset";
 
 /**
  * 各事業部の責任者メッセージ＋事業内容（トップ #4）。「人を主軸」に据える核セクション。
- * 事業責任者＝開発／インフラ／QA／AIソリューションの4事業部長。
+ * 事業責任者＝開発／インフラ／QA／AIソリューション／ITソリューション営業の5事業部長。
  * 各事業部の事業内容(focus)は content.ts の strengths（実データ）を流用。
  */
 const leaders = [
@@ -43,6 +43,14 @@ const leaders = [
       "AIを“使う側”で開発する。生成AI・LLMの最前線が、ここにあります。",
     focus: strengths[3].body,
   },
+  {
+    dept: "ITソリューション営業部",
+    name: "菊地 優",
+    image: "/images/leaders/kikuchi.jpg",
+    comment:
+      "お客様の課題を捉え、エンジニアと最適な解決策をつくる。人と技術をつなぐ営業です。",
+    focus: company.businesses[0].body,
+  },
 ];
 
 export function LeaderMessage() {
@@ -52,10 +60,10 @@ export function LeaderMessage() {
         <SectionHead
           kicker="Leadership"
           title="各事業部の責任者から。"
-          lead="開発・インフラ・QA・AIソリューション——4つの事業部それぞれを率いる責任者が、現場をどう変えていくのか。"
+          lead="開発・インフラ・QA・AIソリューション・ITソリューション営業——5つの事業部それぞれを率いる責任者が、現場をどう変えていくのか。"
         />
 
-        <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2 xl:grid-cols-4">
+        <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2 xl:grid-cols-3">
           {leaders.map((l, i) => (
             <FadeIn
               as="article"
