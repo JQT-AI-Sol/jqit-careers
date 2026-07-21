@@ -1,6 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
-import { interviews } from "@/lib/content";
+import { getInterviews } from "@/lib/interviews";
 import { FadeIn } from "@/components/ui/FadeIn";
 import { asset } from "@/lib/asset";
 
@@ -13,7 +13,8 @@ const memberImages = [
   "/images/members/m6.jpg",
 ];
 
-export function Members({ limit }: { limit?: number }) {
+export async function Members({ limit }: { limit?: number }) {
+  const interviews = await getInterviews();
   const items = limit ? interviews.slice(0, limit) : interviews;
   return (
     <div className="grid grid-cols-1 gap-9 md:grid-cols-3">

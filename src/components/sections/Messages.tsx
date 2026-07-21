@@ -90,46 +90,59 @@ export function Messages() {
             </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
-            {(leaders.items as LeaderItem[]).map((leader, i) => (
-              <FadeIn
-                key={leader.dept}
-                style={
-                  { transitionDelay: `${(i % 2) * 90}ms` } as React.CSSProperties
-                }
-                className="brand-line-card bg-paper p-9 md:p-12"
-              >
-                <div className="flex items-start gap-5">
-                  <div className="relative size-[86px] shrink-0 overflow-hidden rounded-xl bg-line md:size-[104px]">
+          <div className="overflow-hidden border border-line">
+            {(leaders.items as LeaderItem[]).map((leader, i) => {
+              const portrait =
+                leader.image ?? leaderPortraits[i % leaderPortraits.length].src;
+              const isLandscapePortrait = portrait.endsWith("kikuchi.jpg");
+
+              return (
+                <FadeIn
+                  key={leader.dept}
+                  className="grid grid-cols-1 border-b border-line last:border-b-0 md:grid-cols-2"
+                >
+                  <div
+                    className={`relative min-h-[280px] overflow-hidden bg-paper md:min-h-[360px] ${
+                      i % 2 === 1 ? "md:order-2" : ""
+                    }`}
+                  >
                     <Image
-                      src={asset(
-                        leader.image ?? leaderPortraits[i % leaderPortraits.length].src,
-                      )}
+                      src={asset(portrait)}
                       alt=""
                       fill
-                      sizes="104px"
-                      className={`object-cover ${leaderPortraits[i % leaderPortraits.length].position}`}
+                      sizes="(max-width: 768px) 100vw, 548px"
+                      className={
+                        isLandscapePortrait
+                          ? "object-cover object-[58%_40%]"
+                          : `object-contain p-8 md:p-10 ${leaderPortraits[i % leaderPortraits.length].position}`
+                      }
                     />
                   </div>
-                  <div className="min-w-0 pt-1">
-                    <span className="font-mono text-[12px] tracking-[0.16em] text-brand uppercase">
+
+                  <div
+                    className={`flex min-h-[280px] flex-col justify-center border-t border-line bg-cream px-7 py-10 md:min-h-[360px] md:border-t-0 md:px-12 md:py-14 ${
+                      i % 2 === 1 ? "md:border-r" : "md:border-l"
+                    }`}
+                  >
+                    <span className="font-mono text-[11px] tracking-[0.18em] text-brand uppercase">
                       {leader.dept}
                     </span>
-                    <p className="mt-3 font-sans text-[12.5px] leading-[1.8] tracking-wide text-muted">
+                    <p className="mt-5 font-sans text-[12.5px] leading-[1.8] tracking-wide text-muted">
                       {leader.role}
                     </p>
                     {leader.name && (
-                      <p className="mt-1 font-serif text-[18px] tracking-[0.03em] text-ink">
+                      <p className="mt-1 font-serif text-[21px] tracking-[0.03em] text-ink md:text-[24px]">
                         {leader.name}
                       </p>
                     )}
+                    <span className="mt-7 block h-px w-8 bg-brand" aria-hidden />
+                    <p className="mt-6 max-w-[520px] font-serif text-[17px] leading-[2] tracking-[0.01em] text-ink md:text-[18px]">
+                      {leader.quote}
+                    </p>
                   </div>
-                </div>
-                <p className="mt-6 font-serif text-[17px] leading-[1.95] tracking-[0.01em] text-ink">
-                  {leader.quote}
-                </p>
-              </FadeIn>
-            ))}
+                </FadeIn>
+              );
+            })}
           </div>
         </div>
 

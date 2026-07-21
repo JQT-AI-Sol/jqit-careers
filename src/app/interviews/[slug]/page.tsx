@@ -6,8 +6,10 @@ import { Container } from "@/components/ui/Container";
 import { Kicker } from "@/components/ui/SectionHead";
 import { Button } from "@/components/ui/Button";
 import { FadeIn } from "@/components/ui/FadeIn";
-import { interviews, type Interview } from "@/lib/content";
+import type { Interview } from "@/lib/content";
+import { getInterviewBySlug, getInterviews } from "@/lib/interviews";
 import { asset } from "@/lib/asset";
+import { site } from "@/lib/site";
 
 const memberImages = [
   "/images/members/m1.jpg",
@@ -18,11 +20,12 @@ const memberImages = [
   "/images/members/m6.jpg",
 ];
 
-function imageFor(index: number) {
-  return interviews[index]?.image ?? memberImages[index % memberImages.length];
+function imageFor(member: Interview, index: number) {
+  return member.image ?? memberImages[index % memberImages.length];
 }
 
 export async function generateStaticParams() {
+  const interviews = await getInterviews();
   return interviews.map((m) => ({ slug: m.slug }));
 }
 
@@ -32,12 +35,18 @@ export async function generateMetadata({
   params: Promise<{ slug: string }>;
 }): Promise<Metadata> {
   const { slug } = await params;
-  const member = interviews.find((m) => m.slug === slug);
+  const member = await getInterviewBySlug(slug);
   if (!member) return { title: "社員インタビュー" };
   return {
-    title: member.title,
-    description: member.excerpt,
+    title: member.seoTitle || member.title,
+    description: member.seoDescription || member.excerpt,
     alternates: { canonical: `/interviews/${slug}` },
+    openGraph: {
+      type: "article",
+      title: member.seoTitle || member.title,
+      description: member.seoDescription || member.excerpt,
+      images: member.image ? [{ url: member.image }] : undefined,
+    },
   };
 }
 
@@ -49,6 +58,7 @@ export default async function InterviewDetailPage({
   params: Promise<{ slug: string }>;
 }) {
   const { slug } = await params;
+  const interviews = await getInterviews();
   const index = interviews.findIndex((m) => m.slug === slug);
   if (index === -1) notFound();
 
@@ -63,8 +73,30 @@ export default async function InterviewDetailPage({
     { kicker: "Message", heading: "挑戦するあなたへ", body: member.message },
   ].filter((b): b is Block => Boolean(b.body));
 
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@type": "ProfilePage",
+    name: member.title,
+    description: member.seoDescription || member.excerpt,
+    url: `${site.url}/interviews/${member.slug}`,
+    datePublished: member.publishedAt,
+    dateModified: member.revisedAt,
+    mainEntity: {
+      "@type": "Person",
+      name: member.name,
+      jobTitle: member.career || member.role,
+      worksFor: { "@type": "Organization", name: "JQIT", url: site.corporateUrl },
+      image: member.image,
+      description: member.excerpt,
+    },
+  };
+
   return (
     <article>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
       {/* キービジュアル */}
       <section className="pt-10 md:pt-16">
         <Container>
@@ -79,7 +111,7 @@ export default async function InterviewDetailPage({
           <FadeIn className="mt-6">
             <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl bg-ink">
               <Image
-                src={asset(imageFor(index))}
+                src={asset(imageFor(member, index))}
                 alt=""
                 fill
                 priority
@@ -214,6 +246,11 @@ export default async function InterviewDetailPage({
             <Button href="/interviews" variant="arrow">
               一覧に戻る
             </Button>
+            {member.noteUrl && (
+              <Button href={member.noteUrl} variant="arrow">
+                noteでも読む
+              </Button>
+            )}
           </div>
         </Container>
       </section>

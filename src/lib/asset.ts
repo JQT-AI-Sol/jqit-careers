@@ -3,4 +3,5 @@
 // 自動付与しないため、src に明示的に付ける。Vercel等（basePath無し）では無害。
 const BASE = process.env.NEXT_PUBLIC_BASE_PATH || "";
 
-export const asset = (path: string): string => `${BASE}${path}`;
+export const asset = (path: string): string =>
+  /^https?:\/\//.test(path) ? path : `${BASE}${path}`;

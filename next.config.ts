@@ -13,6 +13,12 @@ const nextConfig: NextConfig = isStatic
       assetPrefix: basePath || undefined,
       trailingSlash: true,
     }
-  : {};
+  : {
+      images: {
+        remotePatterns: [
+          { protocol: "https", hostname: "images.microcms-assets.io" },
+        ],
+      },
+    };
 
 export default nextConfig;

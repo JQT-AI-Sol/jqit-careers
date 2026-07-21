@@ -13,7 +13,7 @@ import { site } from "@/lib/site";
 export const metadata: Metadata = {
   title: "私たちについて",
   description:
-    "JQITのミッション・事業（ITソリューション／AIソリューション）・強み・自社製品NOVAをご紹介します。",
+    "JQITのミッション・事業（ITソリューション／AIソリューション）・強み・自社製品NOVA・AI導入伴走支援をご紹介します。",
   alternates: { canonical: "/about" },
 };
 
@@ -119,6 +119,58 @@ export default function AboutPage() {
                 sizes="(max-width: 768px) 100vw, 540px"
                 className="object-contain"
               />
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* AI Enablement */}
+      <section className="overflow-hidden bg-paper py-20 md:py-[120px]">
+        <Container>
+          <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-[1.02fr_0.98fr] md:gap-16 lg:gap-20">
+            <div className="relative h-[320px] overflow-hidden rounded-2xl bg-cream md:h-[480px]">
+              <Image
+                src={asset("/images/services/ai-enablement.jpg")}
+                alt="画面を見ながらAI導入について相談する担当者"
+                fill
+                sizes="(max-width: 768px) 100vw, 540px"
+                className="object-cover object-center"
+              />
+            </div>
+
+            <div>
+              <Kicker>AI Enablement</Kicker>
+              <p className="mt-5 font-mono text-[12px] font-semibold uppercase tracking-[0.14em] text-brand">
+                {company.aiEnablement.name}
+              </p>
+              <h2 className="mt-4 whitespace-pre-line text-balance font-serif text-[29px] font-medium leading-[1.55] tracking-[0.01em] text-ink md:text-[38px]">
+                {company.aiEnablement.title}
+              </h2>
+              <p className="mt-6 text-pretty font-sans text-[15px] leading-[2] text-body [word-break:auto-phrase]">
+                {company.aiEnablement.body}
+              </p>
+
+              <ol className="mt-8 border-t border-line">
+                {company.aiEnablement.features.map((feature, index) => (
+                  <li
+                    key={feature}
+                    className="grid grid-cols-[36px_1fr] items-center border-b border-line py-4"
+                  >
+                    <span className="font-mono text-[11px] font-semibold text-brand">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <span className="font-sans text-[13.5px] font-bold text-ink">
+                      {feature}
+                    </span>
+                  </li>
+                ))}
+              </ol>
+
+              <div className="mt-9">
+                <Button href={site.aiSupportUrl} variant="primary">
+                  AI導入伴走支援を見る
+                </Button>
+              </div>
             </div>
           </div>
         </Container>

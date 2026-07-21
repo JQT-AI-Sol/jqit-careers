@@ -5,6 +5,7 @@ export const site = {
     "JQITの採用サイト。開発・インフラ・QA・AI・営業。最新技術に挑むITのプロフェッショナル集団で、経験を活かして挑戦したい人を歓迎します。",
   corporateUrl: "https://jqit.co.jp",
   novaUrl: "https://nova-ai.jp",
+  aiSupportUrl: "https://ai.jqit.co.jp/",
   tagline: "挑戦と革新で、未来を切り拓く。",
 } as const;
 

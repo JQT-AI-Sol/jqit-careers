@@ -5,6 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "cms:migrate-interviews": "node scripts/migrate-interviews-to-microcms.mjs",
     "start": "next start",
     "lint": "eslint",
     "test": "vitest run"

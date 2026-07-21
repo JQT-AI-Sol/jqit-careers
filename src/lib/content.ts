@@ -18,6 +18,7 @@ export type Job = {
 };
 
 export type Interview = {
+  id?: string;
   slug: string;
   role: string;
   name: string;
@@ -25,6 +26,7 @@ export type Interview = {
   image?: string;
   imagePosition?: string;
   sourceUrl?: string;
+  noteUrl?: string;
   career?: string;
   title: string;
   excerpt: string;
@@ -33,6 +35,12 @@ export type Interview = {
   work?: string; // いまの仕事
   growth?: string; // 成長と変化（Before→After）
   message?: string; // 挑戦するあなたへ
+  featured?: boolean;
+  sortOrder?: number;
+  seoTitle?: string;
+  seoDescription?: string;
+  publishedAt?: string;
+  revisedAt?: string;
 };
 
 export type Faq = { q: string; a: string };
@@ -40,7 +48,7 @@ export type Stat = { value: string; unit: string; label: string };
 export type FlowStep = { step: string; title: string; desc: string };
 
 export const jobs: Job[] = jobsData as Job[];
-export const interviews: Interview[] = interviewsData as Interview[];
+export const interviewFallback: Interview[] = interviewsData as Interview[];
 export const faqs: Faq[] = faqData as Faq[];
 export const stats: Stat[] = statsData as Stat[];
 export const recruitFlow: FlowStep[] = flowData as FlowStep[];
@@ -97,6 +105,16 @@ export const company = {
   product: {
     name: "NOVA",
     body: "AIマッチングと一元管理を強みとする、自社開発のSaaSプロダクト。受託に留まらず“自分たちのプロダクト”を持ち、AIで現場を変えています。",
+  },
+  aiEnablement: {
+    name: "AI導入伴走支援",
+    title: "既存アプリを活かして、\nAI導入を3か月で伴走。",
+    body: "現場の業務を棚卸しし、いま使っている業務アプリを活かしながら、AIエージェントの設計・導入・運用定着まで支援します。導入後も現場が改善を続けられる内製化体制をつくります。",
+    features: [
+      "業務の棚卸し・導入設計",
+      "既存アプリを活かしたAIエージェント導入",
+      "運用定着・内製化支援",
+    ],
   },
 };
 
