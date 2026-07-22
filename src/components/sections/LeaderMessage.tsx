@@ -81,7 +81,11 @@ export function LeaderMessage() {
                   alt=""
                   fill
                   sizes="(max-width: 768px) 100vw, 548px"
-                  className="object-cover"
+                  className={
+                    l.image.endsWith("kikuchi.jpg")
+                      ? "object-cover object-[58%_40%]"
+                      : "object-contain p-8 md:p-10"
+                  }
                 />
               </div>
 
