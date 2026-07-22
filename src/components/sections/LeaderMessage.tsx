@@ -63,43 +63,53 @@ export function LeaderMessage() {
           lead="開発・インフラ・QA・AIソリューション・ITソリューション営業——5つの事業部それぞれを率いる責任者が、現場をどう変えていくのか。"
         />
 
-        <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2 xl:grid-cols-3">
+        <div className="overflow-hidden border border-line">
           {leaders.map((l, i) => (
             <FadeIn
-              as="article"
               key={l.dept}
+              as="article"
               style={{ transitionDelay: `${(i % 2) * 90}ms` } as React.CSSProperties}
-              className="flex h-full min-h-[300px] flex-col bg-paper p-7 md:p-8"
+              className="grid grid-cols-1 border-b border-line last:border-b-0 md:grid-cols-2"
             >
-              <div className="flex min-h-[74px] items-center gap-4">
-                <div className="relative h-14 w-14 shrink-0 overflow-hidden rounded-full bg-ink">
-                  <Image
-                    src={asset(l.image)}
-                    alt=""
-                    fill
-                    sizes="56px"
-                    className="object-cover"
-                  />
-                </div>
-                <div className="min-w-0">
-                  <p className="font-mono text-[10px] leading-[1.5] tracking-[0.12em] text-brand uppercase">
-                    {l.dept}
-                  </p>
-                  <p className="mt-1 font-serif text-[17px] text-ink">
-                    {l.name}
-                  </p>
-                </div>
+              <div
+                className={`relative min-h-[240px] overflow-hidden bg-paper md:min-h-[300px] ${
+                  i % 2 === 1 ? "md:order-2" : ""
+                }`}
+              >
+                <Image
+                  src={asset(l.image)}
+                  alt=""
+                  fill
+                  sizes="(max-width: 768px) 100vw, 548px"
+                  className="object-cover"
+                />
               </div>
 
-              {/* サンプルコメント */}
-              <p className="mt-5 min-h-[7.6em] font-sans text-[13.5px] leading-[1.9] text-body md:min-h-[8.6em] xl:min-h-[9.6em]">
-                {l.comment}
-              </p>
+              <div
+                className={`flex min-h-[240px] flex-col justify-center bg-cream px-7 py-10 md:min-h-[300px] md:px-12 md:py-14 ${
+                  i % 2 === 1 ? "md:border-r" : "md:border-l"
+                }`}
+              >
+                <div className="flex items-center gap-4">
+                  <div className="min-w-0">
+                    <p className="font-mono text-[10px] leading-[1.5] tracking-[0.12em] text-brand uppercase">
+                      {l.dept}
+                    </p>
+                    <p className="mt-1 font-serif text-[17px] text-ink">
+                      {l.name}
+                    </p>
+                  </div>
+                </div>
 
-              {/* 事業内容（実データ） */}
-              <p className="border-t border-line pt-4 font-sans text-[12px] leading-[1.75] text-muted">
-                {l.focus}
-              </p>
+                <span className="mt-6 block h-px w-8 bg-brand" aria-hidden />
+                <p className="mt-5 font-serif text-[17px] leading-[2] tracking-[0.01em] text-ink md:text-[18px]">
+                  {l.comment}
+                </p>
+
+                <p className="mt-5 border-t border-line pt-4 font-sans text-[12px] leading-[1.75] text-muted">
+                  {l.focus}
+                </p>
+              </div>
             </FadeIn>
           ))}
         </div>
