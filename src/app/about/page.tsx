@@ -63,7 +63,7 @@ export default function AboutPage() {
       <Messages />
 
       {/* Business */}
-      <section className="bg-cream py-20 md:py-[120px]">
+      <section id="business" className="bg-cream py-20 md:py-[120px]">
         <Container>
           <SectionHead kicker="Business" title="事業について" />
           <div className="grid grid-cols-1 gap-px overflow-hidden border border-line bg-line md:grid-cols-2">
@@ -82,7 +82,7 @@ export default function AboutPage() {
       </section>
 
       {/* Strength */}
-      <section className="py-20 md:py-[120px]">
+      <section id="strength" className="py-20 md:py-[120px]">
         <Container>
           <SectionHead
             kicker="Our Strength"
@@ -94,7 +94,7 @@ export default function AboutPage() {
       </section>
 
       {/* Product NOVA */}
-      <section className="bg-ink py-20 text-white md:py-[120px]">
+      <section id="product" className="bg-ink py-20 text-white md:py-[120px]">
         <Container>
           <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-2 md:gap-16">
             <div>
@@ -125,7 +125,7 @@ export default function AboutPage() {
       </section>
 
       {/* AI Enablement */}
-      <section className="overflow-hidden bg-paper py-20 md:py-[120px]">
+      <section id="ai-enablement" className="overflow-hidden bg-paper py-20 md:py-[120px]">
         <Container>
           <div className="grid grid-cols-1 items-center gap-12 md:grid-cols-[1.02fr_0.98fr] md:gap-16 lg:gap-20">
             <div className="relative h-[320px] overflow-hidden rounded-2xl bg-cream md:h-[480px]">
